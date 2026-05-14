@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOVII — Стратегический план развития</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/theme.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255,255,255,0.98);
+            border-bottom: 1px solid var(--border-color);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        [data-theme="dark"] .header { background: rgba(15,23,42,0.98); }
+        [data-theme="dark"] {
+            --bg-color: #0F172A;
+            --text-color: #F1F5F9;
+            --text-secondary: #94A3B8;
+            --accent-color: #14B8A6;
+            --card-bg: #1E293B;
+            --border-color: #334155;
+            --section-alt: #1E293B;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--accent-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo-icon {
+            width: 40px; height: 40px;
+            background: var(--gradient-primary);
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 900; color: white;
+        }
+
+        .theme-toggle {
+            width: 44px; height: 44px;
+            border-radius: 50%;
+            border: 2px solid var(--border-color);
+            background: var(--card-bg);
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .theme-icon { width: 20px; height: 20px; color: var(--text-color); }
+        .theme-icon.sun { display: none; }
+        .theme-icon.moon { display: block; }
+        [data-theme="dark"] .theme-icon.sun { display: block; }
+        [data-theme="dark"] .theme-icon.moon { display: none; }
+
+        .main { padding-top: 80px; }
+
+        .intro {
+            text-align: center;
+            padding: 60px 20px;
+            background: var(--section-alt);
+        }
+        .intro h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 15px; }
+        .intro p { font-size: 1.2rem; color: var(--text-secondary); }
+
+        .slides {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .slide {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 30px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .slide-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+
+        .slide-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-color);
+        }
+
+        .slide-content h3 {
+            font-size: 1.3rem;
+            margin: 25px 0 15px;
+            color: var(--text-color);
+        }
+
+        .slide-content p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        .slide-content ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .slide-content li {
+            margin-bottom: 10px;
+            color: var(--text-secondary);
+        }
+
+        .highlight {
+            background: var(--accent-color);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+
+        .key-point {
+            background: linear-gradient(135deg, rgba(20,184,166,0.1), rgba(20,184,166,0.05));
+            border-left: 4px solid var(--accent-color);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: var(--bg-color);
+            border-radius: 12px;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent-color);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-top: 5px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            background: var(--card-bg);
+            border-top: 1px solid var(--border-color);
+        }
+        .footer p { color: var(--text-secondary); font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="index.html" class="logo">
+            <div class="logo-icon">L</div>
+            LOVII
+        </a>
+        <button class="theme-toggle" id="theme-toggle">
+            <svg class="theme-icon sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="5"></circle>
+                <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+            </svg>
+            <svg class="theme-icon moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+        </button>
+    </header>
+
+    <main class="main">
+        <div class="intro">
+            <h1>LOVII: Цифровая инфраструктура локальной экономики</h1>
+            <p>Стратегический план развития и инвестиционный меморандум</p>
+        </div>
+
+        <div class="slides">
+            <div class="slide">
+                <h2 class="slide-title">LOVII — от локального MVP к федеральному SaaS-стандарту</h2>
+                <div class="slide-content">
+                    <p><strong>LOVII</strong> — Виртуальный оператор лояльности и витрина для микробизнеса.</p>
+                    <div class="key-point">
+                        <strong>Цель:</strong> создание единой платформы, объединяющей малый бизнес, жителей и логистику через универсальный актив — баллы лояльности.
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h2 class="slide-title">Проблема: Разрыв локальной экономики</h2>
+                <div class="slide-content">
+                    <h3>Проблема микробизнеса:</h3>
+                    <ul>
+                        <li>Отсутствие доступа к массовой цифровой аудитории</li>
+                        <li>Высокие комиссии и сложный ERP при интеграции с агрегаторами</li>
+                        <li>Десятки разрозненных программ лояльности</li>
+                    </ul>
+                    <h3>Проблема потребителя:</h3>
+                    <ul>
+                        <li>Баллы «сгорают» или блокируются в рамках одной точки</li>
+                        <li>Низкая ликвидность накопленных бонусов</li>
+                        <li>Локальные товары остаются в слепой зоне</li>
+                    </ul>
+                    <div class="key-point">
+                        <strong>Результат:</strong> Локальный капитал утекает в федеральные сети, а потенциал микробизнеса остается нереализованным.
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h2 class="slide-title">Решение: Синтез каталога и универсального актива</h2>
+                <div class="slide-content">
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-value">📦</div>
+                            <div class="stat-label">Цифровая витрина</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">🎯</div>
+                            <div class="stat-label">Оператор лояльности</div>
+                        </div>
+                    </div>
+                    <h3>Цифровая витрина:</h3>
+                    <ul>
+                        <li>Единый каталог товаров и услуг от микробизнеса</li>
+                        <li>Отображение наравне с гипермаркетами</li>
+                        <li>Простая загрузка (QR, Excel, Web)</li>
+                    </ul>
+                    <h3>Оператор лояльности:</h3>
+                    <ul>
+                        <li>Единая программа для всей экосистемы</li>
+                        <li>Начисление за любую транзакцию</li>
+                        <li>Универсальный актив: баллы идут в оборот</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h2 class="slide-title">Маховик локальной экосистемы</h2>
+                <div class="slide-content">
+                    <p>LOVII создаёт самоподдерживающуюся систему обмена ценностью:</p>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-value">🏪</div>
+                            <div class="stat-label">Микробизнес</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">🛒</div>
+                            <div class="stat-label">Потребитель</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">🚚</div>
+                            <div class="stat-label">Партнёры</div>
+                        </div>
+                    </div>
+                    <ul>
+                        <li><strong>Микробизнес:</strong> Поставщики — размещают товары, эмитируют баллы. Выгода: рост выручки без товарных рисков.</li>
+                        <li><strong>Потребитель:</strong> Генерация и трата баллов. Выгода: ликвидные бонусы и гибридная оплата.</li>
+                        <li><strong>Партнёры (Логистика, Финансы):</strong> Обеспечивают доставку и процессинг. Выгода: транзакционный доход без П-интеграций.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h2 class="slide-title">Баллы как «Валюта доверия»</h2>
+                <div class="slide-content">
+                    <h3>Шаг 1: Генерация</h3>
+                    <p>Пользователь покупает товар → получает <span class="highlight">5% баллами</span></p>
+                    
+                    <h3>Шаг 2: Циркуляция</h3>
+                    <p>Пользователь тратит баллы у другого партнёра или переводит соседу</p>
+                    
+                    <h3>Шаг 3: Монетизация</h3>
+                    <p>Баллы можно вывести на банковский счёт через СБП или использовать для гибридной оплаты</p>
+                    
+                    <div class="key-point">
+                        <strong>Ключевые принципы:</strong>
+                        <ul>
+                            <li>1 балл = 1 рубль (фиксированная привязка)</li>
+                            <li>Баллы не зависят от условий конкретного эмитента</li>
+                        </ul>
+                        <strong>Результат:</strong> Удержание оборота внутри локальной экономики и кратный рост LTV
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h2 class="slide-title">Финансовая маршрутизация и агентская модель</h2>
+                <div class="slide-content">
+                    <p>Юридическая чистота по ФЗ-54, ФЗ-161:</p>
+                    <ul>
+                        <li>LOVII — <strong>чистый агентский сервис</strong>, без перепродажи</li>
+                        <li>Исключение рисков переквалификации деятельности</li>
+                        <li>Платформа не владеет деньгами</li>
+                        <li>Мгновенное начисление вывода через СБП</li>
+                    </ul>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-value">💳</div>
+                            <div class="stat-label">Транзакционный счёт</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">💰</div>
+                            <div class="stat-label">Комиссия</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">🔐</div>
+                            <div class="stat-label">Защита данных (ФЗ-152)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h2 class="slide-title">Почему LOVII не конкурирует с маркетплейсами</h2>
+                <div class="slide-content">
+                    <table style="width:100%; border-collapse: collapse;">
+                        <tr style="border-bottom: 1px solid var(--border-color);">
+                            <th style="padding: 10px; text-align: left;">Критерий</th>
+                            <th style="padding: 10px; text-align: left;">LOVII</th>
+                            <th style="padding: 10px; text-align: left;">Агрегаторы</th>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border-color);">
+                            <td style="padding: 10px;">Ликвидность баллов</td>
+                            <td style="padding: 10px; color: var(--accent-color);">Универсальная (вывод в рубли)</td>
+                            <td style="padding: 10px; color: var(--text-secondary);">Замкнуты внутри гиганта</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border-color);">
+                            <td style="padding: 10px;">Бизнес-модель</td>
+                            <td style="padding: 10px; color: var(--accent-color);">Чистый агентский сервис</td>
+                            <td style="padding: 10px; color: var(--text-secondary);">Перепродажа, диктовка цен</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border-color);">
+                            <td style="padding: 10px;">Конкуренция территорий</td>
+                            <td style="padding: 10px; color: var(--accent-color);">Полная гео-изоляция</td>
+                            <td style="padding: 10px; color: var(--text-secondary);">Прямая конкуренция всех со всеми</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border-color);">
+                            <td style="padding: 10px;">Порог входа</td>
+                            <td style="padding: 10px; color: var(--accent-color);">За 5 минут (QR/Excel, НПД)</td>
+                            <td style="padding: 10px; color: var(--text-secondary);">Сложный ERP, жесткие требования</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h2 class="slide-title">SaaS-Архитектура: Централизованное ядро, локальная автономия</h2>
+                <div class="slide-content">
+                    <p><strong>White-label подход</strong> позволяет мгновенно разворачивать новые территории:</p>
+                    <ul>
+                        <li><strong>LOVI.Петроградка</strong>, <strong>LOVI.Хамовники</strong> — независимые локации</li>
+                        <li>Своя аудитория, свой каталог, своя курьерская экономика</li>
+                    </ul>
+                    <div class="key-point">
+                        <strong>Централизованное Ядро (КИП):</strong>
+                        <ul>
+                            <li>Единая кодовая база и API</li>
+                            <li>Финансовая маршрутизация и безопасность</li>
+                            <li>Централизованные обновления</li>
+                        </ul>
+                    </div>
+                    <p>100% изоляция данных и нулевая конкуренция между локациями.</p>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h2 class="slide-title">Устойчивая юнит-экономика: Четыре столпа монетизации</h2>
+                <div class="slide-content">
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-value">8%</div>
+                            <div class="stat-label">Транзакционная комиссия</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">299₽</div>
+                            <div class="stat-label">SaaS-подписка (РКО)</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">B2B</div>
+                            <div class="stat-label">API и интеграции</div>
+                        </div>
+                    </div>
+                    <h3>Транзакционная комиссия:</h3>
+                    <ul>
+                        <li>Базовый тариф: <span class="highlight">8%</span> с денежной части оплаты</li>
+                        <li>0% для микробизнеса с оборотом до 30 000 руб./мес.</li>
+                    </ul>
+                    <h3>SaaS-подписка (РКО):</h3>
+                    <ul>
+                        <li>Фиксированная плата 299 ₽ в месяц</li>
+                        <li>Снижает комиссию до 4-7%</li>
+                        <li>Приоритет в логистике и продвинутая аналитика</li>
+                    </ul>
+                    <h3>Реклама и продвижение:</h3>
+                    <ul>
+                        <li>Закреплённые позиции в «Витрине»</li>
+                        <li>Нативные тематические подборки</li>
+                    </ul>
+                    <h3>B2B API & Интеграции:</h3>
+                    <ul>
+                        <li>Открытые API для банков, телекомов и HR-систем</li>
+                        <li>Долгосрочный инфраструктурный доход</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h2 class="slide-title">Показатели успеха</h2>
+                <div class="slide-content">
+                    <h3>Цели MVP (6 месяцев):</h3>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-value">&gt;25 млн ₽</div>
+                            <div class="stat-label">GMV</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">25 000</div>
+                            <div class="stat-label">Активных пользователей</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">250+</div>
+                            <div class="stat-label">Подключенных точек</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">&gt;3</div>
+                            <div class="stat-label">LTV/CAC</div>
+                        </div>
+                    </div>
+                    <h3>Цели зрелой локации (18 месяцев):</h3>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-value">&gt;20 млн ₽</div>
+                            <div class="stat-label">EBITDA</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">2 000+</div>
+                            <div class="stat-label">Подключенных точек</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">&gt;30%</div>
+                            <div class="stat-label">Доля платных РКО-тарифов</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">&gt;40</div>
+                            <div class="stat-label">NPS</div>
+                        </div>
+                    </div>
+                    <div class="key-point">
+                        <strong>Полная окупаемость узла</strong> (органический рост)
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h2 class="slide-title">Дорожная карта масштабирования</h2>
+                <div class="slide-content">
+                    <h3>Этап 1: Запуск MVP (Район)</h3>
+                    <ul>
+                        <li>Запуск на базе действующей доставки</li>
+                        <li>Подключение первых 10-20 поставщиков</li>
+                        <li>Запуск модуля «Витрина» и проверка гипотез</li>
+                        <li>Подключение внешних партнёров (банки, логистика)</li>
+                    </ul>
+                    <h3>Этап 2: Репликация модели (Сеть локаций)</h3>
+                    <ul>
+                        <li>Сотни автономных локаций по РФ</li>
+                        <li>Кросс-локальный обмен баллами</li>
+                        <li>Интеграция с корпоративными и HR-программами</li>
+                        <li>Единая система учёта и аналитики</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slide">
+                <h2 class="slide-title">Займите своё место на цифровой витрине!</h2>
+                <div class="slide-content">
+                    <p><strong>Начните продавать больше с LOVII</strong> — без риска, без скрытых комиссий, среди своих.</p>
+                    <div class="key-point">
+                        <p><strong>Связаться с менеджером:</strong></p>
+                        <p>📞 +7 (XXX) XXX-XX-XX</p>
+                        <p>✉️ @lovii_manager</p>
+                        <p>🌐 partners.lovii.ru</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>© 2026 LOVII · <a href="index.html" style="color: var(--accent-color);">На главную</a></p>
+        </footer>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById('theme-toggle');
+            const body = document.body;
+            const savedTheme = localStorage.getItem('lovii-theme') || 'light';
+            body.setAttribute('data-theme', savedTheme);
+            themeToggle.addEventListener('click', function() {
+                const currentTheme = body.getAttribute('data-theme');
+                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                body.setAttribute('data-theme', newTheme);
+                localStorage.setItem('lovii-theme', newTheme);
+            });
+        });
+    </script>
+</body>
+</html>
