@@ -175,6 +175,67 @@
                 margin-bottom: 40px;
             }
         }
+
+        /* Mobile Navigation */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            border-top: 1px solid var(--border-color);
+            padding: 8px 0 12px;
+            z-index: 1000;
+            justify-content: space-around;
+        }
+
+        [data-theme="dark"] .mobile-nav {
+            background: var(--card-bg);
+        }
+
+        .mobile-nav a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 6px 10px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.65rem;
+            transition: all 0.3s ease;
+            min-width: 55px;
+        }
+
+        .mobile-nav a svg {
+            width: 22px;
+            height: 22px;
+            margin-bottom: 4px;
+            fill: var(--text-secondary);
+        }
+
+        .mobile-nav a.active,
+        .mobile-nav a:hover {
+            color: var(--accent-color);
+        }
+
+        .mobile-nav a.active svg,
+        .mobile-nav a:hover svg {
+            fill: var(--accent-color);
+        }
+
+        @media (max-width: 768px) {
+            .mobile-nav {
+                display: flex;
+            }
+
+            body {
+                padding-bottom: 80px;
+            }
+
+            .main-content {
+                padding-top: 80px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -286,5 +347,29 @@
             });
         });
     </script>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav">
+        <a href="index.html">
+            <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+            <span>Главная</span>
+        </a>
+        <a href="presentation.html" class="active">
+            <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+            <span>Презентация</span>
+        </a>
+        <a href="strategy.html">
+            <svg viewBox="0 0 24 24"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/></svg>
+            <span>Стратегия</span>
+        </a>
+        <a href="mailto:invest@lovii.ru?subject=Инвестиция в LOVII">
+            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            <span>Написать</span>
+        </a>
+        <a href="tel:+79119287478">
+            <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            <span>Позвонить</span>
+        </a>
+    </nav>
 </body>
 </html>
