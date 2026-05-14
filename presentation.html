@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOVII — Презентация для инвесторов</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/theme.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.98);
+            border-bottom: 1px solid var(--border-color);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        [data-theme="dark"] .header {
+            background: rgba(15, 23, 42, 0.98);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--accent-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-primary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            color: white;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .theme-toggle {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 2px solid var(--border-color);
+            background: var(--card-bg);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--accent-color);
+        }
+
+        .theme-icon {
+            width: 20px;
+            height: 20px;
+            color: var(--text-color);
+        }
+
+        .theme-icon.sun { display: none; }
+        .theme-icon.moon { display: block; }
+
+        [data-theme="dark"] .theme-icon.sun { display: block; }
+        [data-theme="dark"] .theme-icon.moon { display: none; }
+
+        [data-theme="dark"] {
+            --bg-color: #0F172A;
+            --text-color: #F1F5F9;
+            --text-secondary: #94A3B8;
+            --accent-color: #14B8A6;
+            --card-bg: #1E293B;
+            --border-color: #334155;
+            --section-alt: #1E293B;
+        }
+
+        .main {
+            padding-top: 80px;
+        }
+
+        .intro {
+            text-align: center;
+            padding: 60px 20px 40px;
+            background: var(--section-alt);
+        }
+
+        .intro h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .intro p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+        }
+
+        .slides-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .slide {
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .slide-image {
+            width: 100%;
+            max-width: 1000px;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            border: 1px solid var(--border-color);
+        }
+
+        .slide-number {
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            background: var(--card-bg);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .intro h1 {
+                font-size: 1.8rem;
+            }
+
+            .slide {
+                margin-bottom: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="index.html" class="logo">
+            <div class="logo-icon">L</div>
+            LOVII
+        </a>
+        <div class="header-actions">
+            <button class="theme-toggle" id="theme-toggle">
+                <svg class="theme-icon sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+                </svg>
+                <svg class="theme-icon moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="intro">
+            <h1>Презентация для инвесторов</h1>
+            <p>Полная версия инвестиционного предложения LOVII</p>
+        </div>
+
+        <div class="slides-container">
+            <div class="slide">
+                <div class="slide-number">Слайд 1 из 15</div>
+                <img src="pdf_images/investor-01.png" alt="Слайд 1" class="slide-image">
+            </div>
+            <div class="slide">
+                <div class="slide-number">Слайд 2 из 15</div>
+                <img src="pdf_images/investor-02.png" alt="Слайд 2" class="slide-image">
+            </div>
+            <div class="slide">
+                <div class="slide-number">Слайд 3 из 15</div>
+                <img src="pdf_images/investor-03.png" alt="Слайд 3" class="slide-image">
+            </div>
+            <div class="slide">
+                <div class="slide-number">Слайд 4 из 15</div>
+                <img src="pdf_images/investor-04.png" alt="Слайд 4" class="slide-image">
+            </div>
+            <div class="slide">
+                <div class="slide-number">Слайд 5 из 15</div>
+                <img src="pdf_images/investor-05.png" alt="Слайд 5" class="slide-image">
+            </div>
+            <div class="slide">
+                <div class="slide-number">Слайд 6 из 15</div>
+                <img src="pdf_images/investor-06.png" alt="Слайд 6" class="slide-image">
+            </div>
+            <div class="slide">
+                <div class="slide-number">Слайд 7 из 15</div>
+                <img src="pdf_images/investor-07.png" alt="Слайд 7" class="slide-image">
+            </div>
+            <div class="slide">
+                <div class="slide-number">Слайд 8 из 15</div>
+                <img src="pdf_images/investor-08.png" alt="Слайд 8" class="slide-image">
+            </div>
+            <div class="slide">
+                <div class="slide-number">Слайд 9 из 15</div>
+                <img src="pdf_images/investor-09.png" alt="Слайд 9" class="slide-image">
+            </div>
+            <div class="slide">
+                <div class="slide-number">Слайд 10 из 15</div>
+                <img src="pdf_images/investor-10.png" alt="Слайд 10" class="slide-image">
+            </div>
+            <div class="slide">
+                <div class="slide-number">Слайд 11 из 15</div>
+                <img src="pdf_images/investor-11.png" alt="Слайд 11" class="slide-image">
+            </div>
+            <div class="slide">
+                <div class="slide-number">Слайд 12 из 15</div>
+                <img src="pdf_images/investor-12.png" alt="Слайд 12" class="slide-image">
+            </div>
+            <div class="slide">
+                <div class="slide-number">Слайд 13 из 15</div>
+                <img src="pdf_images/investor-13.png" alt="Слайд 13" class="slide-image">
+            </div>
+            <div class="slide">
+                <div class="slide-number">Слайд 14 из 15</div>
+                <img src="pdf_images/investor-14.png" alt="Слайд 14" class="slide-image">
+            </div>
+            <div class="slide">
+                <div class="slide-number">Слайд 15 из 15</div>
+                <img src="pdf_images/investor-15.png" alt="Слайд 15" class="slide-image">
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>© 2026 LOVII · <a href="index.html" style="color: var(--accent-color);">На главную</a></p>
+        </footer>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById('theme-toggle');
+            const body = document.body;
+            
+            const savedTheme = localStorage.getItem('lovii-theme') || 'light';
+            body.setAttribute('data-theme', savedTheme);
+            
+            themeToggle.addEventListener('click', function() {
+                const currentTheme = body.getAttribute('data-theme');
+                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                body.setAttribute('data-theme', newTheme);
+                localStorage.setItem('lovii-theme', newTheme);
+            });
+        });
+    </script>
+</body>
+</html>
