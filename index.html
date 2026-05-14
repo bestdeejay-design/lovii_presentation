@@ -631,6 +631,101 @@
             font-weight: 700;
         }
 
+        /* Screenshots Carousel */
+        #screenshots {
+            background: var(--section-alt);
+        }
+
+        .carousel {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            position: relative;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            display: block;
+        }
+
+        .carousel-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.9);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+
+        .carousel-btn:hover {
+            background: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-btn svg {
+            width: 24px;
+            height: 24px;
+            color: var(--accent-color);
+        }
+
+        .carousel-btn.prev { left: 15px; }
+        .carousel-btn.next { right: 15px; }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 20px;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--border-color);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-dot.active {
+            background: var(--accent-color);
+            transform: scale(1.2);
+        }
+
         /* Partners Section */
         .partners {
             background: var(--card-bg);
@@ -977,6 +1072,47 @@
         </div>
     </section>
 
+    <section id="screenshots">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Интерфейс системы</h2>
+                <p class="section-subtitle">Скриншоты партнёрского кабинета и админки</p>
+            </div>
+
+            <div class="carousel">
+                <div class="carousel-track">
+                    <div class="carousel-slide">
+                        <img src="screens/1.png" alt="Вход для партнёров">
+                        <div class="carousel-caption">Вход для партнёров</div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="screens/2.png" alt="Кабинет партнёра">
+                        <div class="carousel-caption">Кабинет партнёра</div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="screens/3.png" alt="Кабинет партнёра">
+                        <div class="carousel-caption">Кабинет партнёра</div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="screens/4.png" alt="Админка">
+                        <div class="carousel-caption">Админка: список ритейлеров</div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="screens/5.webp" alt="Финтех система">
+                        <div class="carousel-caption">Финтех система: платежи и выплаты</div>
+                    </div>
+                </div>
+                <button class="carousel-btn prev" aria-label="Предыдущий">
+                    <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+                </button>
+                <button class="carousel-btn next" aria-label="Следующий">
+                    <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+                </button>
+                <div class="carousel-dots"></div>
+            </div>
+        </div>
+    </section>
+
     <section id="investment" class="investment">
         <div class="container">
             <div class="section-header">
@@ -1119,6 +1255,47 @@
                         target.scrollIntoView({ behavior: 'smooth' });
                     }
                 });
+            });
+
+            const track = document.querySelector('.carousel-track');
+            const slides = document.querySelectorAll('.carousel-slide');
+            const dotsContainer = document.querySelector('.carousel-dots');
+            const prevBtn = document.querySelector('.carousel-btn.prev');
+            const nextBtn = document.querySelector('.carousel-btn.next');
+            let currentIndex = 0;
+
+            slides.forEach((_, i) => {
+                const dot = document.createElement('button');
+                dot.classList.add('carousel-dot');
+                if (i === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => goToSlide(i));
+                dotsContainer.appendChild(dot);
+            });
+
+            const dots = document.querySelectorAll('.carousel-dot');
+
+            function goToSlide(index) {
+                currentIndex = index;
+                track.style.transform = `translateX(-${index * 100}%)`;
+                dots.forEach((d, i) => d.classList.toggle('active', i === index));
+            }
+
+            function nextSlide() {
+                goToSlide((currentIndex + 1) % slides.length);
+            }
+
+            function prevSlide() {
+                goToSlide((currentIndex - 1 + slides.length) % slides.length);
+            }
+
+            nextBtn.addEventListener('click', nextSlide);
+            prevBtn.addEventListener('click', prevSlide);
+
+            let autoplay = setInterval(nextSlide, 5000);
+
+            document.querySelector('.carousel').addEventListener('mouseenter', () => clearInterval(autoplay));
+            document.querySelector('.carousel').addEventListener('mouseleave', () => {
+                autoplay = setInterval(nextSlide, 5000);
             });
         });
     </script>
