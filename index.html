@@ -735,6 +735,38 @@
             background: var(--card-bg);
         }
 
+        /* Logo Showcase */
+        .logo-showcase {
+            padding: 60px 20px;
+            text-align: center;
+            background: var(--section-alt);
+        }
+
+        .logo-wrapper {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .logo-light {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .logo-dark {
+            display: none;
+            width: 100%;
+            height: auto;
+        }
+
+        [data-theme="dark"] .logo-light {
+            display: none;
+        }
+
+        [data-theme="dark"] .logo-dark {
+            display: block;
+        }
+
         .partners-grid {
             display: flex;
             justify-content: center;
@@ -1073,6 +1105,15 @@
                         <li>30M+ потенциальных пользователей</li>
                     </ul>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="logo-showcase">
+        <div class="container">
+            <div class="logo-wrapper">
+                <img src="img/logos/lovii-logo.svg" alt="LOVII" class="logo-light">
+                <img src="img/logos/lovii-logo_dark.svg" alt="LOVII" class="logo-dark">
             </div>
         </div>
     </section>
