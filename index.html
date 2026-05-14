@@ -194,11 +194,15 @@
             line-height: 1.6;
         }
 
-        .hero-cta {
+        .hero-buttons {
             display: flex;
-            gap: 20px;
+            gap: 15px;
             justify-content: center;
             flex-wrap: wrap;
+        }
+
+        .hero-buttons .btn {
+            min-width: 160px;
         }
 
         .btn {
@@ -819,7 +823,7 @@
                 grid-template-columns: 1fr;
             }
 
-            .hero-cta {
+            .hero-buttons {
                 flex-direction: column;
                 align-items: center;
             }
@@ -861,7 +865,7 @@
             <div class="hero-buttons">
                 <a href="mailto:invest@lovii.ru?subject=Инвестиция в LOVII" class="btn btn-primary">Инвестировать</a>
                 <a href="#about" class="btn btn-secondary">Узнать больше</a>
-                <a href="presentation.html" class="btn btn-secondary">Презентация PDF</a>
+                <a href="presentation.html" class="btn btn-secondary">Презентация</a>
                 <a href="strategy.html" class="btn btn-secondary">Стратегия</a>
             </div>
         </div>
