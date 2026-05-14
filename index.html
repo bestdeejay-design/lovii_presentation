@@ -396,13 +396,14 @@
         /* Team Section */
         .team-card-full {
             text-align: left;
+            padding: 35px 30px;
         }
 
         .team-header {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 20px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .team-avatar-large {
@@ -421,17 +422,21 @@
 
         .team-info {
             flex: 1;
+            min-width: 0;
         }
 
         .team-info .team-name {
-            font-size: 1.4rem;
-            margin-bottom: 5px;
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+            word-wrap: break-word;
         }
 
         .team-info .team-role {
             color: var(--accent-color);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 600;
+            line-height: 1.4;
+            word-wrap: break-word;
         }
 
         .team-expertise {
@@ -1197,9 +1202,9 @@ footer {
                             <span class="achievement-value">КПК</span>
                             <span class="achievement-label">управление активами</span>
                         </div>
-                        <div class="details-row">
-                            <span class="achievement-value">200 лет</span>
-                            <span class="achievement-label">Технологическому институту</span>
+                        <div class="achievement">
+                            <span class="achievement-value">200</span>
+                            <span class="achievement-label">лет институту</span>
                         </div>
                     </div>
                     <p class="team-bio">
