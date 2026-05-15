@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOVII — Цифровая платформа локальной экономики</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-light: #ffffff;
+            --bg-dark: #1E293B;
+            --text-light: #2b2b2b;
+            --text-dark: #F1F5F9;
+            --accent-light: #2b2b2b;
+            --accent-dark: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-light);
+            color: var(--text-light);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        [data-theme="dark"] body {
+            background: var(--bg-dark);
+            color: var(--text-dark);
+        }
+
+        .container {
+            text-align: center;
+            max-width: 600px;
+        }
+
+        .logo {
+            margin-bottom: 50px;
+        }
+
+        .logo img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+        }
+
+        .logo .logo-dark {
+            display: none;
+        }
+
+        [data-theme="dark"] .logo .logo-light {
+            display: none;
+        }
+
+        [data-theme="dark"] .logo .logo-dark {
+            display: block;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            margin-bottom: 60px;
+            opacity: 0.7;
+        }
+
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .links a {
+            display: inline-block;
+            padding: 16px 40px;
+            border: 2px solid var(--accent-light);
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: 50px;
+            transition: all 0.3s;
+            min-width: 220px;
+        }
+
+        .links a:hover {
+            background: var(--text-light);
+            color: var(--bg-light);
+        }
+
+        [data-theme="dark"] .links a {
+            border-color: var(--accent-dark);
+            color: var(--text-dark);
+        }
+
+        [data-theme="dark"] .links a:hover {
+            background: var(--text-dark);
+            color: var(--bg-dark);
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 2px solid var(--accent-light);
+            background: transparent;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        [data-theme="dark"] .theme-toggle {
+            border-color: var(--accent-dark);
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.05);
+        }
+
+        .theme-toggle svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--accent-light);
+        }
+
+        [data-theme="dark"] .theme-toggle svg {
+            fill: var(--accent-dark);
+        }
+
+        .theme-toggle .icon-moon {
+            display: none;
+        }
+
+        .theme-toggle .icon-sun {
+            display: block;
+        }
+
+        [data-theme="dark"] .theme-toggle .icon-moon {
+            display: block;
+        }
+
+        [data-theme="dark"] .theme-toggle .icon-sun {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .logo img {
+                max-width: 280px;
+            }
+
+            .tagline {
+                font-size: 1rem;
+            }
+
+            .links a {
+                min-width: 200px;
+                padding: 14px 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Переключить тему">
+        <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+
+    <div class="container">
+        <div class="logo">
+            <img src="logo/lovii-logo.svg" alt="LOVII" class="logo-light">
+            <img src="logo/lovii-logo_dark.svg" alt="LOVII" class="logo-dark">
+        </div>
+
+        <p class="tagline">Цифровая платформа локальной экономики</p>
+
+        <div class="links">
+            <a href="https://aoplatforma.ru" target="_blank">Платформа</a>
+            <a href="https://bestdeejay-design.github.io/lovii_presentation/" target="_blank">Для инвесторов</a>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('lovii-theme') || 'light';
+            document.body.setAttribute('data-theme', savedTheme);
+
+            document.getElementById('theme-toggle').addEventListener('click', function() {
+                const current = document.body.getAttribute('data-theme');
+                const next = current === 'light' ? 'dark' : 'light';
+                document.body.setAttribute('data-theme', next);
+                localStorage.setItem('lovii-theme', next);
+            });
+        })();
+    </script>
+</body>
+</html>
