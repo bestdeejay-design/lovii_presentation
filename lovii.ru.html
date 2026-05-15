@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/theme.css">
     <style>
         * {
             margin: 0;
@@ -28,6 +29,7 @@
             text-align: center;
             color: white;
             animation: fadeIn 1s ease-out;
+            max-width: 800px;
         }
 
         @keyframes fadeIn {
@@ -35,44 +37,38 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .logo-icon {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 30px;
-            background: white;
-            border-radius: 28px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+        .logo-wrapper {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto 40px;
         }
 
-        .logo-icon svg {
-            width: 70px;
-            height: 70px;
+        .logo-wrapper img {
+            width: 100%;
+            height: auto;
         }
 
-        .logo-text {
+        .logo-wrapper .logo-dark {
             display: none;
         }
 
-        .logo-name {
-            font-size: 4rem;
-            font-weight: 900;
-            letter-spacing: 4px;
-            margin-bottom: 20px;
-            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        [data-theme="dark"] .logo-wrapper .logo-light {
+            display: none;
+        }
+
+        [data-theme="dark"] .logo-wrapper .logo-dark {
+            display: block;
         }
 
         .logo-tagline {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 300;
             opacity: 0.9;
             letter-spacing: 2px;
+            margin-bottom: 50px;
         }
 
         .links {
-            margin-top: 60px;
             display: flex;
             gap: 20px;
             justify-content: center;
@@ -82,10 +78,10 @@
         .links a {
             color: white;
             text-decoration: none;
-            padding: 12px 30px;
+            padding: 14px 32px;
             border: 2px solid rgba(255, 255, 255, 0.5);
             border-radius: 50px;
-            font-size: 0.95rem;
+            font-size: 1rem;
             font-weight: 500;
             transition: all 0.3s ease;
         }
@@ -95,75 +91,99 @@
             color: #0D9488;
         }
 
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            background: transparent;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .theme-icon {
+            width: 22px;
+            height: 22px;
+            fill: white;
+        }
+
+        .theme-icon.sun { display: none; }
+        .theme-icon.moon { display: block; }
+
+        [data-theme="dark"] .theme-icon.sun { display: block; }
+        [data-theme="dark"] .theme-icon.moon { display: none; }
+
         /* Mobile */
         @media (max-width: 768px) {
-            .logo-icon {
-                width: 100px;
-                height: 100px;
-                border-radius: 24px;
-                margin-bottom: 25px;
-            }
-
-            .logo-icon svg {
-                width: 55px;
-                height: 55px;
-            }
-
-            .logo-name {
-                font-size: 3rem;
-                letter-spacing: 3px;
+            .logo-wrapper {
+                max-width: 280px;
             }
 
             .logo-tagline {
                 font-size: 1rem;
+                letter-spacing: 1px;
             }
 
             .links {
                 flex-direction: column;
                 gap: 15px;
-                margin-top: 50px;
+                align-items: center;
             }
 
             .links a {
-                padding: 14px 40px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .logo-icon {
-                width: 90px;
-                height: 90px;
-                border-radius: 22px;
-            }
-
-            .logo-icon svg {
-                width: 50px;
-                height: 50px;
-            }
-
-            .logo-name {
-                font-size: 2.5rem;
+                width: 240px;
             }
         }
     </style>
 </head>
 <body>
+    <button class="theme-toggle" id="theme-toggle">
+        <svg class="theme-icon sun" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="5"/>
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+        </svg>
+        <svg class="theme-icon moon" viewBox="0 0 24 24">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+    </button>
+
     <div class="splash">
-        <div class="logo-icon">
-            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M50 10L75 25V40L50 55L25 40V25L50 10Z" fill="#0D9488"/>
-                <path d="M50 45L75 60V75L50 90L25 75V60L50 45Z" fill="#14B8A6"/>
-                <path d="M25 40L50 55V75L25 60V40Z" fill="#0F766E"/>
-                <path d="M75 40V60L50 75V55L75 40Z" fill="#0F766E"/>
-                <circle cx="50" cy="50" r="12" fill="white"/>
-            </svg>
+        <div class="logo-wrapper">
+            <img src="img/logos/lovii-logo.svg" alt="LOVII" class="logo-light">
+            <img src="img/logos/lovii-logo_dark.svg" alt="LOVII" class="logo-dark">
         </div>
-        <div class="logo-name">LOVII</div>
         <div class="logo-tagline">Цифровая платформа локальной экономики</div>
         <div class="links">
             <a href="https://aoplatforma.ru" target="_blank">Платформа</a>
-            <a href="https://bestdeejay-design.github.io/lovii_presentation/">Для инвесторов</a>
+            <a href="https://bestdeejay-design.github.io/lovii_presentation/" target="_blank">Для инвесторов</a>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById('theme-toggle');
+            const body = document.body;
+            
+            const savedTheme = localStorage.getItem('lovii-theme') || 'light';
+            body.setAttribute('data-theme', savedTheme);
+            
+            themeToggle.addEventListener('click', function() {
+                const currentTheme = body.getAttribute('data-theme');
+                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                body.setAttribute('data-theme', newTheme);
+                localStorage.setItem('lovii-theme', newTheme);
+            });
+        });
+    </script>
 </body>
 </html>
