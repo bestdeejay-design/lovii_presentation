@@ -46,12 +46,19 @@
 
         .logo {
             margin-bottom: 50px;
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            height: 85px;
         }
 
         .logo img {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            max-width: 400px;
-            height: auto;
+            height: 100%;
+            object-fit: contain;
         }
 
         .logo .logo-dark {
@@ -142,8 +149,9 @@
         }
 
         @media (max-width: 768px) {
-            .logo img {
+            .logo {
                 max-width: 280px;
+                height: 60px;
             }
 
             .tagline {
