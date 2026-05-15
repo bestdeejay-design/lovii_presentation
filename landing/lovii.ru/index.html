@@ -9,12 +9,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-light: #ffffff;
-            --bg-dark: #1E293B;
-            --text-light: #2b2b2b;
-            --text-dark: #F1F5F9;
-            --accent-light: #2b2b2b;
-            --accent-dark: #ffffff;
+            --bg: #ffffff;
+            --text: #2b2b2b;
+            --accent: #2b2b2b;
+        }
+
+        [data-theme="dark"] {
+            --bg: #1E293B;
+            --text: #F1F5F9;
+            --accent: #ffffff;
         }
 
         * {
@@ -25,8 +28,8 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--bg-light);
-            color: var(--text-light);
+            background: var(--bg);
+            color: var(--text);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -34,11 +37,6 @@
             justify-content: center;
             padding: 40px 20px;
             transition: background 0.3s, color 0.3s;
-        }
-
-        [data-theme="dark"] body {
-            background: var(--bg-dark);
-            color: var(--text-dark);
         }
 
         .container {
@@ -86,8 +84,8 @@
         .links a {
             display: inline-block;
             padding: 16px 40px;
-            border: 2px solid var(--accent-light);
-            color: var(--text-light);
+            border: 2px solid var(--accent);
+            color: var(--accent);
             text-decoration: none;
             font-size: 1rem;
             font-weight: 500;
@@ -97,18 +95,8 @@
         }
 
         .links a:hover {
-            background: var(--text-light);
-            color: var(--bg-light);
-        }
-
-        [data-theme="dark"] .links a {
-            border-color: var(--accent-dark);
-            color: var(--text-dark);
-        }
-
-        [data-theme="dark"] .links a:hover {
-            background: var(--text-dark);
-            color: var(--bg-dark);
+            background: var(--accent);
+            color: var(--bg);
         }
 
         .theme-toggle {
@@ -118,17 +106,13 @@
             width: 44px;
             height: 44px;
             border-radius: 50%;
-            border: 2px solid var(--accent-light);
+            border: 2px solid var(--accent);
             background: transparent;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.3s;
-        }
-
-        [data-theme="dark"] .theme-toggle {
-            border-color: var(--accent-dark);
         }
 
         .theme-toggle:hover {
@@ -138,11 +122,7 @@
         .theme-toggle svg {
             width: 20px;
             height: 20px;
-            fill: var(--accent-light);
-        }
-
-        [data-theme="dark"] .theme-toggle svg {
-            fill: var(--accent-dark);
+            fill: var(--accent);
         }
 
         .theme-toggle .icon-moon {
