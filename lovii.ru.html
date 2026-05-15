@@ -17,17 +17,24 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: linear-gradient(135deg, #0D9488 0%, #0F766E 50%, #115E59 100%);
+            background: #F8FAFC;
+            color: #1E293B;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 40px 20px;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        [data-theme="dark"] body {
+            background: #0F172A;
+            color: #F1F5F9;
         }
 
         .splash {
             text-align: center;
-            color: white;
+            color: inherit;
             animation: fadeIn 1s ease-out;
             max-width: 800px;
         }
@@ -41,6 +48,10 @@
             width: 100%;
             max-width: 500px;
             margin: 0 auto 40px;
+            background: linear-gradient(135deg, #0D9488 0%, #0F766E 50%, #115E59 100%);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(13, 148, 136, 0.3);
         }
 
         .logo-wrapper img {
@@ -60,12 +71,21 @@
             display: block;
         }
 
+        [data-theme="dark"] .logo-wrapper {
+            background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
         .logo-tagline {
             font-size: 1.3rem;
             font-weight: 300;
-            opacity: 0.9;
+            color: #64748B;
             letter-spacing: 2px;
             margin-bottom: 50px;
+        }
+
+        [data-theme="dark"] .logo-tagline {
+            color: #94A3B8;
         }
 
         .links {
@@ -76,10 +96,10 @@
         }
 
         .links a {
-            color: white;
+            color: #0D9488;
             text-decoration: none;
             padding: 14px 32px;
-            border: 2px solid rgba(255, 255, 255, 0.5);
+            border: 2px solid #0D9488;
             border-radius: 50px;
             font-size: 1rem;
             font-weight: 500;
@@ -87,8 +107,18 @@
         }
 
         .links a:hover {
-            background: white;
-            color: #0D9488;
+            background: #0D9488;
+            color: white;
+        }
+
+        [data-theme="dark"] .links a {
+            color: #14B8A6;
+            border-color: #14B8A6;
+        }
+
+        [data-theme="dark"] .links a:hover {
+            background: #14B8A6;
+            color: #0F172A;
         }
 
         .theme-toggle {
@@ -98,8 +128,8 @@
             width: 44px;
             height: 44px;
             border-radius: 50%;
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            background: transparent;
+            border: 2px solid #E2E8F0;
+            background: white;
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -107,14 +137,23 @@
             transition: all 0.3s ease;
         }
 
+        [data-theme="dark"] .theme-toggle {
+            background: #1E293B;
+            border-color: #334155;
+        }
+
         .theme-toggle:hover {
-            background: rgba(255, 255, 255, 0.1);
+            transform: scale(1.05);
         }
 
         .theme-icon {
             width: 22px;
             height: 22px;
-            fill: white;
+            fill: #0D9488;
+        }
+
+        [data-theme="dark"] .theme-icon {
+            fill: #14B8A6;
         }
 
         .theme-icon.sun { display: none; }
@@ -127,6 +166,8 @@
         @media (max-width: 768px) {
             .logo-wrapper {
                 max-width: 280px;
+                padding: 30px;
+                border-radius: 20px;
             }
 
             .logo-tagline {
