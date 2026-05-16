@@ -4253,7 +4253,121 @@ footer {
         [data-theme="dark"] .floating-nav a:hover { background: rgba(20,184,166,0.12); }
         [data-theme="dark"] .floating-nav { background: rgba(30,41,59,0.75); }
         @media print { .floating-nav { display: none !important; } }
-        @media (max-width: 768px) { .floating-nav { display: none; } }
+        @media (max-width: 768px) { 
+            .floating-nav { display: none; }
+
+            /* Документация выпуска — планшетная адаптация */
+            .doc-item {
+                padding: 18px 20px;
+                gap: 16px;
+            }
+
+            .doc-icon {
+                width: 40px;
+                height: 40px;
+            }
+
+            .doc-icon svg {
+                width: 20px;
+                height: 20px;
+            }
+
+            .doc-info h4 {
+                font-size: 0.95rem;
+            }
+
+            .doc-info p {
+                font-size: 0.8rem;
+            }
+
+            .doc-tag {
+                font-size: 0.7rem;
+                padding: 4px 10px;
+            }
+
+            /* Цели продукта — планшетная адаптация */
+            .investment-card {
+                padding: 35px 28px;
+            }
+
+            .investment-value {
+                font-size: 2.8rem;
+            }
+
+            .investment-details div {
+                padding: 12px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            /* Цели продукта — мобильная адаптация */
+            .investment-card {
+                padding: 24px 20px;
+            }
+
+            .investment-value {
+                font-size: 2rem;
+            }
+
+            .investment-details div {
+                flex-direction: column;
+                gap: 4px;
+                padding: 10px 0;
+                font-size: 0.85rem;
+            }
+
+            .investment-details div span:first-child {
+                color: var(--text-secondary);
+                font-size: 0.75rem;
+                font-weight: 500;
+            }
+
+            /* Документация выпуска — мобильная адаптация */
+            .doc-item {
+                flex-wrap: wrap;
+                padding: 16px 18px;
+                gap: 14px;
+            }
+
+            .doc-icon {
+                width: 38px;
+                height: 38px;
+            }
+
+            .doc-icon svg {
+                width: 18px;
+                height: 18px;
+            }
+
+            .doc-info {
+                min-width: calc(100% - 52px);
+            }
+
+            .doc-info h4 {
+                font-size: 0.9rem;
+                line-height: 1.3;
+                margin-bottom: 6px;
+            }
+
+            .doc-info p {
+                font-size: 0.75rem;
+                line-height: 1.4;
+            }
+
+            .doc-tag {
+                font-size: 0.65rem;
+                padding: 3px 8px;
+                order: 3;
+                width: 100%;
+                text-align: center;
+                margin-top: 4px;
+            }
+
+            .doc-arrow {
+                display: none;
+            }
+        }
+
 
 /* Mobile Drawer */
         .drawer-overlay {
