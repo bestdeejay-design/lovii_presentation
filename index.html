@@ -631,15 +631,16 @@
         }
 
         .compliance-badge {
-            display: inline-flex;
+            display: flex;
             align-items: center;
             gap: 8px;
-            margin-top: 15px;
+            margin: 20px auto 0;
             padding: 8px 16px;
             background: rgba(34, 197, 94, 0.08);
             border-radius: 8px;
             font-size: 0.75rem;
             color: var(--text-secondary);
+            width: fit-content;
         }
 
         .compliance-badge svg {
@@ -2380,7 +2381,7 @@ footer {
                     <span class="details-value">199106, Санкт-Петербург, Вн.тер. г. Муниципальный округ Гавань, пр-кт Большой В.О., д. 83 Литера А, помещ. 2-Н, офис 329/1</span>
                 </div>
             </div>
-            <div class="compliance-badge" style="max-width: 800px; margin: 20px auto 0; justify-content: center;">
+            <div class="compliance-badge">
                 <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
                 <span>Сведения проверены по данным ЕГРЮЛ на 14.05.2026</span>
             </div>
