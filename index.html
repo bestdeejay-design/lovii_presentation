@@ -1023,59 +1023,235 @@
             background: #0D9488;
         }
 
-        /* Product Section */
-        .product-grid {
+        /* Product Case Cards */
+        .case-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
         }
 
-        .product-card {
+        .case-card {
             background: var(--card-bg);
-            border-radius: 20px;
-            padding: 40px;
             border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 30px;
+            transition: all 0.3s;
         }
 
-        .product-status {
-            display: inline-block;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 0.85rem;
+        .case-card:hover {
+            border-color: var(--accent-color);
+        }
+
+        .case-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+        }
+
+        .case-header h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+        }
+
+        .case-status {
+            font-size: 0.75rem;
             font-weight: 600;
-            margin-bottom: 20px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+
+        .case-status.demo {
+            background: rgba(13, 148, 136, 0.1);
+            color: var(--accent-color);
+        }
+
+        .case-status.ready {
             background: rgba(34, 197, 94, 0.1);
             color: #22c55e;
         }
 
-        .product-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 15px;
+        .case-status.dev {
+            background: rgba(251, 191, 36, 0.1);
+            color: #d97706;
         }
 
-        .product-text {
+        .case-body p {
             color: var(--text-secondary);
-            margin-bottom: 25px;
-            line-height: 1.7;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 12px;
         }
 
-        .product-features {
-            list-style: none;
+        .case-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            padding: 16px;
+            background: var(--bg-color);
+            border-radius: 12px;
+            margin: 16px 0;
         }
 
-        .product-features li {
+        .case-metric {
+            text-align: center;
+        }
+
+        .case-metric .cm-value {
+            display: block;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--accent-color);
+        }
+
+        .case-metric .cm-label {
+            display: block;
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            margin-top: 2px;
+        }
+
+        .case-video {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            aspect-ratio: 16 / 9;
             display: flex;
             align-items: center;
-            gap: 10px;
-            padding: 8px 0;
+            justify-content: center;
+            cursor: pointer;
+            margin-top: 16px;
+        }
+
+        .case-video svg {
+            width: 48px;
+            height: 48px;
+            fill: var(--accent-color);
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .case-video:hover svg {
+            opacity: 1;
+        }
+
+        .case-video span {
+            position: absolute;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            background: var(--card-bg);
+            padding: 4px 16px;
+            border-radius: 6px;
+            white-space: nowrap;
+            border: 1px solid var(--border-color);
+        }
+
+        /* Calculator */
+        .calc-section {
+            padding: 100px 20px;
+            background: var(--section-alt);
+        }
+
+        .calc-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+            align-items: start;
+        }
+
+        .calc-form {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 35px;
+        }
+
+        .calc-form label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .calc-form .input-group {
+            display: flex;
+            align-items: center;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            overflow: hidden;
+            background: var(--bg-color);
+            margin-bottom: 20px;
+        }
+
+        .calc-form .input-group span {
+            padding: 0 16px;
+            font-weight: 600;
             color: var(--text-secondary);
         }
 
-        .product-features li::before {
-            content: "✓";
-            color: var(--accent-color);
+        .calc-form .input-group input {
+            flex: 1;
+            padding: 14px 16px;
+            border: none;
+            background: transparent;
+            font-size: 1.2rem;
             font-weight: 700;
+            font-family: 'Inter', sans-serif;
+            color: var(--text-color);
+            outline: none;
+        }
+
+        .calc-form .input-group input:focus {
+            box-shadow: inset 0 0 0 2px var(--accent-color);
+        }
+
+        .calc-results {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .calc-result-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .calc-result-item .crl-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .calc-result-item .crl-value {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--accent-color);
+        }
+
+        .calc-result-item.highlight {
+            border-color: var(--accent-color);
+            background: rgba(13, 148, 136, 0.05);
+        }
+
+        .calc-result-item.highlight .crl-value {
+            font-size: 1.6rem;
+        }
+
+        @media (max-width: 768px) {
+            .calc-layout { grid-template-columns: 1fr; }
+            .case-metrics { grid-template-columns: repeat(3, 1fr); }
         }
 
         /* Screenshots Carousel */
@@ -1743,44 +1919,160 @@ footer {
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Статус продукта</h2>
-                <p class="section-subtitle">Готовность к запуску и масштабированию</p>
+                <p class="section-subtitle">Кейс-гипотезы по каждому модулю платформы</p>
             </div>
 
-            <div class="product-grid">
-                <div class="product-card">
-                    <span class="product-status">✓ Предрелизное демо</span>
-                    <h3 class="product-title">Демо-платформа</h3>
-                    <p class="product-text">Готовое демо с полной функциональностью. Проведена предварительная подготовка к запуску.</p>
-                    <ul class="product-features">
-                        <li>SaaS-платформа «Витрина»</li>
-                        <li>Оператор лояльности</li>
-                        <li>HR-инструмент</li>
-                        <li>Подготовка к интеграции с банком</li>
-                    </ul>
+            <div class="case-grid">
+                <div class="case-card">
+                    <div class="case-header">
+                        <h3>SaaS «Лови»</h3>
+                        <span class="case-status demo">Демо</span>
+                    </div>
+                    <div class="case-body">
+                        <p>Оператор лояльности для микробизнеса. Подключение к единой экосистеме баллов за 15 минут без IT-команды.</p>
+                        <div class="case-metrics">
+                            <div class="case-metric">
+                                <span class="cm-value">1 000</span>
+                                <span class="cm-label">точек (цель Q3)</span>
+                            </div>
+                            <div class="case-metric">
+                                <span class="cm-value">+22%</span>
+                                <span class="cm-label">рост выручки клиента</span>
+                            </div>
+                            <div class="case-metric">
+                                <span class="cm-value">300 ₽</span>
+                                <span class="cm-label">ср. доход с точки</span>
+                            </div>
+                        </div>
+                        <div class="case-video">
+                            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            <span>Демо-запись платформы</span>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="product-card">
-                    <span class="product-status">✓ Орг. вопросы решены</span>
-                    <h3 class="product-title">Партнёрства</h3>
-                    <p class="product-text">Решены организационные вопросы по подключению крупного ритейла. Есть банк-партнёр для совместного развития.</p>
-                    <ul class="product-features">
-                        <li>Банк-партнёр</li>
-                        <li>Крупный ритейл</li>
-                        <li>4 доходных статьи</li>
-                        <li>Прямые интеграции</li>
-                    </ul>
+                <div class="case-card">
+                    <div class="case-header">
+                        <h3>Цифровая витрина</h3>
+                        <span class="case-status demo">Демо</span>
+                    </div>
+                    <div class="case-body">
+                        <p>Виртуальная полка для локальных производителей. Загрузка товаров, учёт остатков, приём заказов с доставкой.</p>
+                        <div class="case-metrics">
+                            <div class="case-metric">
+                                <span class="cm-value">200</span>
+                                <span class="cm-label">товаров на витрине</span>
+                            </div>
+                            <div class="case-metric">
+                                <span class="cm-value">15 000 ₽</span>
+                                <span class="cm-label">ср. оборот точки</span>
+                            </div>
+                            <div class="case-metric">
+                                <span class="cm-value">5%</span>
+                                <span class="cm-label">комиссия платформы</span>
+                            </div>
+                        </div>
+                        <div class="case-video">
+                            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            <span>Демо-запись витрины</span>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="product-card">
-                    <span class="product-status">✓ Каналы роста</span>
-                    <h3 class="product-title">Привлечение пользователей</h3>
-                    <p class="product-text">Пользователей будем привлекать через социальные сети, банки и сотовых операторов по прямым интеграциям.</p>
-                    <ul class="product-features">
-                        <li>Социальные сети</li>
-                        <li>Банковские каналы</li>
-                        <li>Телеком-интеграции</li>
-                        <li>30M+ потенциальных пользователей</li>
-                    </ul>
+                <div class="case-card">
+                    <div class="case-header">
+                        <h3>Партнёрства</h3>
+                        <span class="case-status ready">Орг. вопросы решены</span>
+                    </div>
+                    <div class="case-body">
+                        <p>Решены организационные вопросы по подключению крупного ритейла и банка-партнёра. Запуск пилотных проектов в Q2 2026.</p>
+                        <div class="case-metrics">
+                            <div class="case-metric">
+                                <span class="cm-value">1</span>
+                                <span class="cm-label">банк-партнёр</span>
+                            </div>
+                            <div class="case-metric">
+                                <span class="cm-value">2</span>
+                                <span class="cm-label">ритейл-сети</span>
+                            </div>
+                            <div class="case-metric">
+                                <span class="cm-value">4</span>
+                                <span class="cm-label">доходных статьи</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="case-card">
+                    <div class="case-header">
+                        <h3>Финансовая инфраструктура</h3>
+                        <span class="case-status dev">Интеграция</span>
+                    </div>
+                    <div class="case-body">
+                        <p>Интеграция с банковскими платёжными агентами. СБП, эквайринг, вывод баллов на карту.</p>
+                        <div class="case-metrics">
+                            <div class="case-metric">
+                                <span class="cm-value">СБП</span>
+                                <span class="cm-label">подготовлена</span>
+                            </div>
+                            <div class="case-metric">
+                                <span class="cm-value">API</span>
+                                <span class="cm-label">в разработке</span>
+                            </div>
+                            <div class="case-metric">
+                                <span class="cm-value">1,5%</span>
+                                <span class="cm-label">комиссия эквайринга</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="case-card">
+                    <div class="case-header">
+                        <h3>City Franchise</h3>
+                        <span class="case-status dev">В разработке</span>
+                    </div>
+                    <div class="case-body">
+                        <p>Запуск локальной экосистемы в городах. Полный набор инструментов для управления районом или городом.</p>
+                        <div class="case-metrics">
+                            <div class="case-metric">
+                                <span class="cm-value">3</span>
+                                <span class="cm-label">города-пилота</span>
+                            </div>
+                            <div class="case-metric">
+                                <span class="cm-value">Q4 2026</span>
+                                <span class="cm-label">запуск</span>
+                            </div>
+                            <div class="case-metric">
+                                <span class="cm-value">500 000 ₽</span>
+                                <span class="cm-label">лицензия / город</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="case-card">
+                    <div class="case-header">
+                        <h3>Привлечение пользователей</h3>
+                        <span class="case-status ready">Каналы роста</span>
+                    </div>
+                    <div class="case-body">
+                        <p>Пользователей привлекаем через социальные сети, банки и сотовых операторов по прямым интеграциям.</p>
+                        <div class="case-metrics">
+                            <div class="case-metric">
+                                <span class="cm-value">30M+</span>
+                                <span class="cm-label">потенциальных пользователей</span>
+                            </div>
+                            <div class="case-metric">
+                                <span class="cm-value">5 000</span>
+                                <span class="cm-label">первые клиенты</span>
+                            </div>
+                            <div class="case-metric">
+                                <span class="cm-value">CAC 300 ₽</span>
+                                <span class="cm-label">стоимость привлечения</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1813,6 +2105,40 @@ footer {
                         <h3>Этап 3: Масштабирование (Q4 2026 – 2027)</h3>
                         <p>Экспансия в новые города. Рост пользовательской базы. Запуск City Franchise в регионах. Выход на операционную окупаемость продукта.</p>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="calculator" class="calc-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Калькулятор доходности</h2>
+                <p class="section-subtitle">Рассчитайте доход от инвестиции в ЦФА LOVII</p>
+            </div>
+            <div class="calc-layout">
+                <div class="calc-form">
+                    <label for="invest-amount">Сумма инвестиции</label>
+                    <div class="input-group">
+                        <span>₽</span>
+                        <input type="number" id="invest-amount" value="100000" min="1000" step="1000">
+                    </div>
+                    <div style="font-size:0.8rem;color:var(--text-secondary);margin-top:-12px;">Минимальная сумма: 1 000 ₽</div>
+                </div>
+                <div class="calc-results" id="calc-results">
+                    <div class="calc-result-item">
+                        <span class="crl-label">Квартальная выплата</span>
+                        <span class="crl-value" id="calc-quarterly">5 096 ₽</span>
+                    </div>
+                    <div class="calc-result-item">
+                        <span class="crl-label">Доход за 9 месяцев</span>
+                        <span class="crl-value" id="calc-total-profit">15 288 ₽</span>
+                    </div>
+                    <div class="calc-result-item highlight">
+                        <span class="crl-label">Итоговая сумма возврата в январе 2027</span>
+                        <span class="crl-value" id="calc-total-return">115 288 ₽</span>
+                    </div>
+                    <div style="font-size:0.75rem;color:var(--text-secondary);padding:10px 5px;">* Расчёт на основе фиксированной ставки 21% годовых от номинала ЦФА. Фактический доход может незначительно отличаться в зависимости от даты приобретения.</div>
                 </div>
             </div>
         </div>
@@ -1996,7 +2322,7 @@ footer {
                 </div>
             </div>
             <div class="onboarding-note">
-                Средний срок оформления — 1 рабочий день. Минимальная сумма — 1 000 ₽. Все операции регулируются законодательством РФ.
+                <strong>Правовое регулирование:</strong> ЦФА (Цифровые финансовые активы) регулируются Федеральным законом № 259-ФЗ от 31.07.2020. Оператор ЦФА — лицо, включённое в реестр Банка России, обеспечивающее учёт и обращение активов. Средний срок оформления — 1 рабочий день. Минимальная сумма — 1 000 ₽.
             </div>
         </div>
     </section>
@@ -2172,6 +2498,24 @@ footer {
             document.querySelector('.carousel').addEventListener('mouseleave', () => {
                 autoplay = setInterval(nextSlide, 5000);
             });
+
+            // Calculator
+            const calcInput = document.getElementById('invest-amount');
+            if (calcInput) {
+                function calcProfit() {
+                    const amount = parseFloat(calcInput.value) || 0;
+                    const rate = 0.21;
+                    const months = 9;
+                    const quarterly = amount * rate / 4;
+                    const totalProfit = amount * rate * months / 12;
+                    const totalReturn = amount + totalProfit;
+                    document.getElementById('calc-quarterly').textContent = Math.round(quarterly).toLocaleString('ru-RU') + ' ₽';
+                    document.getElementById('calc-total-profit').textContent = Math.round(totalProfit).toLocaleString('ru-RU') + ' ₽';
+                    document.getElementById('calc-total-return').textContent = Math.round(totalReturn).toLocaleString('ru-RU') + ' ₽';
+                }
+                calcInput.addEventListener('input', calcProfit);
+                calcProfit();
+            }
 
             // Mobile nav active state
             const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
