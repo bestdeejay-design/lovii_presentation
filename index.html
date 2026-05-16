@@ -56,23 +56,26 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--accent-color);
             text-decoration: none;
+            height: 40px;
         }
 
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--gradient-primary);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 900;
-            color: white;
+        .logo img {
+            height: 100%;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo .logo-dark {
+            display: none;
+        }
+
+        [data-theme="dark"] .logo .logo-light {
+            display: none;
+        }
+
+        [data-theme="dark"] .logo .logo-dark {
+            display: block;
         }
 
         .header-actions {
@@ -144,8 +147,7 @@
         }
 
         [data-theme="dark"] .about,
-        [data-theme="dark"] .investment,
-        [data-theme="dark"] .metrics-bar {
+        [data-theme="dark"] .investment {
             background: var(--card-bg);
         }
 
@@ -242,38 +244,189 @@
             color: white;
         }
 
-        /* Key Metrics Banner */
-        .metrics-bar {
-            background: var(--card-bg);
-            border-top: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
-            padding: 40px 20px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        /* Key Metrics Banner — Issuer */
+        .issuer-section {
+            background: var(--bg-color);
+            padding: 80px 20px;
         }
 
-        .metrics-grid {
+        .issuer-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 30px;
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
+        }
+
+        .issuer-card {
             text-align: center;
+            padding: 30px 20px;
+            background: var(--card-bg);
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
         }
 
-        .metric-item {
-            padding: 20px;
-        }
-
-        .metric-value {
-            font-size: 2.5rem;
-            font-weight: 800;
+        .issuer-value {
+            font-size: 2.8rem;
+            font-weight: 900;
             color: var(--accent-color);
-            margin-bottom: 5px;
+            margin-bottom: 8px;
         }
 
-        .metric-label {
+        .issuer-label {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .issuer-desc {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .issuer-note {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            max-width: 700px;
+            margin: 30px auto 0;
+            padding: 15px 20px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+        }
+
+        .issuer-note svg {
+            flex-shrink: 0;
+            opacity: 0.6;
+        }
+
+        /* Product Targets Section */
+        .targets-section {
+            background: var(--section-alt);
+            padding: 100px 20px;
+        }
+
+        /* Roadmap */
+        .roadmap-section {
+            padding: 100px 20px;
+            background: var(--bg-color);
+        }
+
+        .roadmap {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .roadmap::before {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border-color);
+        }
+
+        .roadmap-item {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .roadmap-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .roadmap-marker {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            z-index: 1;
+            border: 2px solid var(--border-color);
+            background: var(--card-bg);
+            color: var(--text-secondary);
+        }
+
+        .roadmap-item.completed .roadmap-marker {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+            color: white;
+        }
+
+        .roadmap-item.active .roadmap-marker {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+            box-shadow: 0 0 0 4px rgba(13, 148, 136, 0.2);
+        }
+
+        .roadmap-content {
+            padding-top: 8px;
+        }
+
+        .roadmap-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        .roadmap-content p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .roadmap-item.active .roadmap-content h3 {
+            color: var(--accent-color);
+        }
+
+        /* FAQ */
+        .faq-section {
+            padding: 100px 20px;
+            background: var(--card-bg);
+        }
+
+        .faq-grid {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .faq-item {
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 30px;
+            transition: all 0.3s;
+        }
+
+        .faq-item:hover {
+            border-color: var(--accent-color);
+        }
+
+        .faq-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+
+        .faq-item p {
             font-size: 0.95rem;
             color: var(--text-secondary);
+            line-height: 1.7;
         }
 
         /* Sections */
@@ -963,11 +1116,6 @@ footer {
                 min-width: auto;
             }
 
-            .metrics-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 15px;
-            }
-
             .section-title {
                 font-size: 1.8rem;
             }
@@ -1013,6 +1161,23 @@ footer {
             body {
                 padding-bottom: 80px;
             }
+
+            .issuer-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .issuer-value {
+                font-size: 2rem;
+            }
+
+            .roadmap::before {
+                left: 20px;
+            }
+
+            .roadmap-content h3 {
+                font-size: 1rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1026,8 +1191,8 @@ footer {
     <header class="header">
         <div class="header-inner">
             <a href="#" class="logo">
-                <div class="logo-icon">L</div>
-                LOVII
+                <img src="img/logos/lovii-logo.svg" alt="LOVII" class="logo-light">
+                <img src="img/logos/lovii-logo_dark.svg" alt="LOVII" class="logo-dark">
             </a>
             <div class="header-actions">
                 <span class="header-badge">ЦФА 2026</span>
@@ -1046,38 +1211,101 @@ footer {
 
     <section class="hero">
         <div class="hero-content">
-            <div class="hero-badge">Инвестиционное предложение</div>
+            <div class="hero-badge">Продукт от команды с 20-летним стажем ▸ ЦФА 2026</div>
             <h1 class="hero-title">LOVII</h1>
-            <p class="hero-subtitle">Цифровая инфраструктура локальной экономики. Привлекаем инвестиции на запуск и масштабирование платформы для микробизнеса.</p>
+            <p class="hero-subtitle">20 лет мы создавали IT-решения для бизнеса. Теперь запускаем собственный продукт — цифровую инфраструктуру для микробизнеса. Привлекаем 52 млн ₽ через ЦФА под 21% годовых.</p>
             <div class="hero-buttons">
-                <a href="mailto:invest@lovii.ru?subject=Инвестиция в LOVII" class="btn btn-primary">Инвестировать</a>
-                <a href="#about" class="btn btn-secondary">Узнать больше</a>
+                <a href="mailto:invest@lovii.ru?subject=Инвестиция в LOVII" class="btn btn-primary">Инвестировать от 1 000 ₽</a>
+                <a href="#issuer" class="btn btn-secondary">Показатели эмитента</a>
                 <a href="presentation.html" class="btn btn-secondary">Презентация</a>
                 <a href="strategy.html" class="btn btn-secondary">Стратегия</a>
             </div>
         </div>
     </section>
 
-    <div class="metrics-bar">
-        <div class="metrics-grid">
-            <div class="metric-item">
-                <div class="metric-value">52 млн</div>
-                <div class="metric-label">Целевая сумма</div>
+    <section id="issuer" class="issuer-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Устойчивость эмитента</h2>
+                <p class="section-subtitle">ООО «Аксиома» — действующий IT-бизнес, на базе которого создаётся продукт LOVII</p>
             </div>
-            <div class="metric-item">
-                <div class="metric-value">9 мес</div>
-                <div class="metric-label">Срок инвестиции</div>
+            <div class="issuer-grid">
+                <div class="issuer-card">
+                    <div class="issuer-value">166 млн ₽</div>
+                    <div class="issuer-label">Выручка 2025</div>
+                    <div class="issuer-desc">Подтверждённая выручка аутсорс-бизнеса, который финансирует разработку продукта</div>
+                </div>
+                <div class="issuer-card">
+                    <div class="issuer-value">20+ лет</div>
+                    <div class="issuer-label">на IT-рынке</div>
+                    <div class="issuer-desc">Опыт команды в заказной разработке и системной интеграции</div>
+                </div>
+                <div class="issuer-card">
+                    <div class="issuer-value">10 млн ₽</div>
+                    <div class="issuer-label">Чистая прибыль 2025</div>
+                    <div class="issuer-desc">Финансовая устойчивость позволяет инвестировать в продуктовое развитие</div>
+                </div>
             </div>
-            <div class="metric-item">
-                <div class="metric-value">166 млн</div>
-                <div class="metric-label">Выручка 2025</div>
-            </div>
-            <div class="metric-item">
-                <div class="metric-value">10 млн</div>
-                <div class="metric-label">Чистая прибыль 2025</div>
+            <div class="issuer-note">
+                <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                <span>Эти показатели отражают стабильность эмитента. Целевые показатели продукта LOVII — ниже.</span>
             </div>
         </div>
-    </div>
+    </section>
+
+    <section id="targets" class="targets-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Цели продукта LOVII</h2>
+                <p class="section-subtitle">Плановые показатели после запуска и масштабирования</p>
+            </div>
+            <div class="investment-grid">
+                <div class="investment-card">
+                    <h3>Доходность</h3>
+                    <div class="investment-value">до 21%</div>
+                    <p class="investment-label">годовых</p>
+                    <div class="investment-details">
+                        <div>
+                            <span>Тип дохода</span>
+                            <span>Фиксированный</span>
+                        </div>
+                        <div>
+                            <span>Выплаты</span>
+                            <span>Ежеквартальные</span>
+                        </div>
+                        <div>
+                            <span>Налогообложение</span>
+                            <span>Российское законодательство</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="investment-card">
+                    <h3>Параметры выпуска</h3>
+                    <div class="investment-value">52 млн</div>
+                    <p class="investment-label">целевая сумма</p>
+                    <div class="investment-details">
+                        <div>
+                            <span>Эмитент</span>
+                            <span>ООО «Аксиома»</span>
+                        </div>
+                        <div>
+                            <span>Срок</span>
+                            <span>9 месяцев</span>
+                        </div>
+                        <div>
+                            <span>Погашение</span>
+                            <span>Январь 2027</span>
+                        </div>
+                        <div>
+                            <span>Мин. сумма</span>
+                            <span>от 1 000 ₽</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <section id="about">
         <div class="container">
@@ -1260,6 +1488,38 @@ footer {
         </div>
     </section>
 
+    <section id="roadmap" class="roadmap-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Путь к масштабированию</h2>
+                <p class="section-subtitle">От демо — к работающему бизнесу</p>
+            </div>
+            <div class="roadmap">
+                <div class="roadmap-item completed">
+                    <div class="roadmap-marker">✓</div>
+                    <div class="roadmap-content">
+                        <h3>Этап 1: Демо (Q1 2026)</h3>
+                        <p>Готова предрелизная демо-платформа с полной функциональностью. Проведены интеграции с СБП. Подготовлена инфраструктура для запуска.</p>
+                    </div>
+                </div>
+                <div class="roadmap-item active">
+                    <div class="roadmap-marker">→</div>
+                    <div class="roadmap-content">
+                        <h3>Этап 2: MVP + Пилоты (Q2–Q3 2026)</h3>
+                        <p>Запуск пилотных проектов с банком-партнёром и ритейлом. Первая выручка от SaaS-подписок. Подтверждение product-market fit.</p>
+                    </div>
+                </div>
+                <div class="roadmap-item">
+                    <div class="roadmap-marker">3</div>
+                    <div class="roadmap-content">
+                        <h3>Этап 3: Масштабирование (Q4 2026 – 2027)</h3>
+                        <p>Экспансия в новые города. Рост пользовательской базы. Запуск City Franchise в регионах. Выход на операционную окупаемость продукта.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="logo-showcase">
         <div class="container">
             <div class="logo-wrapper">
@@ -1310,61 +1570,6 @@ footer {
         </div>
     </section>
 
-    <section id="investment" class="investment">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Условия инвестирования</h2>
-                <p class="section-subtitle">Прозрачные и понятные условия для инвесторов</p>
-            </div>
-
-            <div class="investment-grid">
-                <div class="investment-card">
-                    <h3>Доходность</h3>
-                    <div class="investment-value">до 21%</div>
-                    <p class="investment-label">годовых</p>
-                    <div class="investment-details">
-                        <div>
-                            <span>Тип дохода</span>
-                            <span>Фиксированный</span>
-                        </div>
-                        <div>
-                            <span>Выплаты</span>
-                            <span>Ежеквартальные</span>
-                        </div>
-                        <div>
-                            <span>Налогообложение</span>
-                            <span>Российское законодательство</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="investment-card">
-                    <h3>Параметры выпуска</h3>
-                    <div class="investment-value">52 млн</div>
-                    <p class="investment-label">целевая сумма</p>
-                    <div class="investment-details">
-                        <div>
-                            <span>Эмитент</span>
-                            <span>ООО «Аксиома»</span>
-                        </div>
-                        <div>
-                            <span>Срок</span>
-                            <span>9 месяцев</span>
-                        </div>
-                        <div>
-                            <span>Погашение</span>
-                            <span>Январь 2027</span>
-                        </div>
-                        <div>
-                            <span>Мин. сумма</span>
-                            <span>от 1 000 ₽</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section id="funds">
         <div class="container">
             <div class="section-header">
@@ -1409,10 +1614,37 @@ footer {
         </div>
     </section>
 
+    <section id="faq" class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Частые вопросы</h2>
+                <p class="section-subtitle">Ответы на ключевые вопросы инвесторов</p>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3>Почему аутсорс-компания создаёт продукт?</h3>
+                    <p>Мы 20 лет создавали IT-решения для других. Накопили экспертизу, ресурсы и понимание рынка. Сейчас запускаем собственный продукт, где наш опыт станет ключевым преимуществом.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Как распределяются ресурсы между аутсорсом и LOVII?</h3>
+                    <p>Аутсорс-бизнес работает автономно. Команда LOVII — выделенный продуктовый юнит. Финансирование продукта не влияет на операционную деятельность основного бизнеса.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Что будет, если продукт не выйдет на плановые показатели?</h3>
+                    <p>Обязательства по ЦФА обеспечены финансовой устойчивостью эмитента (выручка 166 млн ₽). Эмитент гарантирует выполнение обязательств вне зависимости от результатов продукта.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Какие риски у инвестора?</h3>
+                    <p>ЦФА — регулируемый инструмент под надзором Банка России. Эмитент зарегистрирован в РФ. Подробная информация о рисках содержится в документации выпуска.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="cta">
         <div class="container">
             <h2>Готовы инвестировать в LOVII?</h2>
-            <p>Станьте частью цифровой инфраструктуры локальной экономики</p>
+            <p>Минимальная сумма инвестиции — 1 000 ₽. Доходность до 21% годовых, срок 9 месяцев.</p>
             <a href="mailto:invest@lovii.ru?subject=Инвестиция в LOVII ЦФА" class="btn">Связаться с нами</a>
         </div>
     </section>
@@ -1564,7 +1796,7 @@ footer {
             <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
             <span>Система</span>
         </a>
-        <a href="#investment">
+        <a href="#targets">
             <svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
             <span>Инвестиции</span>
         </a>
