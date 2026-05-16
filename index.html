@@ -1036,6 +1036,8 @@
             border-radius: 16px;
             padding: 30px;
             transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
         }
 
         .case-card:hover {
@@ -1077,11 +1079,21 @@
             color: #d97706;
         }
 
+        .case-body {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
         .case-body p {
             color: var(--text-secondary);
             font-size: 0.9rem;
             line-height: 1.6;
             margin-bottom: 12px;
+        }
+
+        .case-body .case-metrics {
+            margin-top: auto;
         }
 
         .case-metrics {
