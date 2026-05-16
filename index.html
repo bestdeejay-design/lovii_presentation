@@ -21,9 +21,8 @@
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background: var(--bg-color);
             color: var(--text-color);
-            line-height: 1.7;
+            line-height: 1.6;
             overflow-x: hidden;
-            padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         }
 
         /* Status Bar */
@@ -786,13 +785,11 @@
             padding: 40px 30px;
             border: 1px solid var(--border-color);
             transition: all 0.3s ease;
-            backdrop-filter: blur(4px);
         }
 
         .card:hover {
             transform: translateY(-5px);
             border-color: var(--accent-color);
-            box-shadow: 0 12px 40px rgba(13, 148, 136, 0.08);
         }
 
         .card-icon {
@@ -1716,6 +1713,19 @@ footer {
         }
 
         @media (max-width: 768px) {
+            body {
+                padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+                line-height: 1.7;
+            }
+
+            .card {
+                backdrop-filter: blur(4px);
+            }
+
+            .card:hover {
+                box-shadow: 0 12px 40px rgba(13, 148, 136, 0.08);
+            }
+
             .hero {
                 padding: 80px clamp(16px, 5vw, 24px) 60px;
             }
