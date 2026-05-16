@@ -21,8 +21,9 @@
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background: var(--bg-color);
             color: var(--text-color);
-            line-height: 1.6;
+            line-height: 1.7;
             overflow-x: hidden;
+            padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         }
 
         /* Status Bar */
@@ -785,11 +786,13 @@
             padding: 40px 30px;
             border: 1px solid var(--border-color);
             transition: all 0.3s ease;
+            backdrop-filter: blur(4px);
         }
 
         .card:hover {
             transform: translateY(-5px);
             border-color: var(--accent-color);
+            box-shadow: 0 12px 40px rgba(13, 148, 136, 0.08);
         }
 
         .card-icon {
@@ -1714,8 +1717,202 @@ footer {
 
         @media (max-width: 768px) {
             .hero {
-                padding: 100px 15px 80px;
+                padding: 80px clamp(16px, 5vw, 24px) 60px;
             }
+
+            .hero-title {
+                font-size: clamp(1.8rem, 6vw, 2.5rem);
+                line-height: 1.15;
+            }
+
+            .hero-subtitle {
+                font-size: clamp(0.95rem, 3vw, 1.15rem);
+                line-height: 1.7;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .hero-buttons .btn {
+                width: 100%;
+                min-width: auto;
+                padding: 16px 24px;
+            }
+
+            .section-title {
+                font-size: clamp(1.4rem, 5vw, 1.8rem);
+                line-height: 1.2;
+            }
+
+            .section-subtitle {
+                font-size: clamp(0.9rem, 2.8vw, 1rem);
+            }
+
+            section {
+                padding: 60px 20px;
+            }
+
+            .section-header {
+                margin-bottom: 40px;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .card {
+                padding: 28px 24px;
+            }
+
+            .team-card-full {
+                padding: 24px 20px;
+            }
+
+            .team-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .team-expertise {
+                justify-content: center;
+            }
+
+            .team-achievements {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px;
+                padding: 16px;
+            }
+
+            .achievement-value {
+                font-size: 1.2rem;
+            }
+
+            .investment-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .investment-card {
+                padding: 30px 24px;
+            }
+
+            .investment-value {
+                font-size: 2.5rem;
+            }
+
+            .funds-row {
+                grid-template-columns: 60px 120px 1fr;
+            }
+
+            .funds-col.col-detail {
+                display: none;
+            }
+
+            .funds-header .col-detail {
+                display: flex;
+            }
+
+            .case-metrics {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 8px;
+                padding: 12px;
+            }
+
+            .case-metric .cm-value {
+                font-size: 0.9rem;
+            }
+
+            .case-metric .cm-label {
+                font-size: 0.65rem;
+            }
+
+            .issuer-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .issuer-value {
+                font-size: 2rem;
+            }
+
+            .issuer-section {
+                padding: 60px 20px;
+            }
+
+            .issuer-card {
+                padding: 24px 20px;
+            }
+
+            .calc-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .calc-form {
+                padding: 24px;
+            }
+
+            .calc-result-item {
+                padding: 16px 20px;
+            }
+
+            .calc-result-item .crl-value {
+                font-size: 1.1rem;
+            }
+
+            .calc-result-item.highlight .crl-value {
+                font-size: 1.3rem;
+            }
+
+            .logo-showcase {
+                padding: 40px 15px;
+            }
+
+            .logo-wrapper {
+                max-width: 100%;
+            }
+
+            .mobile-nav {
+                display: flex;
+                padding: 6px 0 10px;
+            }
+
+            body {
+                padding-bottom: 64px;
+            }
+
+            footer {
+                padding-bottom: 80px;
+            }
+
+            .details-row {
+                flex-direction: column;
+                gap: 4px;
+                padding: 14px 18px;
+            }
+
+            .details-label {
+                width: auto;
+            }
+
+            .roadmap::before {
+                left: 20px;
+            }
+
+            .roadmap-content h3 {
+                font-size: 1rem;
+            }
+
+            .onboarding-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .step-card {
+                padding: 24px 18px;
+            }
+        }
 
             .hero-title {
                 font-size: 2.2rem;
@@ -1793,7 +1990,27 @@ footer {
 
         @media (max-width: 480px) {
             .hero-title {
-                font-size: 1.8rem;
+                font-size: clamp(1.5rem, 7vw, 1.8rem);
+            }
+
+            .section-title {
+                font-size: clamp(1.2rem, 5vw, 1.4rem);
+            }
+
+            .team-achievements {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .case-metrics {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .issuer-card {
+                padding: 20px 16px;
+            }
+
+            .funds-row {
+                grid-template-columns: 50px 100px 1fr;
             }
         }
 
