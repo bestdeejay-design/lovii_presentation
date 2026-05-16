@@ -84,6 +84,18 @@
             gap: 15px;
         }
 
+        .header-link {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .header-link:hover {
+            color: var(--accent-color);
+        }
+
         .theme-toggle {
             width: 44px;
             height: 44px;
@@ -427,6 +439,241 @@
             font-size: 0.95rem;
             color: var(--text-secondary);
             line-height: 1.7;
+        }
+
+        /* Document Hub */
+        .doc-hub {
+            padding: 100px 20px;
+            background: var(--bg-color);
+        }
+
+        .doc-grid {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .doc-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px 25px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            text-decoration: none;
+            color: var(--text-color);
+            transition: all 0.3s;
+        }
+
+        .doc-item:hover {
+            border-color: var(--accent-color);
+            transform: translateX(5px);
+        }
+
+        .doc-icon {
+            width: 44px;
+            height: 44px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(239, 68, 68, 0.1);
+            border-radius: 10px;
+        }
+
+        .doc-icon svg {
+            width: 22px;
+            height: 22px;
+            fill: #EF4444;
+        }
+
+        .doc-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .doc-info h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .doc-info p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .doc-tag {
+            flex-shrink: 0;
+            font-size: 0.75rem;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        .doc-tag.required {
+            background: rgba(239, 68, 68, 0.1);
+            color: #EF4444;
+        }
+
+        .doc-tag.info {
+            background: rgba(13, 148, 136, 0.1);
+            color: var(--accent-color);
+        }
+
+        .doc-arrow {
+            flex-shrink: 0;
+            color: var(--text-secondary);
+            opacity: 0.5;
+        }
+
+        .doc-item:hover .doc-arrow {
+            opacity: 1;
+            color: var(--accent-color);
+            transform: translateX(3px);
+        }
+
+        /* Investor Onboarding */
+        .onboarding {
+            padding: 100px 20px;
+            background: var(--section-alt);
+        }
+
+        .onboarding-steps {
+            max-width: 800px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            counter-reset: step;
+        }
+
+        .step-card {
+            text-align: center;
+            padding: 30px 20px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            position: relative;
+            counter-increment: step;
+        }
+
+        .step-card::before {
+            content: counter(step);
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 28px;
+            height: 28px;
+            background: var(--accent-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 800;
+        }
+
+        .step-icon {
+            width: 48px;
+            height: 48px;
+            margin: 10px auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .step-icon svg {
+            width: 32px;
+            height: 32px;
+            fill: var(--accent-color);
+        }
+
+        .step-card h4 {
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .step-card p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .onboarding-note {
+            max-width: 600px;
+            margin: 30px auto 0;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            padding: 20px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        /* Compliance Footer */
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .footer-links a {
+            font-size: 0.85rem;
+        }
+
+        .compliance-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 15px;
+            padding: 8px 16px;
+            background: rgba(34, 197, 94, 0.08);
+            border-radius: 8px;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .compliance-badge svg {
+            width: 14px;
+            height: 14px;
+            fill: #22c55e;
+        }
+
+        /* Enhanced Funds */
+        .fund-amount {
+            display: block;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-top: 4px;
+        }
+
+        .fund-breakdown {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: 6px;
+            line-height: 1.4;
+        }
+
+        @media (max-width: 768px) {
+            .doc-item {
+                flex-wrap: wrap;
+                gap: 12px;
+            }
+            .doc-tag { order: 1; }
+            .doc-info { width: calc(100% - 64px); }
+            .doc-arrow { margin-left: auto; }
+            .onboarding-steps { grid-template-columns: 1fr; }
         }
 
         /* Sections */
@@ -1195,6 +1442,7 @@ footer {
                 <img src="img/logos/lovii-logo_dark.svg" alt="LOVII" class="logo-dark">
             </a>
             <div class="header-actions">
+                <a href="#docs" class="header-link">Документация</a>
                 <span class="header-badge">ЦФА 2026</span>
                 <button class="theme-toggle" id="theme-toggle" aria-label="Переключить тему">
                     <svg class="theme-icon sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1574,25 +1822,41 @@ footer {
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Использование средств</h2>
-                <p class="section-subtitle">Направления инвестиций для подготовки к продуктовому старту и масштабированию проекта</p>
+                <p class="section-subtitle">Детальная разбивка инвестиций 52 000 000 ₽</p>
             </div>
 
             <div class="funds-grid">
                 <div class="fund-item">
                     <div class="fund-percent">40%</div>
-                    <div class="fund-desc">Развитие SaaS-платформы и техническая инфраструктура</div>
+                    <div class="fund-desc">
+                        Развитие SaaS-платформы и техническая инфраструктура
+                        <span class="fund-amount">20 800 000 ₽</span>
+                        <span class="fund-breakdown">Серверная инфраструктура, API-интеграции с банками, ФОТ продуктовой команды, разработка City Franchise</span>
+                    </div>
                 </div>
                 <div class="fund-item">
                     <div class="fund-percent">25%</div>
-                    <div class="fund-desc">Маркетинг и привлечение пользователей</div>
+                    <div class="fund-desc">
+                        Маркетинг и привлечение пользователей
+                        <span class="fund-amount">13 000 000 ₽</span>
+                        <span class="fund-breakdown">Запуск рекламных кампаний, привлечение 5 000 первых клиентов, B2B-продажи, PR-активность в регионах</span>
+                    </div>
                 </div>
                 <div class="fund-item">
                     <div class="fund-percent">20%</div>
-                    <div class="fund-desc">Расширение партнёрской сети и интеграции</div>
+                    <div class="fund-desc">
+                        Расширение партнёрской сети и интеграции
+                        <span class="fund-amount">10 400 000 ₽</span>
+                        <span class="fund-breakdown">Подключение банков-партнёров, интеграции с ритейлом, юридическое сопровождение, лицензирование</span>
+                    </div>
                 </div>
                 <div class="fund-item">
                     <div class="fund-percent">15%</div>
-                    <div class="fund-desc">Операционные расходы и команда</div>
+                    <div class="fund-desc">
+                        Операционные расходы и команда
+                        <span class="fund-amount">7 800 000 ₽</span>
+                        <span class="fund-breakdown">Административные расходы, офис, коммуникации, резервный фонд для покрытия непредвиденных затрат</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1641,6 +1905,103 @@ footer {
         </div>
     </section>
 
+    <section id="onboarding" class="onboarding">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Как инвестировать в ЦФА</h2>
+                <p class="section-subtitle">Простой путь от регистрации до получения дохода</p>
+            </div>
+            <div class="onboarding-steps">
+                <div class="step-card">
+                    <div class="step-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                    </div>
+                    <h4>Регистрация у оператора</h4>
+                    <p>Выберите ЦФА-оператора (например, «Атомайз») и пройдите регистрацию в личном кабинете.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                    </div>
+                    <h4>Прохождение KYC</h4>
+                    <p>Подтвердите личность согласно требованиям 115-ФЗ. Занимает от 15 минут до 1 дня.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon">
+                        <svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+                    </div>
+                    <h4>Покупка актива</h4>
+                    <p>Пополните счёт и приобретите ЦФА от 1 000 ₽. Подпишите электронную оферту.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon">
+                        <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+                    </div>
+                    <h4>Мониторинг выплат</h4>
+                    <p>Доход начисляется ежеквартально. Статус инвестиции отслеживается в личном кабинете оператора.</p>
+                </div>
+            </div>
+            <div class="onboarding-note">
+                Средний срок оформления — 1 рабочий день. Минимальная сумма — 1 000 ₽. Все операции регулируются законодательством РФ.
+            </div>
+        </div>
+    </section>
+
+    <section id="docs" class="doc-hub">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Документация выпуска</h2>
+                <p class="section-subtitle">Официальные документы эмитента для верификации</p>
+            </div>
+            <div class="doc-grid">
+                <a href="#" class="doc-item" target="_blank">
+                    <div class="doc-icon">
+                        <svg viewBox="0 0 24 24"><path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10 5.5h1v-3h-1v3z"/></svg>
+                    </div>
+                    <div class="doc-info">
+                        <h4>Решение о выпуске ЦФА</h4>
+                        <p>Юридический документ, определяющий параметры актива: доходность, срок, порядок погашения</p>
+                    </div>
+                    <span class="doc-tag required">Обязательный</span>
+                    <span class="doc-arrow">→</span>
+                </a>
+                <a href="#" class="doc-item" target="_blank">
+                    <div class="doc-icon">
+                        <svg viewBox="0 0 24 24"><path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10 5.5h1v-3h-1v3z"/></svg>
+                    </div>
+                    <div class="doc-info">
+                        <h4>Whitepaper LOVII</h4>
+                        <p>Технический паспорт продукта: архитектура, экономическая модель, дорожная карта</p>
+                    </div>
+                    <span class="doc-tag info">Для анализа</span>
+                    <span class="doc-arrow">→</span>
+                </a>
+                <a href="#" class="doc-item" target="_blank">
+                    <div class="doc-icon">
+                        <svg viewBox="0 0 24 24"><path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10 5.5h1v-3h-1v3z"/></svg>
+                    </div>
+                    <div class="doc-info">
+                        <h4>Политика управления рисками</h4>
+                        <p>Сценарии защиты инвестиций, гарантии эмитента, порядок действий в стрессовых ситуациях</p>
+                    </div>
+                    <span class="doc-tag info">Для анализа</span>
+                    <span class="doc-arrow">→</span>
+                </a>
+                <a href="#" class="doc-item" target="_blank">
+                    <div class="doc-icon">
+                        <svg viewBox="0 0 24 24"><path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10 5.5h1v-3h-1v3z"/></svg>
+                    </div>
+                    <div class="doc-info">
+                        <h4>Устав ООО «Аксиома»</h4>
+                        <p>Подтверждение правоспособности эмитента, данные о регистрации и учредителях</p>
+                    </div>
+                    <span class="doc-tag required">Обязательный</span>
+                    <span class="doc-arrow">→</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
     <section class="cta">
         <div class="container">
             <h2>Готовы инвестировать в LOVII?</h2>
@@ -1678,18 +2039,27 @@ footer {
                     <span class="details-value">199106, Санкт-Петербург, Вн.тер. г. Муниципальный округ Гавань, пр-кт Большой В.О., д. 83 Литера А, помещ. 2-Н, офис 329/1</span>
                 </div>
             </div>
+            <div class="compliance-badge" style="max-width: 800px; margin: 20px auto 0; justify-content: center;">
+                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                <span>Сведения проверены по данным ЕГРЮЛ на 14.05.2026</span>
+            </div>
         </div>
     </section>
 
     <footer>
         <div class="container">
             <p>Контактный email: <a href="mailto:invest@lovii.ru" style="color: var(--accent-color);">invest@lovii.ru</a></p>
+            <div class="footer-links">
+                <a href="#" style="color: var(--accent-color);">Политика конфиденциальности</a>
+                <a href="#" style="color: var(--accent-color);">Пользовательское соглашение</a>
+                <a href="#docs" style="color: var(--accent-color);">Документация выпуска</a>
+            </div>
             <p class="disclaimer">
                 Информация, представленная на данном сайте, не является индивидуальной инвестиционной рекомендацией. 
                 ЦФА являются высокорискованным инструментом. Перед совершением сделок ознакомьтесь с рисками и 
                 документацией по выпуску цифровых финансовых активов.
             </p>
-            <p style="margin-top: 20px;">© 2026 LOVII. Все права защищены.</p>
+            <p style="margin-top: 20px;">© 2026 LOVII. Все права защищены. Эмитент — ООО «Аксиома».</p>
         </div>
     </footer>
 
