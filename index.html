@@ -1756,8 +1756,9 @@ footer {
         .floating-nav a {
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 0;
-            padding: 10px 16px;
+            padding: 10px 0;
             text-decoration: none;
             color: var(--text-secondary);
             border-radius: 10px;
@@ -1767,6 +1768,7 @@ footer {
         }
 
         .floating-nav:hover a {
+            justify-content: flex-start;
             gap: 12px;
             padding: 10px 12px;
         }

@@ -171,12 +171,13 @@
         [data-theme="dark"] .floating-nav { background: rgba(30, 41, 59, 0.7); border-color: rgba(255, 255, 255, 0.08); }
         .floating-nav:hover { width: 190px; }
         .floating-nav a {
-            display: flex; align-items: center; gap: 0; padding: 10px 16px;
+            display: flex; align-items: center; justify-content: center; gap: 0; padding: 10px 0;
             text-decoration: none; color: #666; border-radius: 10px;
             transition: all 0.25s;
         }
 
         .floating-nav:hover a {
+            justify-content: flex-start;
             gap: 12px;
             padding: 10px 12px; white-space: nowrap; position: relative;
         }
