@@ -43,20 +43,28 @@
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--accent-color);
-            text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 10px;
+            text-decoration: none;
+            height: 40px;
         }
-        .logo-icon {
-            width: 40px; height: 40px;
-            background: var(--gradient-primary);
-            border-radius: 10px;
-            display: flex; align-items: center; justify-content: center;
-            font-weight: 900; color: white;
+
+        .logo img {
+            height: 100%;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo .logo-dark {
+            display: none;
+        }
+
+        [data-theme="dark"] .logo .logo-light {
+            display: none;
+        }
+
+        [data-theme="dark"] .logo .logo-dark {
+            display: block;
         }
 
         .theme-toggle {
@@ -239,8 +247,8 @@
 <body>
     <header class="header">
         <a href="index.html" class="logo">
-            <div class="logo-icon">L</div>
-            LOVII
+            <img src="img/logos/lovii-logo.svg" alt="LOVII" class="logo-light">
+            <img src="img/logos/lovii-logo_dark.svg" alt="LOVII" class="logo-dark">
         </a>
         <button class="theme-toggle" id="theme-toggle">
             <svg class="theme-icon sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -571,7 +579,8 @@
         </div>
 
         <footer class="footer">
-            <p>© 2026 LOVII · <a href="index.html" style="color: var(--accent-color);">На главную</a></p>
+            <p>© 2026 LOVII · <a href="index.html" style="color: var(--accent-color);">На главную</a> · <a href="https://bestdeejay-design.github.io/lovii_presentation/" style="color: var(--accent-color);">invest.lovii.ru</a></p>
+            <p class="disclaimer" style="max-width: 600px; margin: 15px auto 0; font-size: 0.8rem; color: var(--text-secondary);">Информация не является индивидуальной инвестиционной рекомендацией. ЦФА — высокорискованный инструмент.</p>
         </footer>
     </main>
 
