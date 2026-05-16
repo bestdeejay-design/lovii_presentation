@@ -1316,6 +1316,28 @@
             background: var(--section-alt);
         }
 
+        .screenshots-logo {
+            max-width: 200px;
+            margin: 0 auto 30px;
+        }
+
+        .screenshots-logo img {
+            width: 100%;
+            height: auto;
+        }
+
+        .screenshots-logo .logo-dark {
+            display: none;
+        }
+
+        [data-theme="dark"] .screenshots-logo .logo-light {
+            display: none;
+        }
+
+        [data-theme="dark"] .screenshots-logo .logo-dark {
+            display: block;
+        }
+
         .carousel {
             position: relative;
             max-width: 900px;
@@ -1412,12 +1434,6 @@
         }
 
         /* Logo Showcase */
-        .logo-showcase {
-            padding: 60px 20px;
-            text-align: center;
-            background: var(--section-alt);
-        }
-
         .logo-wrapper {
             max-width: 600px;
             margin: 0 auto;
@@ -1662,26 +1678,6 @@ footer {
 
             .investment-grid {
                 grid-template-columns: 1fr;
-            }
-
-            .logo-showcase {
-                padding: 40px 15px;
-            }
-
-            .logo-wrapper {
-                max-width: 100%;
-            }
-
-            .funds-row {
-                grid-template-columns: 60px 120px 1fr;
-            }
-
-            .col-detail {
-                display: none;
-            }
-
-            .funds-header .col-detail {
-                display: flex;
             }
 
             .mobile-nav {
@@ -2336,18 +2332,13 @@ footer {
         </div>
     </section>
 
-    <section class="logo-showcase">
-        <div class="container">
-            <div class="logo-wrapper">
-                <img src="img/logos/lovii-logo.svg" alt="LOVII" class="logo-light">
-                <img src="img/logos/lovii-logo_dark.svg" alt="LOVII" class="logo-dark">
-            </div>
-        </div>
-    </section>
-
     <section id="screenshots">
         <div class="container">
             <div class="section-header">
+                <div class="screenshots-logo">
+                    <img src="img/logos/lovii-logo.svg" alt="LOVII" class="logo-light">
+                    <img src="img/logos/lovii-logo_dark.svg" alt="LOVII" class="logo-dark">
+                </div>
                 <h2 class="section-title">Интерфейс системы</h2>
                 <p class="section-subtitle">Скриншоты партнёрского кабинета и админки</p>
             </div>
