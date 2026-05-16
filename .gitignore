@@ -1,1 +1,1 @@
-img/.DS_Store
+Nothing needs to be added to .gitignore since the changes only include CSS and HTML files which are source files that should be tracked in version control.

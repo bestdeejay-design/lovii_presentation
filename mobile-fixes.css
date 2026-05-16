@@ -1,0 +1,237 @@
+/* =========================================
+   MOBILE FIXES & OPTIMIZATIONS
+   Добавление этого блока решит проблемы с:
+   1. Выходом контента за границы экрана
+   2. Нечитаемым текстом на узких экранах
+   3. Мелкими элементами управления
+   ========================================= */
+
+/* 1. Глобальные ограничения для предотвращения горизонтального скролла */
+@media (max-width: 768px) {
+    body {
+        overflow-x: hidden; /* Запрет горизонтального скролла страницы */
+        width: 100%;
+        position: relative;
+    }
+
+    /* Гарантируем, что ни один элемент не выйдет за пределы */
+    img, video, iframe, canvas, svg {
+        max-width: 100% !important;
+        height: auto !important;
+        display: block;
+    }
+
+    /* Контейнеры */
+    .container, .wrapper, section {
+        max-width: 100%;
+        padding-left: 16px;
+        padding-right: 16px;
+        box-sizing: border-box;
+    }
+}
+
+/* 2. Оптимизация типографики для ультра-малых экранов (320px - 360px) */
+@media (max-width: 360px) {
+    :root {
+        --font-size-base: 14px;
+    }
+
+    h1, .hero-title {
+        font-size: clamp(1.5rem, 5vw, 2rem) !important; /* Минимум 24px */
+        line-height: 1.2;
+    }
+
+    h2 {
+        font-size: clamp(1.3rem, 4vw, 1.8rem) !important;
+    }
+
+    p, li, span, td, th, input, button, a {
+        font-size: min(1rem, 4vw); /* Адаптивный размер, но не меньше контекста */
+    }
+    
+    /* Уменьшаем отступы на очень маленьких экранах */
+    section {
+        padding-top: 40px !important;
+        padding-bottom: 40px !important;
+    }
+}
+
+/* 3. Touch-оптимизация (удобство нажатия) */
+@media (max-width: 768px) {
+    /* Убираем стандартную подсветку при тапе */
+    * {
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Минимальный размер кликабельной области 44x44px (стандарт Apple/Google) */
+    button, 
+    a.btn, 
+    .nav-link, 
+    .card-action, 
+    input[type="submit"],
+    .carousel-btn,
+    .menu-toggle {
+        min-height: 44px;
+        min-width: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 16px; /* Достаточные внутренние отступы */
+        touch-action: manipulation; /* Улучшает реакцию на тапы */
+    }
+
+    /* Ссылки в тексте тоже должны быть удобными */
+    p a, li a {
+        display: inline-block;
+        padding: 4px 0;
+    }
+}
+
+/* 4. Исправление таблиц (Funds Table и другие) */
+@media (max-width: 600px) {
+    /* Вариант А: Горизонтальный скролл только для таблицы, а не всей страницы */
+    .table-wrapper, 
+    .funds-table-container,
+    div[class*="table"] {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        width: 100%;
+        display: block;
+    }
+
+    table {
+        min-width: 500px; /* Принудительная ширина для скролла внутри контейнера */
+        width: 100%;
+        display: table; /* Возвращаем табличное отображение */
+    }
+
+    /* Вариант Б: Если таблица простая, перестраиваем её в карточки (универсальный класс) */
+    .mobile-table-card table, 
+    .mobile-table-card tr {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        min-width: auto;
+    }
+    
+    .mobile-table-card td, 
+    .mobile-table-card th {
+        display: block;
+        width: 100%;
+        text-align: left;
+        border: none;
+        padding: 8px 4px;
+    }
+    
+    .mobile-table-card th {
+        background: rgba(0,0,0,0.05);
+        font-weight: bold;
+    }
+}
+
+/* 5. Карусель и Слайдеры на мобильных */
+@media (max-width: 768px) {
+    /* Скрываем стрелки навигации на мобильных (лучше свайп или точки) */
+    .carousel-prev, 
+    .carousel-next,
+    .slider-arrow {
+        display: none !important;
+    }
+
+    /* Увеличиваем точки навигации для удобства */
+    .carousel-dots, 
+    .slider-dots {
+        bottom: 10px;
+        z-index: 10;
+    }
+
+    .carousel-dot, 
+    .slider-dot {
+        width: 12px;
+        height: 12px;
+        margin: 0 6px;
+    }
+    
+    /* Гарантируем, что слайд влезает в экран */
+    .carousel-slide, 
+    .swiper-slide, 
+    .slide-item {
+        width: 100% !important;
+        padding-left: 10px;
+        padding-right: 10px;
+        box-sizing: border-box;
+    }
+}
+
+/* 6. Формы и Инпуты (Калькулятор) */
+@media (max-width: 768px) {
+    input[type="number"],
+    input[type="text"],
+    select,
+    textarea {
+        width: 100%;
+        box-sizing: border-box;
+        font-size: 16px; /* Важно: предотвращает зум на iPhone при фокусе */
+        padding: 12px;
+        border-radius: 8px;
+    }
+    
+    /* Группировка инпутов в колонку */
+    .input-group, 
+    .form-row {
+        flex-direction: column;
+        gap: 16px;
+    }
+}
+
+/* 7. Сетки карточек (Grid/Flex) */
+@media (max-width: 480px) {
+    .grid-container, 
+    .cards-grid, 
+    .features-grid,
+    [class*="grid-"] {
+        grid-template-columns: 1fr !important; /* Всегда 1 колонка на узких */
+        gap: 16px;
+    }
+    
+    /* Flex обертки тоже в колонку */
+    .flex-row, 
+    .row, 
+    [class*="flex-"] {
+        flex-direction: column !important;
+    }
+}
+
+/* 8. Модальные окна и Drawer меню */
+@media (max-width: 768px) {
+    .modal-content, 
+    .drawer-panel {
+        width: 95% !important;
+        max-width: 95% !important;
+        margin: 0 auto;
+        border-radius: 12px;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+}
+
+/* 9. Специфические фиксы для возможных проблем LOVII */
+
+/* Фикс для Hero секции, чтобы текст не наезжал на фон */
+.hero-section {
+    background-size: cover !important;
+    background-position: center !important;
+}
+
+/* Фикс для логотипа в хедере */
+@media (max-width: 480px) {
+    .logo img, .header-logo {
+        max-height: 40px; /* Ограничение высоты лого */
+        width: auto;
+    }
+    
+    /* Скрываем лишние декоративные элементы в хедере на мобильных */
+    .header-decoration, .sub-nav-desktop {
+        display: none !important;
+    }
+}
