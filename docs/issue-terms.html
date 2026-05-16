@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Решение о выпуске ЦФА — Параметры и условия</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root { --accent: #0D9488; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Noto Serif', 'Times New Roman', serif;
+            background: #f5f5f5;
+            color: #1a1a1a;
+            line-height: 1.8;
+            font-size: 16px;
+        }
+        .nav-bar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            background: #fff;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 12px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Inter', sans-serif;
+        }
+        .nav-bar a { color: var(--accent); text-decoration: none; font-size: 0.9rem; font-weight: 500; }
+        .nav-bar .print-btn {
+            padding: 8px 20px;
+            border: 1px solid var(--accent);
+            background: transparent;
+            color: var(--accent);
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 500;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s;
+        }
+        .nav-bar .print-btn:hover { background: var(--accent); color: #fff; }
+        .doc-wrapper {
+            max-width: 900px;
+            margin: 80px auto 60px;
+            background: #fff;
+            box-shadow: 0 2px 40px rgba(0,0,0,0.08);
+            padding: 80px 100px;
+        }
+        .doc-header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding-bottom: 40px;
+            border-bottom: 2px solid #1a1a1a;
+        }
+        .doc-header .org-name {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-family: 'Inter', sans-serif;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        .doc-header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 15px;
+            font-family: 'Inter', sans-serif;
+        }
+        .doc-header .doc-ref {
+            font-size: 0.85rem;
+            color: #666;
+            font-family: 'Inter', sans-serif;
+        }
+        .doc-header .doc-ref span { display: inline-block; margin: 0 20px; }
+
+        .doc-body h2 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin: 40px 0 20px;
+            font-family: 'Inter', sans-serif;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 8px;
+        }
+        .doc-body h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 25px 0 12px;
+            font-family: 'Inter', sans-serif;
+        }
+        .doc-body h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 20px 0 10px;
+            font-family: 'Inter', sans-serif;
+        }
+        .doc-body p { margin-bottom: 14px; text-align: justify; }
+        .doc-body ul, .doc-body ol { margin: 10px 0 20px 25px; }
+        .doc-body li { margin-bottom: 8px; }
+        .doc-body .highlight {
+            background: #f0fdfa;
+            border: 1px solid var(--accent);
+            border-radius: 8px;
+            padding: 20px 25px;
+            margin: 20px 0;
+        }
+        .doc-body .highlight h4 { margin-top: 0; color: var(--accent); }
+
+        .doc-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0 30px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+        }
+        .doc-table th {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 10px 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        .doc-table td {
+            padding: 10px 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .doc-table tr:nth-child(even) td { background: #f8f8f8; }
+
+        @media print {
+            .nav-bar { display: none; }
+            .doc-wrapper { margin: 0; box-shadow: none; padding: 40px 60px; max-width: 100%; }
+            body { background: #fff; font-size: 12pt; }
+            .doc-table th { background: #000; }
+            .page-break { page-break-before: always; }
+            @page { margin: 2cm; }
+        }
+
+        @media (max-width: 768px) {
+            .doc-wrapper { padding: 30px 20px; margin: 70px 10px 30px; }
+            .doc-header h1 { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav-bar">
+        <a href="../index.html">← На главную</a>
+        <span style="font-size:0.85rem;color:#888;font-weight:500;">Документация выпуска</span>
+        <button class="print-btn" onclick="window.print()">Распечатать документ</button>
+    </nav>
+
+    <div class="doc-wrapper">
+        <div class="doc-header">
+            <div class="org-name">Общество с ограниченной ответственностью «Аксиома»</div>
+            <h1>Решение о выпуске цифровых финансовых активов LOVII</h1>
+            <div class="doc-ref">
+                <span>Рег. номер: ЦФА-2026-001</span>
+                <span>Дата: 14.05.2026</span>
+                <span>Версия: 1.0</span>
+            </div>
+        </div>
+
+        <div class="doc-body">
+            <h2>1. Параметры выпуска</h2>
+
+            <table class="doc-table">
+                <thead>
+                    <tr><th>Параметр</th><th>Значение</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Эмитент</td><td>ООО «Аксиома» (ИНН 7842223709)</td></tr>
+                    <tr><td>Объём выпуска</td><td>52 000 000 (Пятьдесят два миллиона) рублей</td></tr>
+                    <tr><td>Номинал единицы ЦФА</td><td>1 000 (Одна тысяча) рублей</td></tr>
+                    <tr><td>Количество единиц</td><td>52 000 (Пятьдесят две тысячи) штук</td></tr>
+                    <tr><td>Срок размещения</td><td>с 01.06.2026 по 31.08.2026</td></tr>
+                    <tr><td>Дата погашения</td><td>31.01.2027</td></tr>
+                    <tr><td>Доходность</td><td>до 21% годовых (фиксированная)</td></tr>
+                    <tr><td>Периодичность выплат</td><td>Ежеквартально</td></tr>
+                    <tr><td>Валюта</td><td>Российский рубль (RUB)</td></tr>
+                </tbody>
+            </table>
+
+            <h2>2. Порядок размещения</h2>
+            <p>2.1. Размещение ЦФА осуществляется через оператора информационной системы (далее — «Оператор»), включённого в реестр операторов информационных систем Банка России.</p>
+            <p>2.2. Приобретение ЦФА осуществляется путём направления заявки через личный кабинет Оператора после прохождения процедуры идентификации (KYC) в соответствии с требованиями Федерального закона № 115-ФЗ.</p>
+            <p>2.3. Минимальный объём приобретения — 1 (одна) единица ЦФА номиналом 1 000 рублей.</p>
+            <p>2.4. Оплата приобретаемых ЦФА осуществляется безналичным переводом денежных средств на счёт Эмитента, открытый у Оператора.</p>
+
+            <div class="highlight">
+                <h4>Важные сроки</h4>
+                <p><strong>Начало размещения:</strong> 01.06.2026</p>
+                <p><strong>Окончание размещения:</strong> 31.08.2026</p>
+                <p><strong>Первая выплата дохода:</strong> 30.09.2026</p>
+                <p><strong>Полное погашение:</strong> 31.01.2027</p>
+            </div>
+
+            <h2>3. Порядок выплат</h2>
+            <p>3.1. Доход по ЦФА выплачивается ежеквартально, не позднее 10-го рабочего дня месяца, следующего за отчётным кварталом.</p>
+            <p>3.2. Расчёт дохода производится по формуле: <em>D = N × r × t / 365</em>, где:</p>
+            <ul>
+                <li><strong>D</strong> — сумма дохода к выплате;</li>
+                <li><strong>N</strong> — номинальная стоимость ЦФА;</li>
+                <li><strong>r</strong> — процентная ставка (до 21% годовых);</li>
+                <li><strong>t</strong> — количество дней в расчётном периоде.</li>
+            </ul>
+            <p>3.3. Выплата дохода и погашение номинальной стоимости осуществляются в рублях Российской Федерации.</p>
+
+            <div class="page-break"></div>
+
+            <h2>4. Права владельцев ЦФА</h2>
+            <p>4.1. Владелец ЦФА имеет право на:</p>
+            <ol>
+                <li>Получение дохода в размере и порядке, предусмотренных настоящим Решением;</li>
+                <li>Получение номинальной стоимости при погашении ЦФА;</li>
+                <li>Досрочное погашение ЦФА в случаях, предусмотренных Решением;</li>
+                <li>Получение информации об исполнении обязательств Эмитентом;</li>
+                <li>Обращение взыскания на обеспечение в случае неисполнения Эмитентом обязательств.</li>
+            </ol>
+
+            <h2>5. Ответственность эмитента</h2>
+            <p>5.1. Эмитент несёт ответственность за исполнение обязательств по ЦФА в соответствии с законодательством Российской Федерации о цифровых финансовых активах.</p>
+            <p>5.2. Исполнение обязательств Эмитента обеспечено его активами, включая дебиторскую задолженность по действующим договорам аутсорс-разработки, денежные средства на счетах и иное имущество ООО «Аксиома».</p>
+            <p>5.3. В случае нарушения сроков выплаты дохода или погашения номинальной стоимости Эмитент уплачивает неустойку в размере 0,1% от суммы просроченного обязательства за каждый день просрочки.</p>
+
+            <h2>6. Порядок ознакомления с документацией</h2>
+            <p>6.1. Настоящее Решение о выпуске ЦФА, а также иные документы, предусмотренные законодательством, размещены в открытом доступе на сайте Эмитента в разделе «Документация выпуска».</p>
+            <p>6.2. С момента начала размещения ЦФА все заинтересованные лица вправе запросить копии документов по адресу электронной почты: <a href="mailto:invest@lovii.ru" style="color: var(--accent);">invest@lovii.ru</a>.</p>
+
+            <div class="highlight">
+                <h4>Контакты эмитента</h4>
+                <p>ООО «Аксиома»</p>
+                <p>Email: <a href="mailto:invest@lovii.ru" style="color: var(--accent);">invest@lovii.ru</a></p>
+                <p>Тел.: +7 (911) 928-74-78</p>
+                <p>Адрес: 199106, Санкт-Петербург, пр-кт Большой В.О., д. 83 Литера А, офис 329/1</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

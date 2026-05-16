@@ -957,32 +957,70 @@
             border-bottom: none;
         }
 
-        /* Use of Funds */
-        .funds-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+        /* Use of Funds — Table */
+        .funds-table {
+            max-width: 900px;
+            margin: 0 auto;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
         }
 
-        .fund-item {
-            background: var(--card-bg);
-            padding: 25px;
-            border-radius: 15px;
+        .funds-row {
+            display: grid;
+            grid-template-columns: 80px 160px 1fr 1.5fr;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .funds-row:last-child {
+            border-bottom: none;
+        }
+
+        .funds-header {
+            background: var(--accent-color);
+            color: white;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .funds-col {
+            padding: 16px 15px;
+            font-size: 0.9rem;
             display: flex;
             align-items: center;
-            gap: 20px;
-            border: 1px solid var(--border-color);
         }
 
-        .fund-percent {
-            font-size: 2rem;
-            font-weight: 800;
+        .col-pct.highlight {
             color: var(--accent-color);
-            min-width: 80px;
+            font-weight: 800;
+            font-size: 1.1rem;
         }
 
-        .fund-desc {
+        .col-amount {
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .col-detail {
             color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .funds-total {
+            background: var(--card-bg);
+            font-weight: 700;
+        }
+
+        .funds-total .col-pct {
+            color: var(--accent-color);
+        }
+
+        .funds-row:nth-child(even):not(.funds-header):not(.funds-total) {
+            background: var(--bg-color);
+        }
+
+        [data-theme="dark"] .funds-header {
+            background: #0D9488;
         }
 
         /* Product Section */
@@ -1399,6 +1437,18 @@ footer {
 
             .logo-wrapper {
                 max-width: 100%;
+            }
+
+            .funds-row {
+                grid-template-columns: 60px 120px 1fr;
+            }
+
+            .col-detail {
+                display: none;
+            }
+
+            .funds-header .col-detail {
+                display: flex;
             }
 
             .mobile-nav {
@@ -1825,38 +1875,42 @@ footer {
                 <p class="section-subtitle">Детальная разбивка инвестиций 52 000 000 ₽</p>
             </div>
 
-            <div class="funds-grid">
-                <div class="fund-item">
-                    <div class="fund-percent">40%</div>
-                    <div class="fund-desc">
-                        Развитие SaaS-платформы и техническая инфраструктура
-                        <span class="fund-amount">20 800 000 ₽</span>
-                        <span class="fund-breakdown">Серверная инфраструктура, API-интеграции с банками, ФОТ продуктовой команды, разработка City Franchise</span>
-                    </div>
+            <div class="funds-table">
+                <div class="funds-row funds-header">
+                    <div class="funds-col col-pct">%</div>
+                    <div class="funds-col col-amount">Сумма</div>
+                    <div class="funds-col col-desc">Направление</div>
+                    <div class="funds-col col-detail">Детали</div>
                 </div>
-                <div class="fund-item">
-                    <div class="fund-percent">25%</div>
-                    <div class="fund-desc">
-                        Маркетинг и привлечение пользователей
-                        <span class="fund-amount">13 000 000 ₽</span>
-                        <span class="fund-breakdown">Запуск рекламных кампаний, привлечение 5 000 первых клиентов, B2B-продажи, PR-активность в регионах</span>
-                    </div>
+                <div class="funds-row">
+                    <div class="funds-col col-pct highlight">40%</div>
+                    <div class="funds-col col-amount">20 800 000 ₽</div>
+                    <div class="funds-col col-desc">Развитие SaaS-платформы</div>
+                    <div class="funds-col col-detail">Серверная инфраструктура, API-интеграции с банками, ФОТ продуктовой команды, разработка City Franchise</div>
                 </div>
-                <div class="fund-item">
-                    <div class="fund-percent">20%</div>
-                    <div class="fund-desc">
-                        Расширение партнёрской сети и интеграции
-                        <span class="fund-amount">10 400 000 ₽</span>
-                        <span class="fund-breakdown">Подключение банков-партнёров, интеграции с ритейлом, юридическое сопровождение, лицензирование</span>
-                    </div>
+                <div class="funds-row">
+                    <div class="funds-col col-pct highlight">25%</div>
+                    <div class="funds-col col-amount">13 000 000 ₽</div>
+                    <div class="funds-col col-desc">Маркетинг и привлечение</div>
+                    <div class="funds-col col-detail">Рекламные кампании, привлечение 5 000 первых клиентов, B2B-продажи, PR в регионах</div>
                 </div>
-                <div class="fund-item">
-                    <div class="fund-percent">15%</div>
-                    <div class="fund-desc">
-                        Операционные расходы и команда
-                        <span class="fund-amount">7 800 000 ₽</span>
-                        <span class="fund-breakdown">Административные расходы, офис, коммуникации, резервный фонд для покрытия непредвиденных затрат</span>
-                    </div>
+                <div class="funds-row">
+                    <div class="funds-col col-pct highlight">20%</div>
+                    <div class="funds-col col-amount">10 400 000 ₽</div>
+                    <div class="funds-col col-desc">Партнёрская сеть</div>
+                    <div class="funds-col col-detail">Подключение банков-партнёров, интеграции с ритейлом, юридическое сопровождение, лицензирование</div>
+                </div>
+                <div class="funds-row">
+                    <div class="funds-col col-pct highlight">15%</div>
+                    <div class="funds-col col-amount">7 800 000 ₽</div>
+                    <div class="funds-col col-desc">Операционные расходы</div>
+                    <div class="funds-col col-detail">Административные расходы, офис, резервный фонд, непредвиденные затраты</div>
+                </div>
+                <div class="funds-row funds-total">
+                    <div class="funds-col col-pct">100%</div>
+                    <div class="funds-col col-amount">52 000 000 ₽</div>
+                    <div class="funds-col col-desc">Итого</div>
+                    <div class="funds-col col-detail">Полный объём выпуска ЦФА</div>
                 </div>
             </div>
         </div>
@@ -1954,7 +2008,7 @@ footer {
                 <p class="section-subtitle">Официальные документы эмитента для верификации</p>
             </div>
             <div class="doc-grid">
-                <a href="#" class="doc-item" target="_blank">
+                <a href="docs/issue-terms.html" class="doc-item">
                     <div class="doc-icon">
                         <svg viewBox="0 0 24 24"><path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10 5.5h1v-3h-1v3z"/></svg>
                     </div>
@@ -1965,7 +2019,7 @@ footer {
                     <span class="doc-tag required">Обязательный</span>
                     <span class="doc-arrow">→</span>
                 </a>
-                <a href="#" class="doc-item" target="_blank">
+                <a href="docs/whitepaper.html" class="doc-item">
                     <div class="doc-icon">
                         <svg viewBox="0 0 24 24"><path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10 5.5h1v-3h-1v3z"/></svg>
                     </div>
@@ -1976,7 +2030,7 @@ footer {
                     <span class="doc-tag info">Для анализа</span>
                     <span class="doc-arrow">→</span>
                 </a>
-                <a href="#" class="doc-item" target="_blank">
+                <a href="docs/risk-policy.html" class="doc-item">
                     <div class="doc-icon">
                         <svg viewBox="0 0 24 24"><path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10 5.5h1v-3h-1v3z"/></svg>
                     </div>
@@ -1987,17 +2041,7 @@ footer {
                     <span class="doc-tag info">Для анализа</span>
                     <span class="doc-arrow">→</span>
                 </a>
-                <a href="#" class="doc-item" target="_blank">
-                    <div class="doc-icon">
-                        <svg viewBox="0 0 24 24"><path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10 5.5h1v-3h-1v3z"/></svg>
-                    </div>
-                    <div class="doc-info">
-                        <h4>Устав ООО «Аксиома»</h4>
-                        <p>Подтверждение правоспособности эмитента, данные о регистрации и учредителях</p>
-                    </div>
-                    <span class="doc-tag required">Обязательный</span>
-                    <span class="doc-arrow">→</span>
-                </a>
+                <a href="###" class="doc-item">
             </div>
         </div>
     </section>
