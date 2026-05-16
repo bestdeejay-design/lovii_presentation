@@ -320,3 +320,63 @@
         display: none;
     }
 }
+
+/* 12. Мобильная навигация и Drawer */
+@media (max-width: 768px) {
+    /* Логотип в кнопке меню "Ещё" */
+    #drawerToggle img {
+        width: 24px !important;
+        height: 24px !important;
+        object-fit: contain;
+    }
+    
+    /* Показываем нужный логотип в зависимости от темы */
+    [data-theme="dark"] #drawerToggle .logo-light {
+        display: none !important;
+    }
+    
+    [data-theme="dark"] #drawerToggle .logo-dark {
+        display: block !important;
+    }
+    
+    [data-theme="light"] #drawerToggle .logo-light {
+        display: block !important;
+    }
+    
+    [data-theme="light"] #drawerToggle .logo-dark {
+        display: none !important;
+    }
+    
+    /* Убеждаемся, что навигация остается видимой при открытом drawer */
+    .drawer-overlay.open ~ .mobile-nav {
+        display: flex !important;
+        z-index: 999;
+    }
+    
+    /* Исправление для 5 кнопок в навигации - уменьшаем ширину */
+    .mobile-nav {
+        justify-content: space-between;
+        padding: 8px 4px 12px;
+    }
+    
+    .mobile-nav a {
+        min-width: auto;
+        flex: 1;
+        max-width: 20%;
+        padding: 6px 4px;
+    }
+    
+    .mobile-nav a svg,
+    .mobile-nav a img {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .mobile-nav a span {
+        font-size: 0.6rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
+    }
+}
