@@ -137,24 +137,154 @@
             padding: 40px 20px;
         }
 
-        .slide {
-            margin-bottom: 60px;
-            text-align: center;
+        .slide-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
         }
 
-        .slide-image {
-            width: 100%;
-            max-width: 1000px;
-            border-radius: 12px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        .slide-card {
+            background: var(--card-bg);
             border: 1px solid var(--border-color);
+            border-radius: 14px;
+            overflow: hidden;
+            transition: all 0.3s;
         }
 
-        .slide-number {
-            font-size: 0.9rem;
-            color: var(--accent-color);
+        .slide-card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .slide-thumb {
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            background: var(--bg-color);
+            position: relative;
+            cursor: pointer;
+        }
+
+        .slide-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: all 0.4s;
+        }
+
+        .slide-card:hover .slide-thumb img {
+            transform: scale(1.03);
+        }
+
+        .slide-caption {
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .slide-caption .slide-num {
+            font-size: 0.75rem;
             font-weight: 600;
-            margin-bottom: 10px;
+            color: var(--accent-color);
+            background: rgba(13, 148, 136, 0.1);
+            padding: 3px 10px;
+            border-radius: 6px;
+        }
+
+        .slide-caption .slide-title {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+
+        .slide-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.9);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .slide-modal.open {
+            display: flex;
+        }
+
+        .slide-modal img {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .slide-modal .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            opacity: 0.7;
+        }
+
+        .slide-modal .close-btn:hover {
+            opacity: 1;
+        }
+
+        .slide-modal .modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            opacity: 0.5;
+            padding: 20px;
+        }
+
+        .slide-modal .modal-nav:hover {
+            opacity: 1;
+        }
+
+        .slide-modal .modal-nav.prev { left: 10px; }
+        .slide-modal .modal-nav.next { right: 10px; }
+
+        .presentation-actions {
+            text-align: right;
+            margin-bottom: 30px;
+        }
+
+        .presentation-actions .btn-pdf {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 24px;
+            background: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .presentation-actions .btn-pdf:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .slide-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .slide-modal { padding: 20px; }
         }
 
         .footer {
@@ -167,16 +297,6 @@
         .footer p {
             color: var(--text-secondary);
             font-size: 0.9rem;
-        }
-
-        @media (max-width: 768px) {
-            .intro h1 {
-                font-size: 1.8rem;
-            }
-
-            .slide {
-                margin-bottom: 40px;
-            }
         }
 
         /* Mobile Navigation */
@@ -266,67 +386,157 @@
             <p>Полная версия инвестиционного предложения LOVII</p>
         </div>
 
-        <div class="slides-container">
-            <div class="slide">
-                <div class="slide-number">Слайд 1 из 15</div>
-                <img src="pdf_images/investor-01.png" alt="Слайд 1" class="slide-image">
+        <div class="presentation-actions">
+            <a href="pdf/LOVII_Strategy.pdf" class="btn-pdf">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Скачать PDF
+            </a>
+        </div>
+
+        <div class="slide-grid">
+            <div class="slide-card" data-slide="0">
+                <div class="slide-thumb">
+                    <img src="pdf_images/investor-01.png" alt="Слайд 1">
+                </div>
+                <div class="slide-caption">
+                    <span class="slide-title">Анализ рынка локальной экономики</span>
+                    <span class="slide-num">1/15</span>
+                </div>
             </div>
-            <div class="slide">
-                <div class="slide-number">Слайд 2 из 15</div>
-                <img src="pdf_images/investor-02.png" alt="Слайд 2" class="slide-image">
+            <div class="slide-card" data-slide="1">
+                <div class="slide-thumb">
+                    <img src="pdf_images/investor-02.png" alt="Слайд 2">
+                </div>
+                <div class="slide-caption">
+                    <span class="slide-title">Целевая аудитория микробизнеса</span>
+                    <span class="slide-num">2/15</span>
+                </div>
             </div>
-            <div class="slide">
-                <div class="slide-number">Слайд 3 из 15</div>
-                <img src="pdf_images/investor-03.png" alt="Слайд 3" class="slide-image">
+            <div class="slide-card" data-slide="2">
+                <div class="slide-thumb">
+                    <img src="pdf_images/investor-03.png" alt="Слайд 3">
+                </div>
+                <div class="slide-caption">
+                    <span class="slide-title">Продуктовая линейка LOVII</span>
+                    <span class="slide-num">3/15</span>
+                </div>
             </div>
-            <div class="slide">
-                <div class="slide-number">Слайд 4 из 15</div>
-                <img src="pdf_images/investor-04.png" alt="Слайд 4" class="slide-image">
+            <div class="slide-card" data-slide="3">
+                <div class="slide-thumb">
+                    <img src="pdf_images/investor-04.png" alt="Слайд 4">
+                </div>
+                <div class="slide-caption">
+                    <span class="slide-title">Экономическая модель SaaS</span>
+                    <span class="slide-num">4/15</span>
+                </div>
             </div>
-            <div class="slide">
-                <div class="slide-number">Слайд 5 из 15</div>
-                <img src="pdf_images/investor-05.png" alt="Слайд 5" class="slide-image">
+            <div class="slide-card" data-slide="4">
+                <div class="slide-thumb">
+                    <img src="pdf_images/investor-05.png" alt="Слайд 5">
+                </div>
+                <div class="slide-caption">
+                    <span class="slide-title">Команда и экспертиза</span>
+                    <span class="slide-num">5/15</span>
+                </div>
             </div>
-            <div class="slide">
-                <div class="slide-number">Слайд 6 из 15</div>
-                <img src="pdf_images/investor-06.png" alt="Слайд 6" class="slide-image">
+            <div class="slide-card" data-slide="5">
+                <div class="slide-thumb">
+                    <img src="pdf_images/investor-06.png" alt="Слайд 6">
+                </div>
+                <div class="slide-caption">
+                    <span class="slide-title">Финансовая модель эмитента</span>
+                    <span class="slide-num">6/15</span>
+                </div>
             </div>
-            <div class="slide">
-                <div class="slide-number">Слайд 7 из 15</div>
-                <img src="pdf_images/investor-07.png" alt="Слайд 7" class="slide-image">
+            <div class="slide-card" data-slide="6">
+                <div class="slide-thumb">
+                    <img src="pdf_images/investor-07.png" alt="Слайд 7">
+                </div>
+                <div class="slide-caption">
+                    <span class="slide-title">Параметры выпуска ЦФА</span>
+                    <span class="slide-num">7/15</span>
+                </div>
             </div>
-            <div class="slide">
-                <div class="slide-number">Слайд 8 из 15</div>
-                <img src="pdf_images/investor-08.png" alt="Слайд 8" class="slide-image">
+            <div class="slide-card" data-slide="7">
+                <div class="slide-thumb">
+                    <img src="pdf_images/investor-08.png" alt="Слайд 8">
+                </div>
+                <div class="slide-caption">
+                    <span class="slide-title">Использование средств</span>
+                    <span class="slide-num">8/15</span>
+                </div>
             </div>
-            <div class="slide">
-                <div class="slide-number">Слайд 9 из 15</div>
-                <img src="pdf_images/investor-09.png" alt="Слайд 9" class="slide-image">
+            <div class="slide-card" data-slide="8">
+                <div class="slide-thumb">
+                    <img src="pdf_images/investor-09.png" alt="Слайд 9">
+                </div>
+                <div class="slide-caption">
+                    <span class="slide-title">Дорожная карта проекта</span>
+                    <span class="slide-num">9/15</span>
+                </div>
             </div>
-            <div class="slide">
-                <div class="slide-number">Слайд 10 из 15</div>
-                <img src="pdf_images/investor-10.png" alt="Слайд 10" class="slide-image">
+            <div class="slide-card" data-slide="9">
+                <div class="slide-thumb">
+                    <img src="pdf_images/investor-10.png" alt="Слайд 10">
+                </div>
+                <div class="slide-caption">
+                    <span class="slide-title">Риски и гарантии</span>
+                    <span class="slide-num">10/15</span>
+                </div>
             </div>
-            <div class="slide">
-                <div class="slide-number">Слайд 11 из 15</div>
-                <img src="pdf_images/investor-11.png" alt="Слайд 11" class="slide-image">
+            <div class="slide-card" data-slide="10">
+                <div class="slide-thumb">
+                    <img src="pdf_images/investor-11.png" alt="Слайд 11">
+                </div>
+                <div class="slide-caption">
+                    <span class="slide-title">Конкурентные преимущества</span>
+                    <span class="slide-num">11/15</span>
+                </div>
             </div>
-            <div class="slide">
-                <div class="slide-number">Слайд 12 из 15</div>
-                <img src="pdf_images/investor-12.png" alt="Слайд 12" class="slide-image">
+            <div class="slide-card" data-slide="11">
+                <div class="slide-thumb">
+                    <img src="pdf_images/investor-12.png" alt="Слайд 12">
+                </div>
+                <div class="slide-caption">
+                    <span class="slide-title">Партнёрская сеть</span>
+                    <span class="slide-num">12/15</span>
+                </div>
             </div>
-            <div class="slide">
-                <div class="slide-number">Слайд 13 из 15</div>
-                <img src="pdf_images/investor-13.png" alt="Слайд 13" class="slide-image">
+            <div class="slide-card" data-slide="12">
+                <div class="slide-thumb">
+                    <img src="pdf_images/investor-13.png" alt="Слайд 13">
+                </div>
+                <div class="slide-caption">
+                    <span class="slide-title">План масштабирования</span>
+                    <span class="slide-num">13/15</span>
+                </div>
             </div>
-            <div class="slide">
-                <div class="slide-number">Слайд 14 из 15</div>
-                <img src="pdf_images/investor-14.png" alt="Слайд 14" class="slide-image">
+            <div class="slide-card" data-slide="13">
+                <div class="slide-thumb">
+                    <img src="pdf_images/investor-14.png" alt="Слайд 14">
+                </div>
+                <div class="slide-caption">
+                    <span class="slide-title">Стратегия выхода</span>
+                    <span class="slide-num">14/15</span>
+                </div>
             </div>
-            <div class="slide">
-                <div class="slide-number">Слайд 15 из 15</div>
-                <img src="pdf_images/investor-15.png" alt="Слайд 15" class="slide-image">
+            <div class="slide-card" data-slide="14">
+                <div class="slide-thumb">
+                    <img src="pdf_images/investor-15.png" alt="Слайд 15">
+                </div>
+                <div class="slide-caption">
+                    <span class="slide-title">Контакты для инвесторов</span>
+                    <span class="slide-num">15/15</span>
+                </div>
             </div>
+        </div>
+
+        <!-- Modal Viewer -->
+        <div class="slide-modal" id="slideModal">
+            <button class="close-btn" id="modalClose">×</button>
+            <button class="modal-nav prev" id="modalPrev">‹</button>
+            <img id="modalImage" src="" alt="">
+            <button class="modal-nav next" id="modalNext">›</button>
         </div>
 
         <footer class="footer">
@@ -348,6 +558,61 @@
                 const newTheme = currentTheme === 'light' ? 'dark' : 'light';
                 body.setAttribute('data-theme', newTheme);
                 localStorage.setItem('lovii-theme', newTheme);
+            });
+
+            // Modal viewer
+            const modal = document.getElementById('slideModal');
+            const modalImg = document.getElementById('modalImage');
+            const cards = document.querySelectorAll('.slide-card');
+            let current = 0;
+            const totalSlides = 15;
+
+            function openSlide(index) {
+                current = index;
+                const num = String(index + 1).padStart(2, '0');
+                modalImg.src = 'pdf_images/investor-' + num + '.png';
+                modal.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            }
+
+            cards.forEach(card => {
+                card.querySelector('.slide-thumb').addEventListener('click', function() {
+                    openSlide(parseInt(card.dataset.slide));
+                });
+            });
+
+            document.getElementById('modalClose').addEventListener('click', function() {
+                modal.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.classList.remove('open');
+                    document.body.style.overflow = '';
+                }
+            });
+
+            document.getElementById('modalPrev').addEventListener('click', function() {
+                current = (current - 1 + totalSlides) % totalSlides;
+                const num = String(current + 1).padStart(2, '0');
+                modalImg.src = 'pdf_images/investor-' + num + '.png';
+            });
+
+            document.getElementById('modalNext').addEventListener('click', function() {
+                current = (current + 1) % totalSlides;
+                const num = String(current + 1).padStart(2, '0');
+                modalImg.src = 'pdf_images/investor-' + num + '.png';
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (!modal.classList.contains('open')) return;
+                if (e.key === 'Escape') {
+                    modal.classList.remove('open');
+                    document.body.style.overflow = '';
+                }
+                if (e.key === 'ArrowLeft') document.getElementById('modalPrev').click();
+                if (e.key === 'ArrowRight') document.getElementById('modalNext').click();
             });
         });
     </script>

@@ -25,6 +25,74 @@
             overflow-x: hidden;
         }
 
+        /* Status Bar */
+        .status-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            padding: 6px 20px;
+            background: var(--accent-color);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .status-step {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 0 16px;
+            opacity: 0.5;
+            transition: opacity 0.3s;
+        }
+
+        .status-step .step-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: white;
+            flex-shrink: 0;
+        }
+
+        .status-step .step-line {
+            width: 24px;
+            height: 1px;
+            background: rgba(255,255,255,0.3);
+            flex-shrink: 0;
+        }
+
+        .status-step.active {
+            opacity: 1;
+        }
+
+        .status-step.active .step-dot {
+            box-shadow: 0 0 0 3px rgba(255,255,255,0.3);
+        }
+
+        .status-label {
+            display: inline;
+        }
+
+        @media (max-width: 768px) {
+            .status-bar {
+                font-size: 0.6rem;
+                padding: 4px 10px;
+                gap: 0;
+            }
+            .status-step {
+                padding: 0 6px;
+            }
+            .status-step .step-line {
+                width: 12px;
+            }
+            .status-label {
+                display: none;
+            }
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -526,14 +594,22 @@
 
         .doc-arrow {
             flex-shrink: 0;
+            font-size: 1.1rem;
             color: var(--text-secondary);
-            opacity: 0.5;
+            opacity: 0.3;
+            transition: all 0.3s;
+            transform: rotate(-45deg);
         }
 
         .doc-item:hover .doc-arrow {
             opacity: 1;
             color: var(--accent-color);
-            transform: translateX(3px);
+            transform: rotate(-45deg) translate(3px, -3px);
+        }
+
+        .doc-item:hover {
+            border-color: var(--accent-color);
+            background: rgba(13, 148, 136, 0.03);
         }
 
         /* Investor Onboarding */
@@ -1639,10 +1715,37 @@ footer {
                 font-size: 1.8rem;
             }
         }
+
+        @media print {
+            .status-bar, .status-step, .step-line, .step-dot {
+                display: none !important;
+            }
+        }
     </style>
 </head>
 <body>
     <header class="header">
+        <div class="status-bar">
+            <span class="status-step">
+                <span class="step-dot"></span>
+                <span class="status-label">Анализ</span>
+            </span>
+            <span class="step-line"></span>
+            <span class="status-step active">
+                <span class="step-dot"></span>
+                <span class="status-label">Согласование</span>
+            </span>
+            <span class="step-line"></span>
+            <span class="status-step">
+                <span class="step-dot"></span>
+                <span class="status-label">Сбор заявок</span>
+            </span>
+            <span class="step-line"></span>
+            <span class="status-step">
+                <span class="step-dot"></span>
+                <span class="status-label">Выпуск</span>
+            </span>
+        </div>
         <div class="header-inner">
             <a href="#" class="logo">
                 <img src="img/logos/lovii-logo.svg" alt="LOVII" class="logo-light">
@@ -2316,7 +2419,7 @@ footer {
                         <p>Юридический документ, определяющий параметры актива: доходность, срок, порядок погашения</p>
                     </div>
                     <span class="doc-tag required">Обязательный</span>
-                    <span class="doc-arrow">→</span>
+                    <span class="doc-arrow">↗</span>
                 </a>
                 <a href="docs/whitepaper.html" class="doc-item">
                     <div class="doc-icon">
@@ -2327,7 +2430,7 @@ footer {
                         <p>Технический паспорт продукта: архитектура, экономическая модель, дорожная карта</p>
                     </div>
                     <span class="doc-tag info">Для анализа</span>
-                    <span class="doc-arrow">→</span>
+                    <span class="doc-arrow">↗</span>
                 </a>
                 <a href="docs/risk-policy.html" class="doc-item">
                     <div class="doc-icon">
@@ -2338,7 +2441,7 @@ footer {
                         <p>Сценарии защиты инвестиций, гарантии эмитента, порядок действий в стрессовых ситуациях</p>
                     </div>
                     <span class="doc-tag info">Для анализа</span>
-                    <span class="doc-arrow">→</span>
+                    <span class="doc-arrow">↗</span>
                 </a>
             </div>
         </div>
