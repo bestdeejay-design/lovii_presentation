@@ -451,6 +451,93 @@
 
         @media print { .floating-nav { display: none !important; } }
         @media (max-width: 768px) { .floating-nav { display: none; } }
+
+/* Mobile Drawer */
+        .drawer-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.3);
+            z-index: 2000;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .drawer-overlay.open {
+            display: block;
+            opacity: 1;
+        }
+
+        .drawer-sheet {
+            position: fixed;
+            bottom: 0; left: 0; right: 0;
+            z-index: 2001;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 20px 20px 0 0;
+            border-top: 1px solid rgba(13,148,136,0.15);
+            box-shadow: 0 -8px 40px rgba(0,0,0,0.1);
+            max-height: 85vh;
+            overflow-y: auto;
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 20px 20px 100px;
+        }
+
+        [data-theme="dark"] .drawer-sheet {
+            background: rgba(30,41,59,0.92);
+            border-color: rgba(255,255,255,0.08);
+        }
+
+        .drawer-overlay.open .drawer-sheet {
+            transform: translateY(0);
+        }
+
+        .drawer-handle {
+            width: 36px; height: 4px;
+            background: var(--border-color);
+            border-radius: 4px;
+            margin: 0 auto 20px;
+        }
+
+        .drawer-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 32px; height: 32px;
+            border-radius: 50%;
+            border: none;
+            background: var(--card-bg);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+        }
+
+        .drawer-section { margin-bottom: 24px; }
+        .drawer-section-title {
+            font-size: 0.7rem; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 1.5px; color: var(--text-secondary);
+            margin-bottom: 12px; padding: 0 4px;
+        }
+        .drawer-items { display: flex; flex-direction: column; gap: 2px; }
+        .drawer-item {
+            display: flex; align-items: center; gap: 14px;
+            padding: 12px 14px; border-radius: 12px;
+            text-decoration: none; color: var(--text-color); font-size: 0.95rem;
+            font-weight: 500; transition: all 0.2s;
+        }
+        .drawer-item:active { background: rgba(13,148,136,0.08); }
+        .drawer-item svg {
+            width: 20px; height: 20px; flex-shrink: 0;
+            stroke: currentColor; stroke-width: 1.8; fill: none;
+        }
+        .drawer-item.active { color: var(--accent-color); }
+
+        
     </style>
 </head>
 <body>
@@ -716,18 +803,47 @@
                 if (e.key === 'ArrowLeft') document.getElementById('modalPrev').click();
                 if (e.key === 'ArrowRight') document.getElementById('modalNext').click();
             });
+            // Drawer logic
+            const drawerOverlay = document.getElementById('drawerOverlay');
+            const drawerToggle = document.getElementById('drawerToggle');
+            const drawerClose = document.getElementById('drawerClose');
+
+            if (drawerToggle && drawerOverlay) {
+                drawerToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    drawerOverlay.classList.add('open');
+                    document.body.style.overflow = 'hidden';
+                });
+
+                function closeDrawer() {
+                    drawerOverlay.classList.remove('open');
+                    document.body.style.overflow = '';
+                }
+
+                if (drawerClose) drawerClose.addEventListener('click', closeDrawer);
+                drawerOverlay.addEventListener('click', function(e) {
+                    if (e.target === drawerOverlay) closeDrawer();
+                });
+
+                drawerOverlay.querySelectorAll('.drawer-item').forEach(item => {
+                    item.addEventListener('click', function() {
+                        setTimeout(closeDrawer, 100);
+                    });
+                });
+            }
+
         });
     </script>
 
     <!-- Mobile Navigation -->
-    <nav class="mobile-nav">
+        <nav class="mobile-nav">
         <a href="index.html">
             <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
             <span>Главная</span>
         </a>
-        <a href="presentation.html" class="active" >
+        <a href="presentation.html">
             <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
-            <span>Презентация</span>
+            <span>Стратегия</span>
         </a>
         <a href="strategy.html">
             <svg viewBox="0 0 24 24"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/></svg>
@@ -737,7 +853,45 @@
             <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
             <span>Написать</span>
         </a>
-    </nav>
+        <a href="#" id="drawerToggle">
+            <svg viewBox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+            <span>Меню</span>
+        </a>
+    </nav></nav>
+    <!-- Mobile Drawer -->
+    <div class="drawer-overlay" id="drawerOverlay">
+        <div class="drawer-sheet">
+            <div class="drawer-handle"></div>
+            <button class="drawer-close" id="drawerClose">✕</button>
+
+            <div class="drawer-section">
+                <div class="drawer-section-title">Главное</div>
+                <div class="drawer-items">
+                    <a href="#" class="drawer-item active"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> Главная</a>
+                    <a href="strategy.html" class="drawer-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg> Стратегия</a>
+                    <a href="presentation.html" class="drawer-item"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg> Презентация</a>
+                </div>
+            </div>
+
+            <div class="drawer-section">
+                <div class="drawer-section-title">Документация</div>
+                <div class="drawer-items">
+                    <a href="docs/issue-terms.html" class="drawer-item"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> Решение о выпуске</a>
+                    <a href="docs/whitepaper.html" class="drawer-item"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> Whitepaper</a>
+                    <a href="docs/risk-policy.html" class="drawer-item"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Политика рисков</a>
+                </div>
+            </div>
+
+            <div class="drawer-section">
+                <div class="drawer-section-title">Связь</div>
+                <div class="drawer-items">
+                    <a href="mailto:invest@lovii.ru" class="drawer-item"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> invest@lovii.ru</a>
+                    <a href="#details" class="drawer-item"><svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6z"/><path d="M16 2v6h6"/></svg> Реквизиты</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Floating Navigation -->
     <nav class="floating-nav">
         <a href="index.html">
