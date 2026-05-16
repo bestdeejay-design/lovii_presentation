@@ -4454,6 +4454,10 @@ footer {
         }
         .drawer-item.active { color: var(--accent-color); }
 
+        /* Важно: при открытом drawer мобильная навигация остается видимой */
+        .drawer-overlay.open ~ .mobile-nav {
+            display: flex !important;
+        }
         
     </style>
     <!-- Mobile Fixes CSS - предотвращает выход контента за границы экрана -->
