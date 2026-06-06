@@ -1,0 +1,372 @@
+/* strategy.css — уникальные стили страницы strategy */
+
+[data-theme="dark"]         [data-theme="dark"] {
+            --bg-color: #0F172A; --text-color: #F1F5F9; --text-secondary: #94A3B8;
+            --accent-color: #14B8A6; --card-bg: #1E293B; --border-color: #334155;
+            --section-alt: #1E293B;
+        }
+
+[data-theme="dark"] 
+        [data-theme="dark"] .hero {
+            background: linear-gradient(180deg, #0F172A 0%, #1E293B 100%);
+        }
+
+@media (max-width: 768px) {
+            
+
+            .strategy-hero-metrics {
+                gap: 20px;
+            }
+            .shm-item {
+                padding: 14px 18px;
+            }
+            .shm-value {
+                font-size: 1.3rem;
+            }
+        }
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+[data-theme="dark"] 
+        [data-theme="dark"] {
+            --bg-color: #0F172A; --text-color: #F1F5F9; --text-secondary: #94A3B8;
+            --accent-color: #14B8A6; --card-bg: #1E293B; --border-color: #334155;
+            --section-alt: #1E293B;
+        }
+
+.hero-badge {
+            display: inline-block; background: var(--gradient-primary);
+            color: white; padding: 10px 24px; border-radius: 30px;
+            font-weight: 600; font-size: 0.9rem; margin-bottom: 30px;
+        }
+
+.section-alt { background: var(--section-alt); }
+
+.card-trim { padding: 30px; }
+
+.card-value {
+            font-size: 2rem; font-weight: 800; color: var(--accent-color); margin-bottom: 10px;
+        }
+
+.list-accent { list-style: none; color: var(--text-secondary); line-height: 1.8; }
+
+.list-accent li::before { content: "→ "; color: var(--accent-color); font-weight: 700; }
+
+.grid-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; max-width: 1000px; margin: 0 auto; }
+
+.grid-3col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1000px; margin: 0 auto; }
+
+.grid-4col { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1000px; margin: 0 auto; }
+
+.callout {
+            display: flex; align-items: center; justify-content: center; gap: 12px;
+            max-width: 700px; margin: 30px auto 0; padding: 16px 24px;
+            background: var(--card-bg); border-radius: 12px;
+            font-size: 0.95rem; color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+        }
+
+.callout svg { flex-shrink: 0; stroke: var(--accent-color); }
+
+.steps-3col {
+            display: flex; align-items: flex-start; gap: 0;
+            max-width: 900px; margin: 0 auto;
+        }
+
+.step-block { flex: 1; text-align: center; padding: 30px 20px; }
+
+.step-num {
+            font-size: 2.5rem; font-weight: 900; color: var(--accent-color);
+            opacity: 0.3; margin-bottom: 10px; line-height: 1;
+        }
+
+.step-block h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; }
+
+.step-block p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5; }
+
+.steps-3col > .step-line {
+            width: 2px; min-height: 80px; align-self: center;
+            background: var(--border-color); flex-shrink: 0;
+        }
+
+.badge {
+            display: inline-block; padding: 3px 10px; border-radius: 6px;
+            background: rgba(13,148,136,0.1); color: var(--accent-color);
+            font-weight: 700; font-size: 0.9rem;
+        }
+
+.compare-table {
+            max-width: 800px; margin: 0 auto;
+            border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden;
+        }
+
+.compare-row {
+            display: grid; grid-template-columns: 1.2fr 1.4fr 1.4fr;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+.compare-row:last-child { border-bottom: none; }
+
+.compare-header { background: var(--accent-color); color: white; font-weight: 600; }
+
+.compare-col { padding: 14px 18px; font-size: 0.9rem; display: flex; align-items: center; }
+
+.compare-col.accent { color: var(--accent-color); font-weight: 600; }
+
+.compare-col.muted { color: var(--text-secondary); }
+
+.compare-row:nth-child(even):not(.compare-header) { background: var(--bg-color); }
+
+.metrics-group { max-width: 900px; margin: 0 auto 40px; }
+
+.metrics-group:last-child { margin-bottom: 0; }
+
+.metrics-group-title {
+            text-align: center; font-size: 1.2rem; font-weight: 700;
+            margin-bottom: 20px; color: var(--text-color);
+        }
+
+.stat-box {
+            text-align: center; padding: 20px 15px;
+            background: var(--card-bg); border-radius: 14px;
+            border: 1px solid var(--border-color);
+        }
+
+.stat-box-value {
+            font-size: 1.6rem; font-weight: 800; color: var(--accent-color); margin-bottom: 4px;
+        }
+
+.stat-box-label { font-size: 0.8rem; color: var(--text-secondary); }
+
+.cta-section {
+            background: var(--gradient-primary); text-align: center;
+            padding: 80px 20px;
+        }
+
+.cta-section h2 { font-size: 2.5rem; color: white; margin-bottom: 20px; }
+
+.cta-section p { color: rgba(255,255,255,0.9); margin-bottom: 40px; font-size: 1.2rem; }
+
+.contact-row { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+
+.contact-row .btn { min-width: 200px; }
+
+.cta-section .btn-secondary { border-color: rgba(255,255,255,0.5); color: white; }
+
+.cta-section .btn-secondary:hover { background: white; color: var(--accent-color); }
+
+.footer { text-align: center; padding: 40px 20px; background: var(--card-bg); border-top: 1px solid var(--border-color); }
+
+.footer p { color: var(--text-secondary); font-size: 0.9rem; }
+
+bottom: 0;
+                padding-bottom: env(safe-area-inset-bottom);
+.mobile-nav a svg { width: 20px; height: 22px; margin-bottom: 4px; fill: var(--text-secondary); }
+
+.mobile-nav a.active, .mobile-nav a:hover { color: var(--accent-color); }
+
+.mobile-nav a.active svg, .mobile-nav a:hover svg { fill: var(--accent-color); }
+
+[data-theme="dark"] .investment {
+            background: var(--card-bg);
+        }
+
+.strategy-hero-metrics {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+.shm-item {
+            text-align: center;
+            padding: 20px 24px;
+        }
+
+.shm-value {
+            display: block;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--accent-color);
+            margin-bottom: 4px;
+        }
+
+.shm-label {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+@media (max-width: 768px) {
+            .strategy-hero-metrics {
+                gap: 20px;
+            }
+            .shm-item {
+                padding: 14px 18px;
+            }
+            .shm-value {
+                font-size: 1.3rem;
+            }
+        }
+
+.mobile-nav a:hover {
+            color: var(--accent-color);
+        }
+
+.mobile-nav a:hover svg {
+            fill: var(--accent-color);
+        }
+
+@media (max-width: 480px) { .hero-title { font-size: 1.8rem; } }
+
+@media print { .floating-nav { display: none !important; } }
+
+@keyframes pageFadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+@media (max-width: 768px) {
+            .doc-item {
+                flex-wrap: wrap;
+                gap: 12px;
+            }
+
+            .team-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .details-row {
+                flex-direction: column;
+                gap: 8px;
+                padding: 15px 20px;
+            }
+
+            .hero {
+                padding: 80px clamp(16px, 5vw, 24px) 60px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .hero-buttons .btn {
+                width: 100%;
+                min-width: auto;
+                padding: 16px 24px;
+            }
+
+            .section-title {
+                font-size: clamp(1.4rem, 5vw, 1.8rem);
+                line-height: 1.2;
+            }
+
+            .section-header {
+                margin-bottom: 40px;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .card {
+                padding: 28px 24px;
+            }
+
+            .investment-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .issuer-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            body {
+                }
+
+            footer {
+                }
+
+@media (max-width: 768px) {
+            .strategy-hero-metrics {
+                gap: 20px;
+            }
+            .shm-item {
+                padding: 14px 18px;
+            }
+            .shm-value {
+                font-size: 1.3rem;
+            }
+
+            .doc-icon {
+                width: 40px;
+                height: 40px;
+            }
+
+            .doc-icon svg {
+                width: 20px;
+                height: 20px;
+            }
+
+            .investment-details div {
+                padding: 12px 0;
+            }
+
+            .steps-3col {
+                flex-direction: column;
+            }
+
+            .steps-3col > .step-line {
+                width: 2px;
+                min-height: 20px;
+                margin: 0 auto;
+            }
+
+            .compare-row {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .compare-row .compare-col:first-child {
+                display: none;
+            }
+
+            .grid-2col, .grid-3col, .grid-4col {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .metrics-group .grid-4col {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .mobile-nav {
+                display: flex;
+                padding: 4px 0 8px;
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            .mobile-nav a {
+                min-width: 0;
+                padding: 4px 4px;
+            }
+
+        }
+
+        }
+
+@media (min-width: 1440px) {
+            .floating-nav {
+                right: calc((100vw - 1200px) / 2 - 60px);
+            }
+        }
+

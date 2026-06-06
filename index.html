@@ -1,0 +1,2409 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <title>LOVII — Инвестиционное предложение · ЦФА 2026</title>
+    <meta name="description" content="Инвестируйте в LOVII — цифровую инфраструктуру локальной экономики. Доходность до 21% годовых, срок 9 месяцев.">    <link rel="preconnect" href="https://fonts.googleapis.com">    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/theme.css?v=2">
+    <link rel="stylesheet" href="css/core.css?v=2">
+    <link rel="stylesheet" href="css/components.css?v=2">
+    <link rel="stylesheet" href="css/main.css?v=2">
+    <link rel="stylesheet" href="css/responsive.css?v=2">
+    <style>
+/* Header section moved to components.css */
+/* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 20px 80px;
+            background: linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 100%);
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-outro {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 50px;
+            letter-spacing: 1px;
+        }
+
+        .hero-buttons .btn {
+            min-width: 160px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 36px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            min-width: 200px;
+        }
+
+        /* Key Metrics Banner — Issuer */
+        section[id] {
+            scroll-margin-top: 110px;
+        }
+
+        .issuer-label {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .issuer-desc {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .issuer-note {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            max-width: 700px;
+            margin: 30px auto 0;
+            padding: 15px 20px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+        }
+
+        .issuer-note svg {
+            flex-shrink: 0;
+            opacity: 0.6;
+        }
+
+        /* Product Targets Section */
+        .targets-section {
+            background: var(--section-alt);
+            padding: 100px 20px;
+        }
+
+        /* Roadmap */
+        .roadmap-section {
+            padding: 100px 20px;
+            background: var(--bg-color);
+        }
+
+        .roadmap {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .roadmap::before {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border-color);
+        }
+
+        .roadmap-item {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .roadmap-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .roadmap-marker {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            z-index: 1;
+            border: 2px solid var(--border-color);
+            background: var(--card-bg);
+            color: var(--text-secondary);
+        }
+
+        .roadmap-item.completed .roadmap-marker {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+            color: white;
+        }
+
+        .roadmap-item.active .roadmap-marker {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+            box-shadow: 0 0 0 4px rgba(13, 148, 136, 0.2);
+        }
+
+        .roadmap-content {
+            padding-top: 8px;
+        }
+
+        .roadmap-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        .roadmap-content p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .roadmap-item.active .roadmap-content h3 {
+            color: var(--accent-color);
+        }
+
+        /* FAQ */
+        .faq-section {
+            padding: 100px 20px;
+            background: var(--card-bg);
+        }
+
+        .faq-grid {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .faq-item {
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 30px;
+            transition: all 0.3s;
+        }
+
+        .faq-item:hover {
+            border-color: var(--accent-color);
+        }
+
+        .faq-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+
+        .faq-item p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Document Hub */
+        .doc-hub {
+            padding: 100px 20px;
+            background: var(--bg-color);
+        }
+
+        .doc-grid {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .doc-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px 25px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            text-decoration: none;
+            color: var(--text-color);
+            transition: all 0.3s;
+        }
+
+        .doc-item:hover {
+            border-color: var(--accent-color);
+            transform: translateX(5px);
+        }
+
+        .doc-icon {
+            width: 44px;
+            height: 44px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(239, 68, 68, 0.1);
+            border-radius: 10px;
+        }
+
+        .doc-icon svg {
+            width: 22px;
+            height: 22px;
+            fill: #EF4444;
+        }
+
+        .doc-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .doc-info h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .doc-info p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .doc-tag {
+            flex-shrink: 0;
+            font-size: 0.75rem;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        .doc-tag.required {
+            background: rgba(239, 68, 68, 0.1);
+            color: #EF4444;
+        }
+
+        .doc-tag.info {
+            background: rgba(13, 148, 136, 0.1);
+            color: var(--accent-color);
+        }
+
+        .doc-arrow {
+            flex-shrink: 0;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            opacity: 0.3;
+            transition: all 0.3s;
+            transform: rotate(-45deg);
+        }
+
+        .doc-item:hover .doc-arrow {
+            opacity: 1;
+            color: var(--accent-color);
+            transform: rotate(-45deg) translate(3px, -3px);
+        }
+
+        .doc-item:hover {
+            border-color: var(--accent-color);
+            background: rgba(13, 148, 136, 0.03);
+        }
+
+        /* Investor Onboarding */
+        .onboarding {
+            padding: 100px 20px;
+            background: var(--section-alt);
+        }
+
+        .onboarding-steps {
+            max-width: 800px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            counter-reset: step;
+        }
+
+        .step-card {
+            text-align: center;
+            padding: 30px 20px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            position: relative;
+            counter-increment: step;
+        }
+
+        .step-card::before {
+            content: counter(step);
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 28px;
+            height: 28px;
+            background: var(--accent-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 800;
+        }
+
+        .step-icon {
+            width: 48px;
+            height: 48px;
+            margin: 10px auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .step-icon svg {
+            width: 32px;
+            height: 32px;
+            fill: var(--accent-color);
+        }
+
+        .step-card h4 {
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .step-card p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .onboarding-note {
+            max-width: 600px;
+            margin: 30px auto 0;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            padding: 20px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        /* Compliance Footer */
+        .footer-links a {
+            font-size: 0.85rem;
+        }
+
+        /* Enhanced Funds */
+        .fund-amount {
+            display: block;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-top: 4px;
+        }
+
+        .fund-breakdown {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: 6px;
+            line-height: 1.4;
+        }
+
+        
+
+        /* Sections */
+        /* Cards Grid */
+        .card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 40px 30px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .card-icon svg {
+            width: 30px;
+            height: 30px;
+            fill: white;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .card-text {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--section-alt);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .about-features {
+            list-style: none;
+        }
+
+        .about-features li {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: var(--bg-color);
+            border-radius: 10px;
+        }
+
+        .about-features li svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--accent-color);
+            flex-shrink: 0;
+        }
+
+        /* Team Section */
+        .team-avatar-large {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .team-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .team-info .team-name {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+            word-wrap: break-word;
+        }
+
+        .team-info .team-role {
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            font-weight: 600;
+            line-height: 1.4;
+            word-wrap: break-word;
+        }
+
+        .team-expertise {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .expertise-tag {
+            padding: 6px 14px;
+            background: var(--accent-light);
+            color: var(--accent-color);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        [data-theme="dark"] .expertise-tag {
+            background: rgba(20, 184, 166, 0.15);
+        }
+
+        .achievement {
+            text-align: center;
+        }
+
+        .achievement-value {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--accent-color);
+        }
+
+        .achievement-label {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: 5px;
+        }
+
+        .team-bio {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        
+
+        /* Investment Section */
+        .investment {
+            background: #F8FAFC;
+        }
+
+        .investment-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+
+        .investment-label {
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+
+        .investment-details {
+            text-align: left;
+        }
+
+        .investment-details div {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .investment-details div:last-child {
+            border-bottom: none;
+        }
+
+        /* Use of Funds — Table */
+        .funds-table {
+            max-width: 900px;
+            margin: 0 auto;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .funds-row {
+            display: grid;
+            grid-template-columns: 80px 160px 1fr 1.5fr;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .funds-row:last-child {
+            border-bottom: none;
+        }
+
+        .funds-header {
+            background: var(--accent-color);
+            color: white;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .funds-col {
+            padding: 16px 15px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .col-pct.highlight {
+            color: var(--accent-color);
+            font-weight: 800;
+            font-size: 1.1rem;
+        }
+
+        .col-amount {
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .col-detail {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .funds-total {
+            background: var(--card-bg);
+            font-weight: 700;
+        }
+
+        .funds-total .col-pct {
+            color: var(--accent-color);
+        }
+
+        .funds-row:nth-child(even):not(.funds-header):not(.funds-total) {
+            background: var(--bg-color);
+        }
+
+        [data-theme="dark"] .funds-header {
+            background: #0D9488;
+        }
+
+        /* Product Case Cards */
+        .case-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        .case-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 30px;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .case-card:hover {
+            border-color: var(--accent-color);
+        }
+
+        .case-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+        }
+
+        .case-header h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+        }
+
+        .case-status {
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+
+        .case-status.demo {
+            background: rgba(13, 148, 136, 0.1);
+            color: var(--accent-color);
+        }
+
+        .case-status.ready {
+            background: rgba(34, 197, 94, 0.1);
+            color: #22c55e;
+        }
+
+        .case-status.dev {
+            background: rgba(251, 191, 36, 0.1);
+            color: #d97706;
+        }
+
+        .case-body {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .case-body p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .case-body .case-metrics {
+            margin-top: auto;
+        }
+
+        .case-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            padding: 16px;
+            background: var(--bg-color);
+            border-radius: 12px;
+            margin: 16px 0;
+        }
+
+        .case-metric {
+            text-align: center;
+        }
+
+        .case-metric .cm-value {
+            display: block;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--accent-color);
+        }
+
+        .case-metric .cm-label {
+            display: block;
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            margin-top: 2px;
+        }
+
+        /* Calculator */
+        .calc-section {
+            padding: 100px 20px;
+            background: var(--section-alt);
+        }
+
+        .calc-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+            align-items: start;
+        }
+
+        .calc-form {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 35px;
+        }
+
+        .calc-form label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .calc-form .input-group {
+            display: flex;
+            align-items: center;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            overflow: hidden;
+            background: var(--bg-color);
+            margin-bottom: 20px;
+        }
+
+        .calc-form .input-group span {
+            padding: 0 16px;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .calc-form .input-group input {
+            flex: 1;
+            padding: 14px 16px;
+            border: none;
+            background: transparent;
+            font-size: 1.2rem;
+            font-weight: 700;
+            font-family: 'Inter', sans-serif;
+            color: var(--text-color);
+            outline: none;
+        }
+
+        .calc-form .input-group input:focus {
+            box-shadow: inset 0 0 0 2px var(--accent-color);
+        }
+
+        .calc-results {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .calc-result-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .calc-result-item .crl-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .calc-result-item .crl-value {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--accent-color);
+        }
+
+        .calc-result-item.highlight {
+            border-color: var(--accent-color);
+            background: rgba(13, 148, 136, 0.05);
+        }
+
+        .calc-result-item.highlight .crl-value {
+            font-size: 1.6rem;
+        }
+
+        
+
+        /* Screenshots Carousel */
+        #screenshots {
+            background: var(--section-alt);
+        }
+
+        .screenshots-logo {
+            max-width: 360px;
+            margin: 0 auto 30px;
+        }
+
+        .screenshots-logo img {
+            width: 100%;
+            height: auto;
+        }
+
+        .screenshots-logo .logo-dark {
+            display: none;
+        }
+
+        [data-theme="dark"] .screenshots-logo .logo-light {
+            display: none;
+        }
+
+        [data-theme="dark"] .screenshots-logo .logo-dark {
+            display: block;
+        }
+
+        .carousel {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            position: relative;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            display: block;
+        }
+
+        .carousel-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.9);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+
+        .carousel-btn:hover {
+            background: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-btn svg {
+            width: 24px;
+            height: 24px;
+            color: var(--accent-color);
+        }
+
+        .carousel-btn.prev { left: 15px; }
+        .carousel-btn.next { right: 15px; }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 20px;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--border-color);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-dot.active {
+            background: var(--accent-color);
+            transform: scale(1.2);
+        }
+
+        /* Partners Section */
+        .partners {
+            background: var(--card-bg);
+        }
+
+        /* Logo Showcase */
+        .logo-wrapper {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .logo-light {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .logo-dark {
+            display: none;
+            width: 100%;
+            height: auto;
+        }
+
+        [data-theme="dark"] .logo-light {
+            display: none;
+        }
+
+        [data-theme="dark"] .logo-dark {
+            display: block;
+        }
+
+        .partners-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .partner-item {
+            padding: 30px 50px;
+            background: var(--bg-color);
+            border-radius: 15px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+        }
+
+        /* CTA Section */
+        .cta {
+            background: var(--gradient-primary);
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 40px;
+            font-size: 1.2rem;
+        }
+
+        .cta .btn {
+            background: white;
+            color: var(--accent-color);
+        }
+
+        .cta .btn:hover {
+            transform: translateY(-3px);
+        }
+
+        
+        /* Footer section moved to components.css */
+/* Details Section */
+        .details-section {
+            background: var(--card-bg);
+            padding: 80px 20px;
+        }
+
+        .details-card {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .details-row {
+            display: flex;
+            padding: 20px 25px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .details-row:last-child {
+            border-bottom: none;
+        }
+
+        .details-row:nth-child(even) {
+            background: var(--card-bg);
+        }
+
+        .details-label {
+            width: 180px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            flex-shrink: 0;
+        }
+
+        .details-value {
+            color: var(--text-color);
+            word-break: break-word;
+        }
+
+        
+
+        /* === MOBILE ONLY (max 768px) === */
+        
+
+        [data-theme="dark"] .mobile-nav {
+            background: var(--card-bg);
+        }
+
+        
+
+        .mobile-nav a svg {
+            width: 20px;
+            height: 20px;
+            margin-bottom: 3px;
+            fill: var(--text-secondary);
+        }
+
+        .mobile-nav a.active,
+        .mobile-nav a:hover {
+            color: var(--accent-color);
+        }
+
+        .mobile-nav a.active svg,
+        .mobile-nav a:hover svg {
+            fill: var(--accent-color);
+        }
+
+        /* Mobile Drawer */
+        
+
+        .drawer-overlay.open {
+            display: block;
+            opacity: 1;
+        }
+
+        
+
+        [data-theme="dark"] .drawer-sheet {
+            background: rgba(30,41,59,0.95);
+            border-color: rgba(255,255,255,0.06);
+        }
+
+        .drawer-overlay.open .drawer-sheet {
+            transform: translateX(0);
+        }
+
+        /* При открытом drawer — скрываем мобильную навигацию под ним */
+        
+
+        [data-theme="dark"] .drawer-sheet {
+            background: rgba(30,41,59,0.92);
+            border-color: rgba(255,255,255,0.08);
+        }
+
+        .drawer-overlay.open .drawer-sheet {
+            transform: translateY(0);
+        }
+
+        /* Важно: при открытом drawer мобильная навигация остается видимой */
+        
+
+        .drawer-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 32px; height: 32px;
+            border-radius: 50%;
+            border: none;
+            background: var(--card-bg);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+        }
+
+        
+        .drawer-section-title {
+            font-size: 0.7rem; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 1.5px; color: var(--text-secondary);
+            margin-bottom: 12px; padding: 0 4px;
+        }
+        .drawer-items { display: flex; flex-direction: column; gap: 2px; }
+        .drawer-item:active { background: rgba(13,148,136,0.08); }
+        .drawer-item svg {
+            width: 20px; height: 20px; flex-shrink: 0;
+            stroke: currentColor; stroke-width: 1.8; fill: none;
+        }
+        .drawer-item.active { color: var(--accent-color); }
+
+        @media (min-width: 769px) {
+            .drawer-overlay { display: none !important; }
+        }
+
+        
+
+        
+
+        
+
+        
+
+        @media print {
+            .status-bar, .status-step, .step-line, 
+            
+        }
+
+        /* Floating Nav */
+        .floating-nav {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 900;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            padding: 12px 8px;
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(13, 148, 136, 0.15);
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            width: 52px;
+            transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
+
+        [data-theme="dark"] .floating-nav {
+            background: rgba(30, 41, 59, 0.7);
+            border-color: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .floating-nav:hover {
+            width: 190px;
+        }
+
+        .floating-nav a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            padding: 10px 0;
+            text-decoration: none;
+            color: var(--text-secondary);
+            border-radius: 10px;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .floating-nav:hover a {
+            justify-content: flex-start;
+            gap: 12px;
+            padding: 10px 12px;
+        }
+
+        .floating-nav a svg {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            stroke: currentColor;
+            stroke-width: 1.8;
+            fill: none;
+            transition: stroke 0.25s;
+        }
+
+        .floating-nav a .nav-label {
+            font-size: 0.85rem;
+            font-weight: 500;
+            opacity: 0;
+            width: 0;
+            overflow: hidden;
+            transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .floating-nav:hover a .nav-label {
+            opacity: 1;
+            width: auto;
+        }
+
+        .floating-nav a:hover {
+            background: rgba(13, 148, 136, 0.08);
+            color: var(--accent-color);
+        }
+
+        .floating-nav a:hover svg {
+            stroke: var(--accent-color);
+        }
+
+        .floating-nav a.active {
+            color: var(--accent-color);
+        }
+
+        .floating-nav a.active::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 3px;
+            height: 20px;
+            background: var(--accent-color);
+            border-radius: 0 3px 3px 0;
+        }
+
+        [data-theme="dark"] .floating-nav a:hover {
+            background: rgba(20, 184, 166, 0.12);
+        }
+
+        [data-theme="dark"] .floating-nav {
+            background: rgba(30, 41, 59, 0.75);
+        }
+
+        
+    
+        /* Page Transition Fade-in */
+        
+        
+
+                @media (max-width: 768px) {
+.status-step .step-line {
+                width: 12px;
+            }
+        }
+    
+        /* Ultra-wide screens — anchor floating nav to content area */
+        @media (min-width: 1440px) {
+            .floating-nav {
+                right: calc((100vw - 1200px) / 2 - 60px);
+            }
+        }
+    </style>
+    <!-- Mobile Fixes CSS - предотвращает выход контента за границы экрана -->
+    </head>
+<body>
+    <header class="header">
+        <div class="status-bar">
+            <span class="status-step">
+                <span class="step-dot"></span>
+                <span class="status-label">Анализ</span>
+            </span>
+            <span class="step-line"></span>
+            <span class="status-step active">
+                <span class="step-dot"></span>
+                <span class="status-label">Согласование</span>
+            </span>
+            <span class="step-line"></span>
+            <span class="status-step">
+                <span class="step-dot"></span>
+                <span class="status-label">Сбор заявок</span>
+            </span>
+            <span class="step-line"></span>
+            <span class="status-step">
+                <span class="step-dot"></span>
+                <span class="status-label">Выпуск</span>
+            </span>
+        </div>
+        <div class="header-inner">
+            <a href="#" class="logo">
+                <img src="img/logos/lovii-logo.svg" alt="LOVII" class="logo-light">
+                <img src="img/logos/lovii-logo_dark.svg" alt="LOVII" class="logo-dark">
+            </a>
+            <div class="header-actions">
+                <a href="#docs" class="header-link">Документация</a>
+                <span class="header-badge">ЦФА 2026</span>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Переключить тему">
+                    <svg class="theme-icon sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+                    </svg>
+                    <svg class="theme-icon moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">LOVII</h1>
+            <p class="hero-subtitle">20 лет мы создавали IT-решения для бизнеса. Теперь запускаем собственный продукт — цифровую инфраструктуру для микробизнеса. Привлекаем 52 млн ₽ через ЦФА под 21% годовых.</p>
+            <div class="hero-buttons">
+                <a href="#targets" class="btn btn-primary">Инвестировать</a>
+                <a href="#issuer" class="btn btn-secondary">Эмитент</a>
+                <a href="presentation/" class="btn btn-secondary">Презентация</a>
+                <a href="strategy/" class="btn btn-secondary">Стратегия</a>
+            </div>
+        <div class="hero-outro">Продукт от команды с 20-летним стажем ▸ ЦФА 2026</div>
+        </div>
+    </section>
+
+    <section id="issuer" class="issuer-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Устойчивость эмитента</h2>
+                <p class="section-subtitle">ООО «Аксиома» — действующий IT-бизнес, на базе которого создаётся продукт LOVII</p>
+            </div>
+            <div class="issuer-grid">
+                <div class="issuer-card">
+                    <div class="issuer-value">166 млн ₽</div>
+                    <div class="issuer-label">Выручка 2025</div>
+                    <div class="issuer-desc">Подтверждённая выручка аутсорс-бизнеса, который финансирует разработку продукта</div>
+                </div>
+                <div class="issuer-card">
+                    <div class="issuer-value">20+ лет</div>
+                    <div class="issuer-label">на IT-рынке</div>
+                    <div class="issuer-desc">Опыт команды в заказной разработке и системной интеграции</div>
+                </div>
+                <div class="issuer-card">
+                    <div class="issuer-value">19 млн ₽</div>
+                    <div class="issuer-label">Чистая прибыль 2025</div>
+                    <div class="issuer-desc">Финансовая устойчивость позволяет инвестировать в продуктовое развитие</div>
+                </div>
+            </div>
+            <div class="issuer-note">
+                <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                <span>Эти показатели отражают стабильность эмитента. Целевые показатели продукта LOVII — ниже.</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="details" class="details-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Реквизиты</h2>
+                <p class="section-subtitle">Данные эмитента цифровых финансовых активов</p>
+            </div>
+            <div class="details-card">
+                <div class="details-row">
+                    <span class="details-label">Полное наименование</span>
+                    <span class="details-value">Общество с ограниченной ответственностью «Аксиома»</span>
+                </div>
+                <div class="details-row">
+                    <span class="details-label">ИНН</span>
+                    <span class="details-value">7842223709</span>
+                </div>
+                <div class="details-row">
+                    <span class="details-label">КПП</span>
+                    <span class="details-value">780101001</span>
+                </div>
+                <div class="details-row">
+                    <span class="details-label">ОГРН</span>
+                    <span class="details-value">1247800067690</span>
+                </div>
+                <div class="details-row">
+                    <span class="details-label">Адрес</span>
+                    <span class="details-value">199106, Санкт-Петербург,<br>Вн.тер. г. Муниципальный округ Гавань,<br>пр-кт Большой В.О., д. 83 Литера А, помещ. 2-Н, офис 329/1</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="targets" class="targets-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Цели продукта LOVII</h2>
+                <p class="section-subtitle">Плановые показатели после запуска и масштабирования</p>
+            </div>
+            <div class="investment-grid">
+                <div class="investment-card">
+                    <h3>Доходность</h3>
+                    <div class="investment-value">до 21%</div>
+                    <p class="investment-label">годовых</p>
+                    <div class="investment-details">
+                        <div>
+                            <span>Тип дохода</span>
+                            <span>Фиксированный</span>
+                        </div>
+                        <div>
+                            <span>Выплаты</span>
+                            <span>Ежеквартальные</span>
+                        </div>
+                        <div>
+                            <span>Налогообложение</span>
+                            <span>Российское законодательство</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="investment-card">
+                    <h3>Параметры выпуска</h3>
+                    <div class="investment-value">52 млн</div>
+                    <p class="investment-label">целевая сумма</p>
+                    <div class="investment-details">
+                        <div>
+                            <span>Эмитент</span>
+                            <span>ООО «Аксиома»</span>
+                        </div>
+                        <div>
+                            <span>Срок</span>
+                            <span>9 месяцев</span>
+                        </div>
+                        <div>
+                            <span>Погашение</span>
+                            <span>Январь 2027</span>
+                        </div>
+                        <div>
+                            <span>Мин. сумма</span>
+                            <span>от 1 000 ₽</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">О проекте LOVII</h2>
+                <p class="section-subtitle">Продукты и решения для цифровой трансформации локальной экономики</p>
+            </div>
+
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <h3 class="card-title">SaaS «Лови»</h3>
+                    <p class="card-text">Оператор лояльности для микробизнеса. Подключение к единой экосистеме баллов за 15 минут без IT-команды.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9H9V9h10v2zm-4 4H9v-2h6v2zm4-8H9V5h10v2z"/></svg>
+                    </div>
+                    <h3 class="card-title">Цифровая витрина</h3>
+                    <p class="card-text">Виртуальная полка для локальных производителей. Загрузка товаров, учёт остатков, приём заказов с доставкой.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    </div>
+                    <h3 class="card-title">City Franchise</h3>
+                    <p class="card-text">Запуск локальной экосистемы в вашем городе. Полный набор инструментов для управления районом или городом.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <h3 class="card-title">API для партнёров</h3>
+                    <p class="card-text">Интеграция с платформой «Лови» для банков, ритейлеров и телеком-операторов. Подключение за 1 день.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+                    </div>
+                    <h3 class="card-title">Финансовая инфраструктура</h3>
+                    <p class="card-text">Интеграция с банковскими платёжными агентами. СБП, эквайринг, вывод баллов на карту без посредников.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+                    </div>
+                    <h3 class="card-title">White Label</h3>
+                    <p class="card-text">Лицензирование технологии для регионов и сетей. Полный брендинг и кастомизация под ваши задачи.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="team" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Руководство</h2>
+                <p class="section-subtitle">Сильная команда с комплементарной экспертизой в технологиях и финансах</p>
+            </div>
+
+            <div class="cards-grid">
+                <div class="card team-card-full">
+                    <div class="team-header">
+                        <div class="team-avatar-large">СК</div>
+                        <div class="team-info">
+                            <h3 class="team-name">Кузюков Сергей Сергеевич</h3>
+                            <p class="team-role">Генеральный директор · ООО «Аксиома»</p>
+                        </div>
+                    </div>
+                    <div class="team-expertise">
+                        <span class="expertise-tag">Технологии</span>
+                        <span class="expertise-tag">Продукт</span>
+                        <span class="expertise-tag">Команда</span>
+                    </div>
+                    <div class="team-achievements">
+                        <div class="achievement">
+                            <span class="achievement-value">20+</span>
+                            <span class="achievement-label">лет в IT-разработке</span>
+                        </div>
+                        <div class="achievement">
+                            <span class="achievement-value">30+</span>
+                            <span class="achievement-label">взращенных менеджеров</span>
+                        </div>
+                        <div class="achievement">
+                            <span class="achievement-value">1-я</span>
+                            <span class="achievement-label">рекламная сеть России</span>
+                        </div>
+                    </div>
+                    <p class="team-bio">
+                        Генеральный директор ООО «Аксиома». Технический директор и идеолог проекта LOVII. Основал одну из первых рекламных сетей в России. Системный интегратор, конвертирующий бизнес-требования в технологические решения. Выстроил процессы заказной разработки, создал культуру product thinking в команде.
+                    </p>
+                </div>
+
+                <div class="card team-card-full">
+                    <div class="team-header">
+                        <div class="team-avatar-large">ЧР</div>
+                        <div class="team-info">
+                            <h3 class="team-name">Чубей Роман Петрович</h3>
+                            <p class="team-role">Президент Фонда «Технологическому институту — 200 лет»</p>
+                        </div>
+                    </div>
+                    <div class="team-expertise">
+                        <span class="expertise-tag">Финансы</span>
+                        <span class="expertise-tag">Коммуникации</span>
+                        <span class="expertise-tag">Партнёрства</span>
+                    </div>
+                    <div class="team-achievements">
+                        <div class="achievement">
+                            <span class="achievement-value">10+</span>
+                            <span class="achievement-label">лет в банковской сфере</span>
+                        </div>
+                        <div class="achievement">
+                            <span class="achievement-value">КПК</span>
+                            <span class="achievement-label">кредитные кооперативы</span>
+                        </div>
+                        <div class="achievement">
+                            <span class="achievement-value">200</span>
+                            <span class="achievement-label">лет Технологическому институту</span>
+                        </div>
+                    </div>
+                    <p class="team-bio">
+                        Президент Фонда «Технологическому институту — 200 лет». Евангелист LOVII и двигатель идеи в массы. Специализируется на систематизации процессов, построении коммуникаций и привлечении стратегических партнёров. Обеспечивает связь между технологической командой и финансовым сообществом.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="product">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Статус продукта</h2>
+                <p class="section-subtitle">Кейс-гипотезы по каждому модулю платформы</p>
+            </div>
+
+            <div class="case-grid">
+                <div class="case-card">
+                    <div class="case-header">
+                        <h3>SaaS «Лови»</h3>
+                        <span class="case-status demo">Демо</span>
+                    </div>
+                    <div class="case-body">
+                        <p>Оператор лояльности для микробизнеса. Подключение к единой экосистеме баллов за 15 минут без IT-команды.</p>
+                        <div class="case-metrics">
+                            <div class="case-metric">
+                                <span class="cm-value">1 000</span>
+                                <span class="cm-label">точек (цель Q3)</span>
+                            </div>
+                            <div class="case-metric">
+                                <span class="cm-value">+22%</span>
+                                <span class="cm-label">рост выручки клиента</span>
+                            </div>
+                            <div class="case-metric">
+                                <span class="cm-value">300 ₽</span>
+                                <span class="cm-label">ср. доход с точки</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="case-card">
+                    <div class="case-header">
+                        <h3>Цифровая витрина</h3>
+                        <span class="case-status demo">Демо</span>
+                    </div>
+                    <div class="case-body">
+                        <p>Виртуальная полка для локальных производителей. Загрузка товаров, учёт остатков, приём заказов с доставкой.</p>
+                        <div class="case-metrics">
+                            <div class="case-metric">
+                                <span class="cm-value">200</span>
+                                <span class="cm-label">товаров на витрине</span>
+                            </div>
+                            <div class="case-metric">
+                                <span class="cm-value">15 000 ₽</span>
+                                <span class="cm-label">ср. оборот точки</span>
+                            </div>
+                            <div class="case-metric">
+                                <span class="cm-value">5%</span>
+                                <span class="cm-label">комиссия платформы</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="case-card">
+                    <div class="case-header">
+                        <h3>Партнёрства</h3>
+                        <span class="case-status ready">Орг. вопросы решены</span>
+                    </div>
+                    <div class="case-body">
+                        <p>Решены организационные вопросы по подключению крупного ритейла и банка-партнёра. Запуск пилотных проектов в Q2 2026.</p>
+                        <div class="case-metrics">
+                            <div class="case-metric">
+                                <span class="cm-value">1</span>
+                                <span class="cm-label">банк-партнёр</span>
+                            </div>
+                            <div class="case-metric">
+                                <span class="cm-value">2</span>
+                                <span class="cm-label">ритейл-сети</span>
+                            </div>
+                            <div class="case-metric">
+                                <span class="cm-value">4</span>
+                                <span class="cm-label">доходных статьи</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="case-card">
+                    <div class="case-header">
+                        <h3>Финансовая инфраструктура</h3>
+                        <span class="case-status dev">Интеграция</span>
+                    </div>
+                    <div class="case-body">
+                        <p>Интеграция с банковскими платёжными агентами. СБП, эквайринг, вывод баллов на карту.</p>
+                        <div class="case-metrics">
+                            <div class="case-metric">
+                                <span class="cm-value">СБП</span>
+                                <span class="cm-label">подготовлена</span>
+                            </div>
+                            <div class="case-metric">
+                                <span class="cm-value">API</span>
+                                <span class="cm-label">в разработке</span>
+                            </div>
+                            <div class="case-metric">
+                                <span class="cm-value">1,5%</span>
+                                <span class="cm-label">комиссия эквайринга</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="case-card">
+                    <div class="case-header">
+                        <h3>City Franchise</h3>
+                        <span class="case-status dev">В разработке</span>
+                    </div>
+                    <div class="case-body">
+                        <p>Запуск локальной экосистемы в городах. Полный набор инструментов для управления районом или городом.</p>
+                        <div class="case-metrics">
+                            <div class="case-metric">
+                                <span class="cm-value">3</span>
+                                <span class="cm-label">города-пилота</span>
+                            </div>
+                            <div class="case-metric">
+                                <span class="cm-value">Q4 2026</span>
+                                <span class="cm-label">запуск</span>
+                            </div>
+                            <div class="case-metric">
+                                <span class="cm-value">500 000 ₽</span>
+                                <span class="cm-label">лицензия / город</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="case-card">
+                    <div class="case-header">
+                        <h3>Привлечение пользователей</h3>
+                        <span class="case-status ready">Каналы роста</span>
+                    </div>
+                    <div class="case-body">
+                        <p>Пользователей привлекаем через социальные сети, банки и сотовых операторов по прямым интеграциям.</p>
+                        <div class="case-metrics">
+                            <div class="case-metric">
+                                <span class="cm-value">30M+</span>
+                                <span class="cm-label">потенциальных пользователей</span>
+                            </div>
+                            <div class="case-metric">
+                                <span class="cm-value">5 000</span>
+                                <span class="cm-label">первые клиенты</span>
+                            </div>
+                            <div class="case-metric">
+                                <span class="cm-value">CAC 300 ₽</span>
+                                <span class="cm-label">стоимость привлечения</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="roadmap" class="roadmap-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Путь к масштабированию</h2>
+                <p class="section-subtitle">От демо — к работающему бизнесу</p>
+            </div>
+            <div class="roadmap">
+                <div class="roadmap-item completed">
+                    <div class="roadmap-marker">✓</div>
+                    <div class="roadmap-content">
+                        <h3>Этап 1: Демо (Q1 2026)</h3>
+                        <p>Готова предрелизная демо-платформа с полной функциональностью. Подготовлены интеграции с СБП. Подготовлена инфраструктура для запуска.</p>
+                    </div>
+                </div>
+                <div class="roadmap-item active">
+                    <div class="roadmap-marker">→</div>
+                    <div class="roadmap-content">
+                        <h3>Этап 2: MVP + Пилоты (Q2–Q3 2026)</h3>
+                        <p>Запуск пилотных проектов с банком-партнёром и ритейлом. Первая выручка от SaaS-подписок. Подтверждение product-market fit.</p>
+                    </div>
+                </div>
+                <div class="roadmap-item">
+                    <div class="roadmap-marker">3</div>
+                    <div class="roadmap-content">
+                        <h3>Этап 3: Масштабирование (Q4 2026 – 2027)</h3>
+                        <p>Экспансия в новые города. Рост пользовательской базы. Запуск City Franchise в регионах. Выход на операционную окупаемость продукта.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="calculator" class="calc-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Калькулятор доходности</h2>
+                <p class="section-subtitle">Рассчитайте доход от инвестиции в ЦФА LOVII</p>
+            </div>
+            <div class="calc-layout">
+                <div class="calc-form">
+                    <label for="invest-amount">Сумма инвестиции</label>
+                    <div class="input-group">
+                        <span>₽</span>
+                        <input type="number" id="invest-amount" value="100000" min="1000" step="1000">
+                    </div>
+                    <div style="font-size:0.8rem;color:var(--text-secondary);margin-top:-12px;">Минимальная сумма: 1 000 ₽</div>
+                </div>
+                <div class="calc-results" id="calc-results">
+                    <div class="calc-result-item">
+                        <span class="crl-label">Квартальная выплата</span>
+                        <span class="crl-value" id="calc-quarterly">5 096 ₽</span>
+                    </div>
+                    <div class="calc-result-item">
+                        <span class="crl-label">Доход за 9 месяцев</span>
+                        <span class="crl-value" id="calc-total-profit">15 288 ₽</span>
+                    </div>
+                    <div class="calc-result-item highlight">
+                        <span class="crl-label">Итоговая сумма возврата в январе 2027</span>
+                        <span class="crl-value" id="calc-total-return">115 288 ₽</span>
+                    </div>
+                    <div style="font-size:0.75rem;color:var(--text-secondary);padding:10px 5px;">* Расчёт на основе фиксированной ставки 21% годовых от номинала ЦФА. Фактический доход может незначительно отличаться в зависимости от даты приобретения.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="screenshots">
+        <div class="container">
+            <div class="section-header">
+                <div class="screenshots-logo">
+                    <img src="img/logos/lovii-logo.svg" alt="LOVII" class="logo-light">
+                    <img src="img/logos/lovii-logo_dark.svg" alt="LOVII" class="logo-dark">
+                </div>
+                <h2 class="section-title">Интерфейс системы</h2>
+                <p class="section-subtitle">Скриншоты партнёрского кабинета и админки</p>
+            </div>
+
+            <div class="carousel">
+                <div class="carousel-track">
+                    <div class="carousel-slide">
+                        <img src="screens/1.png" alt="Вход для партнёров">
+                        <div class="carousel-caption">Вход для партнёров</div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="screens/2.png" alt="Кабинет партнёра">
+                        <div class="carousel-caption">Кабинет партнёра</div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="screens/3.png" alt="Кабинет партнёра">
+                        <div class="carousel-caption">Кабинет партнёра</div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="screens/4.png" alt="Админка">
+                        <div class="carousel-caption">Админка: список ритейлеров</div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="screens/5.webp" alt="Финтех система">
+                        <div class="carousel-caption">Финтех система: платежи и выплаты</div>
+                    </div>
+                </div>
+                <button class="carousel-btn prev" aria-label="Предыдущий">
+                    <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+                </button>
+                <button class="carousel-btn next" aria-label="Следующий">
+                    <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+                </button>
+                <div class="carousel-dots"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="funds">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Использование средств</h2>
+                <p class="section-subtitle">Детальная разбивка инвестиций 52 000 000 ₽</p>
+            </div>
+
+            <div class="funds-table">
+                <div class="funds-row funds-header">
+                    <div class="funds-col col-pct">%</div>
+                    <div class="funds-col col-amount">Сумма</div>
+                    <div class="funds-col col-desc">Направление</div>
+                    <div class="funds-col col-detail">Детали</div>
+                </div>
+                <div class="funds-row">
+                    <div class="funds-col col-pct highlight">40%</div>
+                    <div class="funds-col col-amount">20 800 000 ₽</div>
+                    <div class="funds-col col-desc">Развитие SaaS-платформы</div>
+                    <div class="funds-col col-detail">Серверная инфраструктура, API-интеграции с банками, ФОТ продуктовой команды, разработка City Franchise</div>
+                </div>
+                <div class="funds-row">
+                    <div class="funds-col col-pct highlight">25%</div>
+                    <div class="funds-col col-amount">13 000 000 ₽</div>
+                    <div class="funds-col col-desc">Маркетинг и привлечение</div>
+                    <div class="funds-col col-detail">Рекламные кампании, привлечение 5 000 первых клиентов, B2B-продажи, PR в регионах</div>
+                </div>
+                <div class="funds-row">
+                    <div class="funds-col col-pct highlight">20%</div>
+                    <div class="funds-col col-amount">10 400 000 ₽</div>
+                    <div class="funds-col col-desc">Партнёрская сеть</div>
+                    <div class="funds-col col-detail">Подключение банков-партнёров, интеграции с ритейлом, юридическое сопровождение, лицензирование</div>
+                </div>
+                <div class="funds-row">
+                    <div class="funds-col col-pct highlight">15%</div>
+                    <div class="funds-col col-amount">7 800 000 ₽</div>
+                    <div class="funds-col col-desc">Операционные расходы</div>
+                    <div class="funds-col col-detail">Административные расходы, офис, резервный фонд, непредвиденные затраты</div>
+                </div>
+                <div class="funds-row funds-total">
+                    <div class="funds-col col-pct">100%</div>
+                    <div class="funds-col col-amount">52 000 000 ₽</div>
+                    <div class="funds-col col-desc">Итого</div>
+                    <div class="funds-col col-detail">Полный объём выпуска ЦФА</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="partners">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Интеграции и партнёры</h2>
+                <p class="section-subtitle">Создаём синергию с крупными игроками рынка</p>
+            </div>
+
+            <div class="partners-grid">
+                <div class="partner-item">Банк-партнёр</div>
+                <div class="partner-item">Крупный ритейл</div>
+                <div class="partner-item">Платёжные системы</div>
+                <div class="partner-item">Сотовые операторы</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Частые вопросы</h2>
+                <p class="section-subtitle">Ответы на ключевые вопросы инвесторов</p>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3>Почему аутсорс-компания создаёт продукт?</h3>
+                    <p>Мы 20 лет создавали IT-решения для других. Накопили экспертизу, ресурсы и понимание рынка. Сейчас запускаем собственный продукт, где наш опыт станет ключевым преимуществом.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Как распределяются ресурсы между аутсорсом и LOVII?</h3>
+                    <p>Аутсорс-бизнес работает автономно. Команда LOVII — выделенный продуктовый юнит. Финансирование продукта не влияет на операционную деятельность основного бизнеса.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Что будет, если продукт не выйдет на плановые показатели?</h3>
+                    <p>Обязательства по ЦФА обеспечены финансовой устойчивостью эмитента (выручка 166 млн ₽). Эмитент гарантирует выполнение обязательств вне зависимости от результатов продукта.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Какие риски у инвестора?</h3>
+                    <p>ЦФА — регулируемый инструмент под надзором Банка России. Эмитент зарегистрирован в РФ. Подробная информация о рисках содержится в документации выпуска.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="onboarding" class="onboarding">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Как инвестировать в ЦФА</h2>
+                <p class="section-subtitle">Простой путь от регистрации до получения дохода</p>
+            </div>
+            <div class="onboarding-steps">
+                <div class="step-card">
+                    <div class="step-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                    </div>
+                    <h4>Регистрация у оператора</h4>
+                    <p>Выберите ЦФА-оператора (например, «Атомайз») и пройдите регистрацию в личном кабинете.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                    </div>
+                    <h4>Прохождение KYC</h4>
+                    <p>Подтвердите личность согласно требованиям 115-ФЗ. Занимает от 15 минут до 1 дня.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon">
+                        <svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+                    </div>
+                    <h4>Покупка актива</h4>
+                    <p>Пополните счёт и приобретите ЦФА от 1 000 ₽. Подпишите электронную оферту.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon">
+                        <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+                    </div>
+                    <h4>Мониторинг выплат</h4>
+                    <p>Доход начисляется ежеквартально. Статус инвестиции отслеживается в личном кабинете оператора.</p>
+                </div>
+            </div>
+            <div class="onboarding-note">
+                <strong>Правовое регулирование:</strong> ЦФА (Цифровые финансовые активы) регулируются Федеральным законом № 259-ФЗ от 31.07.2020. Оператор ЦФА — лицо, включённое в реестр Банка России, обеспечивающее учёт и обращение активов. Средний срок оформления — 1 рабочий день. Минимальная сумма — 1 000 ₽.
+            </div>
+        </div>
+    </section>
+
+    <section id="docs" class="doc-hub">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Документация выпуска</h2>
+                <p class="section-subtitle">Официальные документы эмитента для верификации</p>
+            </div>
+            <div class="doc-grid">
+                <a href="docs/issue-terms/" class="doc-item">
+                    <div class="doc-icon">
+                        <svg viewBox="0 0 24 24"><path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10 5.5h1v-3h-1v3z"/></svg>
+                    </div>
+                    <div class="doc-info">
+                        <h4>Решение о выпуске ЦФА</h4>
+                        <p>Юридический документ, определяющий параметры актива: доходность, срок, порядок погашения</p>
+                    </div>
+                    <span class="doc-tag required">Обязательный</span>
+                    <span class="doc-arrow">↗</span>
+                </a>
+                <a href="docs/whitepaper/" class="doc-item">
+                    <div class="doc-icon">
+                        <svg viewBox="0 0 24 24"><path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10 5.5h1v-3h-1v3z"/></svg>
+                    </div>
+                    <div class="doc-info">
+                        <h4>Whitepaper LOVII</h4>
+                        <p>Технический паспорт продукта: архитектура, экономическая модель, дорожная карта</p>
+                    </div>
+                    <span class="doc-tag info">Для анализа</span>
+                    <span class="doc-arrow">↗</span>
+                </a>
+                <a href="docs/risk-policy/" class="doc-item">
+                    <div class="doc-icon">
+                        <svg viewBox="0 0 24 24"><path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10 5.5h1v-3h-1v3z"/></svg>
+                    </div>
+                    <div class="doc-info">
+                        <h4>Политика управления рисками</h4>
+                        <p>Сценарии защиты инвестиций, гарантии эмитента, порядок действий в стрессовых ситуациях</p>
+                    </div>
+                    <span class="doc-tag info">Для анализа</span>
+                    <span class="doc-arrow">↗</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>Готовы инвестировать в LOVII?</h2>
+            <p>Минимальная сумма инвестиции — 1 000 ₽. Доходность до 21% годовых, срок 9 месяцев.</p>
+            <a href="mailto:invest@lovii.ru?subject=Инвестиция в LOVII ЦФА" class="btn">Связаться с нами</a>
+        </div>
+    </section>
+
+    <!-- Company Details -->
+    
+
+    <footer>
+        <div class="container">
+            <p>Контактный email: <a href="mailto:invest@lovii.ru" style="color: var(--accent-color);">invest@lovii.ru</a></p>
+            <div class="footer-links">
+                <a href="docs/privacy/" style="color: var(--accent-color);">Политика конфиденциальности</a>
+                <a href="docs/terms/" style="color: var(--accent-color);">Пользовательское соглашение</a>
+                <a href="#docs" style="color: var(--accent-color);">Документация выпуска</a>
+            </div>
+            <p class="disclaimer">
+                Информация, представленная на данном сайте, не является индивидуальной инвестиционной рекомендацией. 
+                ЦФА являются высокорискованным инструментом. Перед совершением сделок ознакомьтесь с рисками и 
+                документацией по выпуску цифровых финансовых активов.
+            </p>
+            <p style="margin-top: 20px;">© 2026 LOVII. Все права защищены. Эмитент — ООО «Аксиома».</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById('theme-toggle');
+            const body = document.body;
+            
+            const savedTheme = localStorage.getItem('lovii-theme') || 'light';
+            body.setAttribute('data-theme', savedTheme);
+            
+            themeToggle.addEventListener('click', function() {
+                const currentTheme = body.getAttribute('data-theme');
+                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                body.setAttribute('data-theme', newTheme);
+                localStorage.setItem('lovii-theme', newTheme);
+            });
+            
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const href = this.getAttribute('href');
+                    if (href === '#') {
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                        return;
+                    }
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+
+            const track = document.querySelector('.carousel-track');
+            const slides = document.querySelectorAll('.carousel-slide');
+            const dotsContainer = document.querySelector('.carousel-dots');
+            const prevBtn = document.querySelector('.carousel-btn.prev');
+            const nextBtn = document.querySelector('.carousel-btn.next');
+            let currentIndex = 0;
+
+            slides.forEach((_, i) => {
+                const dot = document.createElement('button');
+                dot.classList.add('carousel-dot');
+                if (i === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => goToSlide(i));
+                dotsContainer.appendChild(dot);
+            });
+
+            const dots = document.querySelectorAll('.carousel-dot');
+
+            function goToSlide(index) {
+                currentIndex = index;
+                track.style.transform = `translateX(-${index * 100}%)`;
+                dots.forEach((d, i) => d.classList.toggle('active', i === index));
+            }
+
+            function nextSlide() {
+                goToSlide((currentIndex + 1) % slides.length);
+            }
+
+            function prevSlide() {
+                goToSlide((currentIndex - 1 + slides.length) % slides.length);
+            }
+
+            nextBtn.addEventListener('click', nextSlide);
+            prevBtn.addEventListener('click', prevSlide);
+
+            let autoplay = setInterval(nextSlide, 5000);
+
+            document.querySelector('.carousel').addEventListener('mouseenter', () => clearInterval(autoplay));
+            document.querySelector('.carousel').addEventListener('mouseleave', () => {
+                autoplay = setInterval(nextSlide, 5000);
+            });
+
+            // Calculator
+            const calcInput = document.getElementById('invest-amount');
+            if (calcInput) {
+                function calcProfit() {
+                    const amount = parseFloat(calcInput.value) || 0;
+                    const rate = 0.21;
+                    const months = 9;
+                    const quarterly = amount * rate / 4;
+                    const totalProfit = amount * rate * months / 12;
+                    const totalReturn = amount + totalProfit;
+                    document.getElementById('calc-quarterly').textContent = Math.round(quarterly).toLocaleString('ru-RU') + ' ₽';
+                    document.getElementById('calc-total-profit').textContent = Math.round(totalProfit).toLocaleString('ru-RU') + ' ₽';
+                    document.getElementById('calc-total-return').textContent = Math.round(totalReturn).toLocaleString('ru-RU') + ' ₽';
+                }
+                calcInput.addEventListener('input', calcProfit);
+                calcProfit();
+            }
+
+            // Mobile nav active state
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+            const sections = document.querySelectorAll('section[id]');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (window.scrollY >= sectionTop - 200) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                mobileNavLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            // Drawer logic
+            const drawerOverlay = document.getElementById('drawerOverlay');
+            const drawerToggle = document.getElementById('drawerToggle');
+            const drawerClose = document.getElementById('drawerClose');
+
+            if (drawerToggle && drawerOverlay) {
+                drawerToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    drawerOverlay.classList.add('open');
+                    document.body.style.overflow = 'hidden';
+                });
+
+                function closeDrawer() {
+                    drawerOverlay.classList.remove('open');
+                    document.body.style.overflow = '';
+                }
+
+                if (drawerClose) drawerClose.addEventListener('click', closeDrawer);
+                drawerOverlay.addEventListener('click', function(e) {
+                    if (e.target === drawerOverlay) closeDrawer();
+                });
+
+                // Close drawer on nav click
+                drawerOverlay.querySelectorAll('.drawer-item').forEach(item => {
+                    item.addEventListener('click', function() {
+                        setTimeout(closeDrawer, 100);
+                    });
+                });
+            }
+        });
+    </script>
+
+    <!-- Mobile Navigation (hidden on desktop) -->
+        <nav class="mobile-nav">
+        <a href="./">
+            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span>Главная</span>
+        </a>
+        <a href="strategy/">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+            <span>Стратегия</span>
+        </a>
+        <a href="presentation/">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            <span>Презентация</span>
+        </a>
+        <a href="#docs">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            <span>Документы</span>
+        </a>
+        <a href="#" id="drawerToggle">
+            <svg viewBox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+            <span>Меню</span>
+        </a>
+    </nav>
+
+    <!-- Mobile Drawer -->
+    <div class="drawer-overlay" id="drawerOverlay">
+        <div class="drawer-sheet">
+            <button class="drawer-close" id="drawerClose">✕</button>
+
+            <div class="drawer-section">
+                <div class="drawer-section-title">Главное</div>
+                <div class="drawer-items">
+                    <a href="#" class="drawer-item active"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> Главная</a>
+                    <a href="strategy/" class="drawer-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg> Стратегия</a>
+                    <a href="presentation/" class="drawer-item"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg> Презентация</a>
+                </div>
+            </div>
+
+            <div class="drawer-section">
+                <div class="drawer-section-title">О проекте</div>
+                <div class="drawer-items">
+                    <a href="#issuer" class="drawer-item"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Эмитент</a>
+                    <a href="#targets" class="drawer-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg> Условия</a>
+                    <a href="#product" class="drawer-item"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg> Продукт</a>
+                    <a href="#team" class="drawer-item"><svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg> Команда</a>
+                </div>
+            </div>
+
+            <div class="drawer-section">
+                <div class="drawer-section-title">Документация</div>
+                <div class="drawer-items">
+                    <a href="docs/issue-terms/" class="drawer-item"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> Решение о выпуске</a>
+                    <a href="docs/whitepaper/" class="drawer-item"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> Whitepaper</a>
+                    <a href="docs/risk-policy/" class="drawer-item"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Политика рисков</a>
+                </div>
+            </div>
+
+            <div class="drawer-section">
+                <div class="drawer-section-title">Связь</div>
+                <div class="drawer-items">
+                    <a href="mailto:invest@lovii.ru" class="drawer-item"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> invest@lovii.ru</a>
+                    <a href="#details" class="drawer-item"><svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6z"/><path d="M16 2v6h6"/></svg> Реквизиты</a>
+                </div>
+            </div>
+            
+            <div style="height: 80px;"></div> <!-- Отступ чтобы контент не перекрывался навигацией -->
+        </div>
+    </div>
+
+    <!-- Floating Navigation -->
+    <nav class="floating-nav">
+        <a href="#">
+            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span class="nav-label">Главная</span>
+        </a>
+        <a href="#issuer">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span class="nav-label">Эмитент</span>
+        </a>
+        <a href="#targets">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+            <span class="nav-label">Условия</span>
+        </a>
+        <a href="#product">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            <span class="nav-label">Продукт</span>
+        </a>
+        <a href="#docs">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            <span class="nav-label">Документы</span>
+        </a>
+        <a href="strategy/">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+            <span class="nav-label">Стратегия</span>
+        </a>
+        <a href="presentation/">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            <span class="nav-label">Презентация</span>
+        </a>
+    </nav>
+
+    <script>
+            // Nav Manager — active state from URL
+            (function() {
+                const path = window.location.pathname;
+                const navLinks = document.querySelectorAll('.floating-nav a, .mobile-nav a, .drawer-item');
+                navLinks.forEach(function(link) {
+                    const href = link.getAttribute('href');
+                    if (!href) return;
+                    // Match by path
+                    if (path.includes(href.replace('./', '').replace('../', '').replace('/', ''))) {
+                        link.classList.add('active');
+                    }
+                    // Handle root
+                    if ((path.endsWith('/index.html') || path.endsWith('/') || path.endsWith('lovii_presentation')) && 
+                        (href === './' || href === '#' || href === 'index.html' || href === '/')) {
+                        link.classList.add('active');
+                    }
+                });
+            })();
+    </script>
+    <script>
+    </script>
+    <script src="js/navigation.js"></script>
+</body>
+</html>

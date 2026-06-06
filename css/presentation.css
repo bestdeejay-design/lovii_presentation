@@ -1,0 +1,384 @@
+/* presentation.css — уникальные стили страницы presentation */
+
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+.main {
+            padding-top: 80px;
+        }
+
+.intro {
+            text-align: center;
+            padding: 60px 20px 40px;
+            background: var(--section-alt);
+        }
+
+.intro h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+.intro p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+        }
+
+.presentation-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 4px;
+            margin: 0 auto 30px;
+            padding: 4px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            width: fit-content;
+        }
+
+.tab-btn {
+            padding: 12px 28px;
+            border: none;
+            background: transparent;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            font-weight: 500;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: 'Inter', sans-serif;
+            white-space: nowrap;
+            position: relative;
+        }
+
+.tab-btn:hover {
+            color: var(--accent-color);
+            background: rgba(13, 148, 136, 0.06);
+        }
+
+.tab-btn.active {
+            background: var(--accent-color);
+            color: white;
+            box-shadow: 0 2px 12px rgba(13, 148, 136, 0.35);
+        }
+
+.slides-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+.slide-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+.slide-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+.slide-card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+.slide-thumb {
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            background: var(--bg-color);
+            position: relative;
+            cursor: pointer;
+        }
+
+.slide-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: all 0.4s;
+        }
+
+.slide-card:hover .slide-thumb img {
+            transform: scale(1.03);
+        }
+
+.slide-caption {
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+.slide-caption .slide-num {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            background: rgba(13, 148, 136, 0.1);
+            padding: 3px 10px;
+            border-radius: 6px;
+        }
+
+.slide-caption .slide-title {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+
+.slide-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.9);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+
+.slide-modal.open {
+            display: flex;
+        }
+
+.slide-modal img {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+.slide-modal .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            opacity: 0.7;
+        }
+
+.slide-modal .close-btn:hover {
+            opacity: 1;
+        }
+
+.slide-modal .modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            opacity: 0.5;
+            padding: 20px;
+        }
+
+.slide-modal .modal-nav:hover {
+            opacity: 1;
+        }
+
+.slide-modal .modal-nav.prev { left: 10px; }
+
+.slide-modal .modal-nav.next { right: 10px; }
+
+.presentation-actions {
+            margin-top: 40px;
+            padding: 30px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            text-align: center;
+        }
+
+.presentation-actions::before {
+            content: 'Скачать презентацию';
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+.presentation-actions .btn-pdf {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            background: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.25s;
+            margin: 4px 6px;
+        }
+
+.presentation-actions .btn-pdf:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+@media (min-width: 769px) {
+            .drawer-overlay { display: none !important; }
+        }
+
+.funds-col.col-detail {
+                display: none;
+            }
+
+.funds-header .col-detail {
+                display: flex;
+            }
+
+.logo-showcase {
+                padding: 40px 15px;
+            }
+
+.main-content {
+                padding-top: 80px;
+            }
+
+@media print { .floating-nav { display: none !important; } }
+
+@media (max-width: 480px) {
+            /* Цели продукта — мобильная адаптация */
+            .investment-card {
+                padding: 24px 20px;
+            }
+
+            .investment-value {
+                font-size: 2rem;
+            }
+
+            .investment-details div {
+                flex-direction: column;
+                gap: 4px;
+                padding: 10px 0;
+                font-size: 0.85rem;
+            }
+
+            .investment-details div span:first-child {
+                color: var(--text-secondary);
+                font-size: 0.75rem;
+                font-weight: 500;
+            }
+
+            /* Документация выпуска — мобильная адаптация */
+            .doc-item {
+                flex-wrap: wrap;
+                padding: 16px 18px;
+                gap: 14px;
+            }
+
+            .doc-icon {
+                width: 38px;
+                height: 38px;
+            }
+
+            .doc-icon svg {
+                width: 18px;
+                height: 18px;
+            }
+
+            .doc-info {
+                min-width: calc(100% - 52px);
+            }
+
+            .doc-info h4 {
+                font-size: 0.9rem;
+                line-height: 1.3;
+                margin-bottom: 6px;
+            }
+
+            .doc-info p {
+                font-size: 0.75rem;
+                line-height: 1.4;
+            }
+
+            .doc-tag {
+                font-size: 0.65rem;
+                padding: 3px 8px;
+                order: 3;
+                width: 100%;
+                text-align: center;
+                margin-top: 4px;
+            }
+
+            .doc-arrow {
+                display: none;
+            }
+        }
+
+@keyframes pageFadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+@media (max-width: 768px) {
+            .presentation-tabs {
+                width: 100% !important;
+                border-radius: 12px;
+                gap: 2px;
+            }
+
+            .tab-btn {
+                flex: 1 !important;
+                padding: 12px 8px !important;
+                font-size: 0.8rem !important;
+                text-align: center;
+                border-radius: 8px;
+            }
+
+            .slide-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .slide-card .slide-thumb img {
+                border-radius: 8px;
+            }
+
+            .presentation-actions {
+                margin-top: 30px;
+                padding: 20px 16px;
+            }
+
+            .presentation-actions .btn-pdf {
+                display: flex;
+                width: 100%;
+                justify-content: center;
+                margin: 4px 0;
+            }
+
+            .slide-modal {
+                padding: 20px;
+            }
+
+            .slide-modal img {
+                max-height: 70vh;
+            }
+
+            .slide-modal .modal-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 1.5rem;
+            }
+        }
+
+@media (min-width: 1440px) {
+            .floating-nav {
+                right: calc((100vw - 1200px) / 2 - 60px);
+            }
+        }

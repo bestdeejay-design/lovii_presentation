@@ -1,0 +1,171 @@
+/* docs.css — единые стили для всех страниц документов */
+/* nav-bar, doc-wrapper, doc-header, doc-body, doc-table, footer */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Noto Serif', 'Times New Roman', serif;
+            background: #f5f5f5;
+            color: #1a1a1a;
+            line-height: 1.8;
+            font-size: 16px;
+        }
+        .nav-bar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            background: #fff;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 12px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Inter', sans-serif;
+        }
+        .nav-bar a {
+            color: #0D9488;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        .nav-bar a:hover { text-decoration: underline; }
+        .nav-bar .print-btn {
+            padding: 6px 14px;
+            border: 1px solid #0D9488;
+            background: transparent;
+            color: #0D9488;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 500;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .nav-bar .print-btn:hover { background: #0D9488; color: #fff; }
+        .nav-bar .print-btn svg { width: 16px; height: 16px; }
+        .doc-wrapper {
+            max-width: 900px;
+            margin: 80px auto 60px;
+            background: #fff;
+            box-shadow: 0 2px 40px rgba(0,0,0,0.08);
+            padding: 80px 100px;
+            animation: pageFadeIn 0.4s ease-out;
+        }
+        .doc-header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding-bottom: 40px;
+            border-bottom: 2px solid #1a1a1a;
+        }
+        .doc-header .org-name {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-family: 'Inter', sans-serif;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        .doc-header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 15px;
+            font-family: 'Inter', sans-serif;
+        }
+        .doc-header .doc-ref {
+            font-size: 0.85rem;
+            color: #666;
+            font-family: 'Inter', sans-serif;
+        }
+        .doc-header .doc-ref span { display: inline-block; margin: 0 20px; }
+        .doc-body h2 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin: 40px 0 20px;
+            font-family: 'Inter', sans-serif;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 8px;
+        }
+        .doc-body h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 25px 0 12px;
+            font-family: 'Inter', sans-serif;
+        }
+        .doc-body h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 20px 0 10px;
+            font-family: 'Inter', sans-serif;
+        }
+        .doc-body p { margin-bottom: 14px; text-align: justify; }
+        .doc-body ul, .doc-body ol { margin: 10px 0 20px 25px; }
+        .doc-body li { margin-bottom: 8px; }
+        .doc-body a { color: #0D9488; text-decoration: none; }
+        .doc-body a:hover { text-decoration: underline; }
+        .doc-body .highlight {
+            background: #f0fdfa;
+            border: 1px solid #0D9488;
+            border-radius: 8px;
+            padding: 20px 25px;
+            margin: 20px 0;
+        }
+        .doc-body .highlight h4 { margin-top: 0; color: #0D9488; }
+        .doc-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0 30px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+        }
+        .doc-table th {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 10px 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        .doc-table td {
+            padding: 10px 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .doc-table tr:nth-child(even) td { background: #f8f8f8; }
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            background: #f5f5f5;
+            border-top: 1px solid #e0e0e0;
+        }
+        .footer p { color: #666; font-size: 0.9rem; }
+        .footer a { color: #0D9488; text-decoration: none; }
+        .footer a:hover { text-decoration: underline; }
+        .footer-links { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 20px; }
+        .footer-links a { font-size: 0.85rem; }
+        .disclaimer { color: #666; font-size: 0.85rem; max-width: 700px; margin: 15px auto 0; }
+        @keyframes pageFadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @media (max-width: 768px) {
+            body { overflow-x: hidden; }
+            .nav-bar { padding: 10px 16px; }
+            .doc-wrapper { padding: 60px 24px; margin: 70px auto 40px; overflow-x: hidden; }
+            .doc-header h1 { font-size: 1.5rem; }
+            .doc-header .doc-ref span { display: block; margin: 4px 0; }
+            .doc-body h2 { font-size: 1.1rem; }
+            .doc-body p { word-wrap: break-word; overflow-wrap: break-word; }
+            .doc-table { font-size: 0.8rem; display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+            .doc-table th, .doc-table td { padding: 8px 10px; white-space: nowrap; }
+            img, svg { max-width: 100%; height: auto; }
+        }
+        @media print {
+            .nav-bar { display: none; }
+            .doc-wrapper { margin: 0; box-shadow: none; padding: 40px 60px; max-width: 100%; }
+            body { background: #fff; font-size: 12pt; }
+            .doc-table th { background: #000; }
+            .page-break { page-break-before: always; }
+            @page { margin: 2cm; }
+        }
