@@ -110,8 +110,47 @@
     }
     
     // ============================================================
-    // CALCULATOR (только на index.html где есть #store-count)
+    // FLOATING NAV — build from headings for dynamic pages (whitepaper)
     // ============================================================
+    function initFloatingNavFromHeadings() {
+        const floatingNav = document.querySelector('.floating-nav #floating-nav-content');
+        const toggle = document.querySelector('.floating-nav #floating-nav-toggle');
+        if (!floatingNav) return;
+
+        const headings = document.querySelectorAll('.doc-body h2, .doc-body h3');
+        if (!headings.length) return;
+
+        floatingNav.innerHTML = '';
+        headings.forEach((h, i) => {
+            const id = h.id || `heading-${i}`;
+            h.id = id;
+            const a = document.createElement('a');
+            a.href = `#${id}`;
+            a.innerHTML = `<span class="nav-label">${h.textContent}</span>`;
+            a.setAttribute('data-level', h.tagName.toLowerCase());
+            floatingNav.appendChild(a);
+        });
+
+        // Toggle behavior
+        if (toggle) {
+            toggle.addEventListener('click', () => {
+                floatingNav.classList.toggle('open');
+                toggle.setAttribute('aria-expanded', floatingNav.classList.contains('open'));
+            });
+        }
+
+        // Smooth scroll
+        floatingNav.querySelectorAll('a').forEach(a => {
+            a.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(a.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    floatingNav.classList.remove('open');
+                }
+            });
+        });
+    }
     function initCalculator() {
         const input = document.getElementById('store-count');
         if (!input) return;
@@ -156,6 +195,7 @@
         initTheme();
         initDrawer();
         initNavManager();
+        initFloatingNavFromHeadings();
         initCalculator();
     });
 })();
