@@ -1785,12 +1785,12 @@ footer {
             <span class="step-line"></span>
             <span class="status-step">
                 <span class="step-dot"></span>
-                <span class="status-label">Сбор заявок</span>
+                <span class="status-label">Привлечение</span>
             </span>
             <span class="step-line"></span>
             <span class="status-step">
                 <span class="step-dot"></span>
-                <span class="status-label">Выпуск</span>
+                <span class="status-label">Запуск</span>
             </span>
         </div>
         <div class="header-inner">
@@ -1859,12 +1859,147 @@ footer {
             <div class="footer-links">
                 <a href="../docs/privacy/" style="color: var(--accent-color);">Политика конфиденциальности</a>
                 <a href="../docs/terms/" style="color: var(--accent-color);">Пользовательское соглашение</a>
-                <a href="../../#docs" style="color: var(--accent-color);">Документация выпуска</a>
+                <a href="../#docs" style="color: var(--accent-color);">Документация</a>
             </div>
             <p class="disclaimer">Информация, представленная на данном сайте, не является индивидуальной инвестиционной рекомендацией. Инвестиции в долю сопряжены с рисками. Перед совершением сделок ознакомьтесь с рисками и документацией.</p>
             <p style="margin-top: 20px;">© 2026 LOVII. Все права защищены. LOVII — продукт ООО «Аксиома».</p>
         </footer>
     </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById('theme-toggle');
+            const body = document.body;
+            
+            const savedTheme = localStorage.getItem('lovii-theme') || 'light';
+            body.setAttribute('data-theme', savedTheme);
+            
+            themeToggle.addEventListener('click', function() {
+                const currentTheme = body.getAttribute('data-theme');
+                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                body.setAttribute('data-theme', newTheme);
+                localStorage.setItem('lovii-theme', newTheme);
+            });
+
+            // Tab + slides logic
+            const presData = {
+                general: { prefix: 'general', total: 13 },
+                investor: { prefix: 'investor', total: 15 },
+                supplier: { prefix: 'supplier', total: 12 }
+            };
+
+            let activePres = 'general';
+            let currentSlide = 0;
+
+            const slideGrid = document.getElementById('slideGrid');
+            const modal = document.getElementById('slideModal');
+            const modalImg = document.getElementById('modalImage');
+            const tabBtns = document.querySelectorAll('.tab-btn');
+
+            function buildSlides(prefix, total) {
+                slideGrid.innerHTML = '';
+                for (let i = 0; i < total; i++) {
+                    const num = String(i + 1).padStart(2, '0');
+                    const card = document.createElement('div');
+                    card.className = 'slide-card';
+                    card.dataset.slide = i;
+                    card.innerHTML = `
+                        <div class="slide-thumb">
+                            <img loading="lazy" src="../pdf_images/${prefix}-${num}.png" alt="Слайд ${i + 1}">
+                        </div>
+                        <div class="slide-caption">
+                            <span class="slide-num">${i + 1}/${total}</span>
+                        </div>`;
+                    card.querySelector('.slide-thumb').addEventListener('click', function() {
+                        currentSlide = i;
+                        openSlide(i);
+                    });
+                    slideGrid.appendChild(card);
+                }
+            }
+
+            function openSlide(index) {
+                currentSlide = index;
+                const num = String(index + 1).padStart(2, '0');
+                modalImg.src = '../pdf_images/' + presData[activePres].prefix + '-' + num + '.png';
+                modal.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function navigate(dir) {
+                const total = presData[activePres].total;
+                currentSlide = (currentSlide + dir + total) % total;
+                const num = String(currentSlide + 1).padStart(2, '0');
+                modalImg.src = '../pdf_images/' + presData[activePres].prefix + '-' + num + '.png';
+            }
+
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    activePres = this.dataset.pres;
+                    currentSlide = 0;
+                    buildSlides(presData[activePres].prefix, presData[activePres].total);
+                });
+            });
+
+            // Build initial slides
+            buildSlides('general', 13);
+
+            // Modal controls
+            document.getElementById('modalClose').addEventListener('click', function() {
+                modal.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.classList.remove('open');
+                    document.body.style.overflow = '';
+                }
+            });
+
+            document.getElementById('modalPrev').addEventListener('click', function() { navigate(-1); });
+            document.getElementById('modalNext').addEventListener('click', function() { navigate(1); });
+
+            document.addEventListener('keydown', function(e) {
+                if (!modal.classList.contains('open')) return;
+                if (e.key === 'Escape') { modal.classList.remove('open'); document.body.style.overflow = ''; }
+                if (e.key === 'ArrowLeft') navigate(-1);
+                if (e.key === 'ArrowRight') navigate(1);
+            });
+            // Drawer logic
+            const drawerOverlay = document.getElementById('drawerOverlay');
+            const drawerToggle = document.getElementById('drawerToggle');
+            const drawerClose = document.getElementById('drawerClose');
+
+            if (drawerToggle && drawerOverlay) {
+                drawerToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    drawerOverlay.classList.add('open');
+                    document.body.style.overflow = 'hidden';
+                });
+
+                function closeDrawer() {
+                    drawerOverlay.classList.remove('open');
+                    document.body.style.overflow = '';
+                }
+
+                if (drawerClose) drawerClose.addEventListener('click', closeDrawer);
+                drawerOverlay.addEventListener('click', function(e) {
+                    if (e.target === drawerOverlay) closeDrawer();
+                });
+
+                drawerOverlay.querySelectorAll('.drawer-item').forEach(item => {
+                    item.addEventListener('click', function() {
+                        setTimeout(closeDrawer, 100);
+                    });
+                });
+            }
+
+        });
+    </script>
+
     <!-- Mobile Navigation -->
             <nav class="mobile-nav">
         <a href="../">
@@ -1963,7 +2098,28 @@ footer {
         </a>
     </nav>
 
+    <script>
+            // Nav Manager — active state from URL
+            (function() {
+                const path = window.location.pathname;
+                const navLinks = document.querySelectorAll('.floating-nav a, .mobile-nav a, .drawer-item');
+                navLinks.forEach(function(link) {
+                    const href = link.getAttribute('href');
+                    if (!href) return;
+                    // Match by path
+                    if (path.includes(href.replace('./', '').replace('../', '').replace('/', ''))) {
+                        link.classList.add('active');
+                    }
+                    // Handle root
+                    if ((path.endsWith('/index.html') || path.endsWith('/') || path.endsWith('lovii_presentation')) && 
+                        (href === './' || href === '#' || href === 'index.html' || href === '/')) {
+                        link.classList.add('active');
+                    }
+                });
+            })();
+    </script>
+    <script>
+    </script>
     <script src="../js/navigation.js"></script>
-    <script src="../js/app.js"></script>
 </body>
 </html>
