@@ -1,5 +1,7 @@
 // navigation.js — единое меню drawer для всех страниц LOVII
 // Автоматически подставляет правильные относительные пути
+// Отвечает ТОЛЬКО за: построение HTML drawer + close behavior (close btn, overlay click, link click)
+// Открытие drawer теперь в app.js
 
 (function() {
     const path = window.location.pathname;
@@ -27,13 +29,12 @@
             { label: 'Презентация',   href: prefix + 'presentation/', icon: 'monitor' },
         ]},
         { section: 'О проекте', items: [
-            { label: 'Эмитент',       href: prefix + '#issuer', icon: 'shield' },
+            { label: 'Компания',       href: prefix + '#issuer', icon: 'shield' },
             { label: 'Условия',       href: prefix + '#targets', icon: 'target' },
             { label: 'Продукт',       href: prefix + '#product', icon: 'grid' },
             { label: 'Команда',       href: prefix + '#team', icon: 'users' },
         ]},
         { section: 'Документация', items: [
-            { label: 'Решение о выпуске', href: prefix + 'docs/issue-terms/', icon: 'fileText' },
             { label: 'Whitepaper',        href: prefix + 'docs/whitepaper/', icon: 'star' },
             { label: 'Политика рисков',   href: prefix + 'docs/risk-policy/', icon: 'shield' },
         ]},
@@ -58,7 +59,6 @@
     if (sheet) {
         sheet.innerHTML = html;
         
-        // Перепривязываем close (старая кнопка удалена, нужен новый listener)
         const drawerOverlay = document.getElementById('drawerOverlay');
         const newClose = document.getElementById('drawerClose');
         
@@ -71,7 +71,7 @@
             newClose.addEventListener('click', closeDrawer);
         }
         
-        // Активная ссылка
+        // Активная ссылка + закрытие при клике на ссылку
         sheet.querySelectorAll('.drawer-item').forEach(link => {
             const href = link.getAttribute('href');
             if (href && href !== '#' && !href.startsWith('mailto:')) {
@@ -80,33 +80,18 @@
                     link.classList.add('active');
                 }
             }
-            // Закрывать drawer при клике на ссылку
             link.addEventListener('click', function() {
                 setTimeout(closeDrawer, 100);
             });
         });
+        
+        // Закрытие по клику на оверлей
+        if (drawerOverlay) {
+            drawerOverlay.addEventListener('click', function(e) {
+                if (e.target === drawerOverlay) {
+                    closeDrawer();
+                }
+            });
+        }
     }
 })();
-
-    // Обработчик открытия drawer (inline JS мог перестать работать после замены HTML)
-    const drawerToggle = document.getElementById('drawerToggle');
-    const drawerOverlay = document.getElementById('drawerOverlay');
-    if (drawerToggle && drawerOverlay) {
-        // Удаляем старые обработчики (клонированием)
-        const newToggle = drawerToggle.cloneNode(true);
-        drawerToggle.parentNode.replaceChild(newToggle, drawerToggle);
-        
-        newToggle.addEventListener('click', function(e) {
-            e.preventDefault();
-            drawerOverlay.classList.add('open');
-            document.body.style.overflow = 'hidden';
-        });
-        
-        drawerOverlay.addEventListener('click', function(e) {
-            if (e.target === drawerOverlay) {
-                drawerOverlay.classList.remove('open');
-                document.body.style.overflow = '';
-            }
-        });
-    }
-

@@ -7,13 +7,9 @@
     <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 
     <title>LOVII — Стратегический план развития</title>    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="stylesheet" href="../css/theme.css?v=2">
-    <link rel="stylesheet" href="../css/core.css?v=2">
-    <link rel="stylesheet" href="../css/components.css?v=2">
-    <link rel="stylesheet" href="../css/strategy.css?v=2">
-    <link rel="stylesheet" href="../css/responsive.css?v=2">    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../css/site.css">
+    <link rel="stylesheet" href="../css/strategy.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/theme.css?v=2">
     <style>
 .main { padding-top: 80px; }
 
@@ -1981,51 +1977,6 @@ main, .main, .doc-wrapper {
             <p style="margin-top: 20px;">© 2026 LOVII. Все права защищены. LOVII — продукт ООО «Аксиома».</p>
         </footer>
     </main>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const themeToggle = document.getElementById('theme-toggle');
-            const body = document.body;
-            const savedTheme = localStorage.getItem('lovii-theme') || 'light';
-            body.setAttribute('data-theme', savedTheme);
-            themeToggle.addEventListener('click', function() {
-                const currentTheme = body.getAttribute('data-theme');
-                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-                body.setAttribute('data-theme', newTheme);
-                localStorage.setItem('lovii-theme', newTheme);
-            });
-            // Drawer logic
-            const drawerOverlay = document.getElementById('drawerOverlay');
-            const drawerToggle = document.getElementById('drawerToggle');
-            const drawerClose = document.getElementById('drawerClose');
-
-            if (drawerToggle && drawerOverlay) {
-                drawerToggle.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    drawerOverlay.classList.add('open');
-                    document.body.style.overflow = 'hidden';
-                });
-
-                function closeDrawer() {
-                    drawerOverlay.classList.remove('open');
-                    document.body.style.overflow = '';
-                }
-
-                if (drawerClose) drawerClose.addEventListener('click', closeDrawer);
-                drawerOverlay.addEventListener('click', function(e) {
-                    if (e.target === drawerOverlay) closeDrawer();
-                });
-
-                drawerOverlay.querySelectorAll('.drawer-item').forEach(item => {
-                    item.addEventListener('click', function() {
-                        setTimeout(closeDrawer, 100);
-                    });
-                });
-            }
-
-        });
-    </script>
-
     <!-- Mobile Navigation -->
             <nav class="mobile-nav">
         <a href="../">
@@ -2124,28 +2075,7 @@ main, .main, .doc-wrapper {
         </a>
     </nav>
 
-    <script>
-            // Nav Manager — active state from URL
-            (function() {
-                const path = window.location.pathname;
-                const navLinks = document.querySelectorAll('.floating-nav a, .mobile-nav a, .drawer-item');
-                navLinks.forEach(function(link) {
-                    const href = link.getAttribute('href');
-                    if (!href) return;
-                    // Match by path
-                    if (path.includes(href.replace('./', '').replace('../', '').replace('/', ''))) {
-                        link.classList.add('active');
-                    }
-                    // Handle root
-                    if ((path.endsWith('/index.html') || path.endsWith('/') || path.endsWith('lovii_presentation')) && 
-                        (href === './' || href === '#' || href === 'index.html' || href === '/')) {
-                        link.classList.add('active');
-                    }
-                });
-            })();
-    </script>
-    <script>
-    </script>
     <script src="../js/navigation.js"></script>
+    <script src="../js/app.js"></script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 {
-  "name": "LOVII — Цифровая платформа",
+  "name": "LOVII — Цифровая инфраструктура локальной экономики",
   "short_name": "LOVII",
-  "description": "Инвестиционная платформа ЦФА LOVII. Цифровая инфраструктура локальной экономики.",
+  "description": "LOVII — цифровая инфраструктура локальной экономики. Инвестиции в долю компании.",
   "start_url": "/lovii_presentation/",
   "scope": "/lovii_presentation/",
   "display": "standalone",
