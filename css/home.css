@@ -394,23 +394,7 @@
     }
 
     /* Enhanced Funds */
-    .fund-amount {
-        display: block;
-        font-size: 1rem;
-        font-weight: 700;
-        color: var(--accent-color);
-        margin-top: 4px;
-    }
 
-    .fund-breakdown {
-        display: block;
-        font-size: 0.8rem;
-        color: var(--text-secondary);
-        margin-top: 6px;
-        line-height: 1.4;
-    }
-
-    
 
     /* Sections */
     /* Cards Grid */
@@ -453,47 +437,6 @@
     /* About Section */
     .about {
         background: var(--section-alt);
-    }
-
-    .about-content {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 60px;
-        align-items: center;
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-
-    .about-text h3 {
-        font-size: 2rem;
-        margin-bottom: 20px;
-    }
-
-    .about-text p {
-        color: var(--text-secondary);
-        margin-bottom: 20px;
-        line-height: 1.8;
-    }
-
-    .about-features {
-        list-style: none;
-    }
-
-    .about-features li {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        margin-bottom: 15px;
-        padding: 15px;
-        background: var(--bg-color);
-        border-radius: 10px;
-    }
-
-    .about-features li svg {
-        width: 24px;
-        height: 24px;
-        fill: var(--accent-color);
-        flex-shrink: 0;
     }
 
     /* Team Section */
@@ -577,10 +520,6 @@
     
 
     /* Investment Section */
-    .investment {
-        background: #F8FAFC;
-    }
-
     .investment-card h3 {
         font-size: 1.5rem;
         margin-bottom: 30px;
@@ -969,32 +908,12 @@
         padding: 20px;
     }
 
-    .carousel-dot {
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        background: var(--border-color);
-        border: none;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-
-    .carousel-dot.active {
-        background: var(--accent-color);
-        transform: scale(1.2);
-    }
-
     /* Partners Section */
     .partners {
         background: var(--card-bg);
     }
 
     /* Logo Showcase */
-    .logo-wrapper {
-        max-width: 600px;
-        margin: 0 auto;
-    }
-
     .logo-light {
         display: block;
         width: 100%;
