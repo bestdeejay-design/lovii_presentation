@@ -29,29 +29,39 @@
     // DRAWER OPEN/CLOSE (ЕДИНСТВЕННОЕ МЕСТО ОТКРЫТИЯ)
     // ============================================================
     function initDrawer() {
-        const toggle = document.getElementById('drawerToggle');
+        const toggles = document.querySelectorAll('#drawerToggle, #header-hamburger');
         const overlay = document.getElementById('drawerOverlay');
-        if (!toggle || !overlay) return;
-        
+        if (!toggles.length || !overlay) return;
+
         // Удаляем старые обработчики клонированием (на случай если navigation.js уже повесил)
-        const newToggle = toggle.cloneNode(true);
-        toggle.parentNode.replaceChild(newToggle, toggle);
-        
+        toggles.forEach(toggle => {
+            const newToggle = toggle.cloneNode(true);
+            toggle.parentNode.replaceChild(newToggle, toggle);
+        });
+
         function openDrawer() {
             overlay.classList.add('open');
             document.body.style.overflow = 'hidden';
+            document.querySelectorAll('#drawerToggle, #header-hamburger').forEach(btn => {
+                btn.setAttribute('aria-expanded', 'true');
+            });
         }
-        
+
         function closeDrawer() {
             overlay.classList.remove('open');
             document.body.style.overflow = '';
+            document.querySelectorAll('#drawerToggle, #header-hamburger').forEach(btn => {
+                btn.setAttribute('aria-expanded', 'false');
+            });
         }
-        
-        newToggle.addEventListener('click', function(e) {
-            e.preventDefault();
-            openDrawer();
+
+        document.querySelectorAll('#drawerToggle, #header-hamburger').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                openDrawer();
+            });
         });
-        
+
         overlay.addEventListener('click', function(e) {
             if (e.target === overlay) {
                 closeDrawer();

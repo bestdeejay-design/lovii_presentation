@@ -9,14 +9,92 @@
     <!-- Исходный текст: docs/texts/whitepaper.txt -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../css/site.css">
-    <link rel="stylesheet" href="../../css/docs.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/site.css?v=4">
+    <link rel="stylesheet" href="../../css/docs.css?v=4">
 </head>
 <body>
+    <header class="header">
+        <div class="status-bar">
+            <span class="status-step">
+                <span class="step-dot"></span>
+                <span class="status-label">Анализ</span>
+            </span>
+            <span class="step-line"></span>
+            <span class="status-step active">
+                <span class="step-dot"></span>
+                <span class="status-label">Согласование</span>
+            </span>
+            <span class="step-line"></span>
+            <span class="status-step">
+                <span class="step-dot"></span>
+                <span class="status-label">Сбор заявок</span>
+            </span>
+            <span class="step-line"></span>
+            <span class="status-step">
+                <span class="step-dot"></span>
+                <span class="status-label">Выпуск</span>
+            </span>
+        </div>
+        <div class="header-inner">
+            <a href="../../" class="logo">
+                <img src="../../img/logos/lovii-logo.svg" alt="LOVII" class="logo-light">
+                <img src="../../img/logos/lovii-logo_dark.svg" alt="LOVII" class="logo-dark">
+            </a>
+            <div class="header-actions">
+                <a href="../../#docs" class="header-link">Документация</a>
+                <span class="header-badge">Whitepaper</span>
+                <button class="header-hamburger" id="header-hamburger" aria-label="Открыть меню" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 12h18M3 6h18M3 18h18"></path>
+                    </svg>
+                </button>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Переключить тему">
+                    <svg class="theme-icon sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+                    </svg>
+                    <svg class="theme-icon moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="drawer-overlay" id="drawer-overlay"></div>
+    <nav class="drawer" id="drawer" role="navigation" aria-label="Основная навигация">
+        <div class="drawer-header">
+            <span class="drawer-title">Навигация</span>
+            <button class="drawer-close" id="drawer-close" aria-label="Закрыть меню">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 6L6 18M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <ul class="drawer-list" id="drawer-list"></ul>
+        <div class="drawer-footer">
+            <a href="https://aoplatforma.ru" target="_blank" class="drawer-link">aoplatforma.ru</a>
+            <span class="drawer-copy">© 2026 LOVII</span>
+        </div>
+    </nav>
+
+    <nav class="mobile-nav" id="mobile-nav" role="navigation" aria-label="Мобильная навигация">
+        <ul class="mobile-nav-list" id="mobile-nav-list"></ul>
+    </nav>
+
+    <nav class="floating-nav" id="floating-nav" role="navigation" aria-label="Плавающие якоря">
+        <div class="floating-nav-toggle" id="floating-nav-toggle" aria-label="Раскрыть якоря">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 5v14M19 12H5"></path>
+            </svg>
+        </div>
+        <div class="floating-nav-content" id="floating-nav-content"></div>
+    </nav>
+
     <nav class="nav-bar">
         <a onclick="history.back()" style="cursor:pointer">← Назад</a>
-        <span style="font-size:0.85rem;color:#555;font-weight:500;">Whitepaper</span>
+        <span style="font-size:0.85rem;color:var(--text-secondary);font-weight:500;">Whitepaper</span>
         <button class="print-btn" onclick="window.print()">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7"/><path d="M6 12H4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
         </button>
