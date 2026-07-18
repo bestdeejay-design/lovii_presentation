@@ -1,19 +1,6 @@
 /* strategy.css — уникальные стили страницы strategy */
 
-[data-theme="dark"]         [data-theme="dark"] {
-            --bg-color: #0F172A; --text-color: #F1F5F9; --text-secondary: #94A3B8;
-            --accent-color: #14B8A6; --card-bg: #1E293B; --border-color: #334155;
-            --section-alt: #1E293B;
-        }
-
-[data-theme="dark"] 
-        [data-theme="dark"] .hero {
-            background: linear-gradient(180deg, #0F172A 0%, #1E293B 100%);
-        }
-
 @media (max-width: 768px) {
-            
-
             .strategy-hero-metrics {
                 gap: 20px;
             }
@@ -23,15 +10,10 @@
             .shm-value {
                 font-size: 1.3rem;
             }
-        }
-
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-[data-theme="dark"] 
-        [data-theme="dark"] {
-            --bg-color: #0F172A; --text-color: #F1F5F9; --text-secondary: #94A3B8;
-            --accent-color: #14B8A6; --card-bg: #1E293B; --border-color: #334155;
-            --section-alt: #1E293B;
+            .mobile-nav {
+                bottom: 0;
+                padding-bottom: env(safe-area-inset-bottom);
+            }
         }
 
 .hero-badge {
@@ -159,17 +141,11 @@
 
 .footer p { color: var(--text-secondary); font-size: 0.9rem; }
 
-bottom: 0;
-                padding-bottom: env(safe-area-inset-bottom);
 .mobile-nav a svg { width: 20px; height: 22px; margin-bottom: 4px; fill: var(--text-secondary); }
 
 .mobile-nav a.active, .mobile-nav a:hover { color: var(--accent-color); }
 
 .mobile-nav a.active svg, .mobile-nav a:hover svg { fill: var(--accent-color); }
-
-[data-theme="dark"] .investment {
-            background: var(--card-bg);
-        }
 
 .strategy-hero-metrics {
             display: flex;
@@ -211,14 +187,6 @@ bottom: 0;
             .shm-value {
                 font-size: 1.3rem;
             }
-        }
-
-.mobile-nav a:hover {
-            color: var(--accent-color);
-        }
-
-.mobile-nav a:hover svg {
-            fill: var(--accent-color);
         }
 
 @media (max-width: 480px) { .hero-title { font-size: 1.8rem; } }
@@ -289,12 +257,7 @@ bottom: 0;
                 grid-template-columns: 1fr;
                 gap: 16px;
             }
-
-            body {
-                }
-
-            footer {
-                }
+        }
 
 @media (max-width: 768px) {
             .strategy-hero-metrics {
@@ -359,9 +322,6 @@ bottom: 0;
                 min-width: 0;
                 padding: 4px 4px;
             }
-
-        }
-
         }
 
 @media (min-width: 1440px) {

@@ -28,21 +28,6 @@
         min-width: 160px;
     }
 
-    .btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 16px 36px;
-        border-radius: 50px;
-        font-weight: 600;
-        font-size: 1rem;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        cursor: pointer;
-        border: none;
-        min-width: 200px;
-    }
-
     /* Key Metrics Banner — Issuer */
     section[id] {
         scroll-margin-top: 110px;
@@ -398,42 +383,6 @@
 
     /* Sections */
     /* Cards Grid */
-    .card {
-        background: var(--card-bg);
-        border-radius: 20px;
-        padding: 40px 30px;
-        border: 1px solid var(--border-color);
-        transition: all 0.3s ease;
-    }
-
-    .card-icon {
-        width: 60px;
-        height: 60px;
-        background: var(--gradient-primary);
-        border-radius: 15px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 20px;
-    }
-
-    .card-icon svg {
-        width: 30px;
-        height: 30px;
-        fill: white;
-    }
-
-    .card-title {
-        font-size: 1.3rem;
-        font-weight: 700;
-        margin-bottom: 15px;
-    }
-
-    .card-text {
-        color: var(--text-secondary);
-        line-height: 1.7;
-    }
-
     /* About Section */
     .about {
         background: var(--section-alt);
@@ -978,7 +927,6 @@
         transform: translateY(-3px);
     }
 
-    
     /* Footer section moved to components.css */
 /* Details Section */
     .details-section {
@@ -1020,16 +968,11 @@
         color: var(--text-color);
     }
 
-    
-
     /* === MOBILE ONLY (max 768px) === */
-    
 
     [data-theme="dark"] .mobile-nav {
         background: var(--card-bg);
     }
-
-    
 
     .mobile-nav a svg {
         width: 20px;
@@ -1048,16 +991,6 @@
         fill: var(--accent-color);
     }
 
-    /* Mobile Drawer */
-    
-
-    .drawer-overlay.open {
-        display: block;
-        opacity: 1;
-    }
-
-    
-
     [data-theme="dark"] .drawer-sheet {
         background: rgba(30,41,59,0.95);
         border-color: rgba(255,255,255,0.06);
@@ -1066,11 +999,6 @@
     .drawer-overlay.open .drawer-sheet {
         transform: translateX(0);
     }
-
-    /* При открытом drawer — скрываем мобильную навигацию под ним */
-    
-    /* Важно: при открытом drawer мобильная навигация остается видимой */
-    
 
     .drawer-close {
         position: absolute;
@@ -1088,7 +1016,6 @@
         color: var(--text-secondary);
     }
 
-    
     .drawer-section-title {
         font-size: 0.7rem; font-weight: 600; text-transform: uppercase;
         letter-spacing: 1.5px; color: var(--text-secondary);
@@ -1106,133 +1033,8 @@
         .drawer-overlay { display: none !important; }
     }
 
-    
-
-    
-
-    
-
-    
-
-    @media print {
-        .status-bar, .status-step, .step-line, 
-        
-    }
-
-    /* Floating Nav */
-    .floating-nav {
-        position: fixed;
-        right: 20px;
-        top: 50%;
-        transform: translateY(-50%);
-        z-index: 900;
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
-        padding: 12px 8px;
-        background: rgba(255, 255, 255, 0.65);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-        border: 1px solid rgba(13, 148, 136, 0.15);
-        border-radius: 16px;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
-        width: 52px;
-        transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-        overflow: hidden;
-    }
-
-    [data-theme="dark"] .floating-nav {
-        background: rgba(30, 41, 59, 0.7);
-        border-color: rgba(255, 255, 255, 0.08);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    }
-
-    .floating-nav:hover {
-        width: 190px;
-    }
-
-    .floating-nav a {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0;
-        padding: 10px 0;
-        text-decoration: none;
-        color: var(--text-secondary);
-        border-radius: 10px;
-        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-        white-space: nowrap;
-        position: relative;
-    }
-
-    .floating-nav:hover a {
-        justify-content: flex-start;
-        gap: 12px;
-        padding: 10px 12px;
-    }
-
-    .floating-nav a svg {
-        width: 20px;
-        height: 20px;
-        flex-shrink: 0;
-        stroke: currentColor;
-        stroke-width: 1.8;
-        fill: none;
-        transition: stroke 0.25s;
-    }
-
-    .floating-nav a .nav-label {
-        font-size: 0.85rem;
-        font-weight: 500;
-        opacity: 0;
-        width: 0;
-        overflow: hidden;
-        transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .floating-nav:hover a .nav-label {
-        opacity: 1;
-        width: auto;
-    }
-
-    .floating-nav a:hover {
-        background: rgba(13, 148, 136, 0.08);
-        color: var(--accent-color);
-    }
-
-    .floating-nav a:hover svg {
-        stroke: var(--accent-color);
-    }
-
-    .floating-nav a.active {
-        color: var(--accent-color);
-    }
-
-    .floating-nav a.active::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 3px;
-        height: 20px;
-        background: var(--accent-color);
-        border-radius: 0 3px 3px 0;
-    }
-
-    [data-theme="dark"] .floating-nav a:hover {
-        background: rgba(20, 184, 166, 0.12);
-    }
-
-    [data-theme="dark"] .floating-nav {
-        background: rgba(30, 41, 59, 0.75);
-    }
-
-    
-
     /* Page Transition Fade-in */
-    
-    
+
 
 @media (max-width: 768px) {
         .status-step .step-line {

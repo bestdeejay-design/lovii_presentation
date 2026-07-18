@@ -8,10 +8,10 @@
     // THEME TOGGLE
     // ============================================================
     function initTheme() {
-        const toggle = document.querySelector('[data-theme-toggle], .theme-toggle, #theme-toggle');
+        const toggle = document.querySelector('.theme-toggle, #theme-toggle');
         if (!toggle) return;
         
-        const saved = localStorage.getItem('theme');
+        const saved = localStorage.getItem('theme') || localStorage.getItem('lovii-theme');
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         const initial = saved || (prefersDark ? 'dark' : 'light');
         

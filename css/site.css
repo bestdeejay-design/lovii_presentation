@@ -41,11 +41,6 @@
             --drawer-shadow: -8px 0 40px rgba(0, 0, 0, 0.3);
         }
 
-        [data-theme="dark"] header { background: rgba(15, 23, 42, 0.95); }
-        [data-theme="dark"] body { background: var(--bg-color); color: var(--text-color); }
-        [data-theme="dark"] .card { background: var(--card-bg); border-color: var(--border-color); }
-        [data-theme="dark"] .card:hover { border-color: var(--accent-color); }
-        [data-theme="dark"] a { color: var(--accent-color); }
 
 
 [data-theme="light"] {
@@ -172,10 +167,6 @@ main, .main, .doc-wrapper {
         .status-label {
             display: inline;
         }
-
-        
-
-        
 
         /* Header */
         .header {
@@ -455,21 +446,6 @@ main, .main, .doc-wrapper {
             background: rgba(20, 184, 166, 0.12);
         }
 
-        
-
-        [data-theme="dark"] .header {
-            background: rgba(15, 23, 42, 0.98);
-        }
-
-        [data-theme="dark"] .hero {
-            background: linear-gradient(180deg, #0F172A 0%, #1E293B 100%);
-        }
-
-        [data-theme="dark"] .about,
-        [data-theme="dark"] .investment {
-            background: var(--card-bg);
-        }
-
 [data-theme="dark"] .header {
             background: rgba(15, 23, 42, 0.98);
         }
@@ -687,8 +663,6 @@ footer {
 }
 
 /* Hide drawer on desktop */
-
-        
 
 /* === Design System: Base Components === */
 
@@ -972,19 +946,6 @@ html {
 
 /* === responsive.css === */
 /* responsive.css — все адаптивные стили для основных страниц */
-/* @media (max-width: 768px) {
-            body {
-                overflow-x: hidden;
-                width: 100%;
-            }
-            
-            .container, .header-inner, .status-bar {
-                max-width: 100%;
-                padding-left: 16px;
-                padding-right: 16px;
-            }
-        }
-
 @media (max-width: 768px) {
             .mobile-nav {
                 display: flex !important;
