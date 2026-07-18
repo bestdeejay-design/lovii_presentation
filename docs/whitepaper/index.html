@@ -62,22 +62,23 @@
         </div>
     </header>
 
-    <div class="drawer-overlay" id="drawer-overlay"></div>
-    <nav class="drawer" id="drawer" role="navigation" aria-label="Основная навигация">
-        <div class="drawer-header">
-            <span class="drawer-title">Навигация</span>
+    <div class="drawer-overlay" id="drawer-overlay">
+        <div class="drawer-sheet">
             <button class="drawer-close" id="drawer-close" aria-label="Закрыть меню">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M18 6L6 18M6 6l12 12"></path>
                 </svg>
             </button>
+            <div class="drawer-section">
+                <div class="drawer-section-title">Навигация</div>
+                <div class="drawer-items" id="drawer-list"></div>
+            </div>
+            <div class="drawer-footer">
+                <a href="https://aoplatforma.ru" target="_blank" class="drawer-link">aoplatforma.ru</a>
+                <span class="drawer-copy">© 2026 LOVII</span>
+            </div>
         </div>
-        <ul class="drawer-list" id="drawer-list"></ul>
-        <div class="drawer-footer">
-            <a href="https://aoplatforma.ru" target="_blank" class="drawer-link">aoplatforma.ru</a>
-            <span class="drawer-copy">© 2026 LOVII</span>
-        </div>
-    </nav>
+    </div>
 
     <nav class="mobile-nav" id="mobile-nav" role="navigation" aria-label="Мобильная навигация">
         <ul class="mobile-nav-list" id="mobile-nav-list"></ul>

@@ -1244,9 +1244,36 @@
     
     
 
-            @media (max-width: 768px) {
-.status-step .step-line {
+@media (max-width: 768px) {
+        .status-step .step-line {
             width: 12px;
+        }
+
+        .calc-layout {
+            grid-template-columns: 1fr;
+            gap: 24px;
+            max-width: 100%;
+        }
+
+        .calc-form {
+            padding: 24px;
+        }
+
+        .calc-form .input-group input {
+            padding: 16px;
+            font-size: 1.1rem;
+        }
+
+        .calc-results {
+            gap: 10px;
+        }
+
+        .calc-result-item {
+            padding: 16px 20px;
+        }
+
+        .calc-result-item .crl-value {
+            font-size: 1.1rem;
         }
     }
 

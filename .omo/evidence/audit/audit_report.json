@@ -1,0 +1,437 @@
+{
+  "verdict": "REVISE",
+  "reportDate": "2026-07-18T10:20:00+03:00",
+  "testedUrl": "http://127.0.0.1:8126",
+  "breakpointsTested": [1440, 1024, 768, 375],
+  "pagesTested": ["home", "presentation", "whitepaper", "strategy"],
+
+  "breakpointEvidence": {
+    "1440": {
+      "screenshots": [
+        "lovii_home_1440.png",
+        "lovii_presentation_1440.png",
+        "lovii_whitepaper_1440.png",
+        "lovii_strategy_1440.png",
+        "vp_home_1440.png",
+        "vp_presentation_1440.png",
+        "vp_whitepaper_1440.png",
+        "vp_strategy_1440.png"
+      ],
+      "findings": [
+        {
+          "severity": "high",
+          "issue": "Burger menu (header-hamburger) visible at 1440px — should be hidden above 1024px",
+          "cause": "CSS rule at line 297 sets `display: none` but line 304 overrides with `display: flex` within the same .header-hamburger block. Media query only hides it at ≤768px, no rule hides it above 1024px.",
+          "affectedPages": ["home", "presentation", "whitepaper", "strategy"]
+        },
+        {
+          "severity": "info",
+          "issue": "Floating nav visible and working at 1440px on all pages",
+          "affectedPages": ["home", "presentation", "whitepaper", "strategy"]
+        },
+        {
+          "severity": "info",
+          "issue": "Mobile nav hidden at 1440px — correct behavior",
+          "affectedPages": ["home", "presentation", "whitepaper", "strategy"]
+        }
+      ]
+    },
+    "1024": {
+      "screenshots": [
+        "lovii_home_1024.png",
+        "lovii_presentation_1024.png",
+        "lovii_whitepaper_1024.png",
+        "lovii_strategy_1024.png",
+        "vp_home_1024.png",
+        "vp_presentation_1024.png",
+        "vp_whitepaper_1024.png",
+        "vp_strategy_1024.png"
+      ],
+      "findings": [
+        {
+          "severity": "info",
+          "issue": "Burger visible at 1024px — correct (intended for 768-1024 range, though accidentally visible above due to CSS bug)",
+          "affectedPages": ["home", "presentation", "whitepaper", "strategy"]
+        },
+        {
+          "severity": "info",
+          "issue": "Floating nav visible — correct",
+          "affectedPages": ["home", "presentation", "whitepaper", "strategy"]
+        },
+        {
+          "severity": "info",
+          "issue": "No horizontal scroll issues",
+          "affectedPages": ["home", "presentation", "whitepaper", "strategy"]
+        }
+      ]
+    },
+    "768": {
+      "screenshots": [
+        "lovii_home_768.png",
+        "lovii_presentation_768.png",
+        "lovii_whitepaper_768.png",
+        "lovii_strategy_768.png",
+        "vp_home_768.png",
+        "vp_presentation_768.png",
+        "vp_whitepaper_768.png",
+        "vp_strategy_768.png"
+      ],
+      "findings": [
+        {
+          "severity": "info",
+          "issue": "Burger hidden at 768px — correct (≤768px rule hides it)",
+          "affectedPages": ["home", "presentation", "whitepaper", "strategy"]
+        },
+        {
+          "severity": "info",
+          "issue": "Mobile nav visible — correct",
+          "affectedPages": ["home", "presentation", "whitepaper", "strategy"]
+        },
+        {
+          "severity": "info",
+          "issue": "Floating nav hidden — correct",
+          "affectedPages": ["home", "presentation", "whitepaper", "strategy"]
+        }
+      ]
+    },
+    "375": {
+      "screenshots": [
+        "lovii_home_375.png",
+        "lovii_presentation_375.png",
+        "lovii_whitepaper_375.png",
+        "lovii_strategy_375.png",
+        "vp_home_375.png",
+        "vp_presentation_375.png",
+        "vp_whitepaper_375.png",
+        "vp_strategy_375.png"
+      ],
+      "findings": [
+        {
+          "severity": "high",
+          "issue": "Horizontal scroll on home page (scrollWidth 723px vs viewport 375px)",
+          "cause": "Calculator results container elements overflow: labels like 'Оборот сети (GMV/год)' extend to 549px, values like '250 656 000 ₽' extend to 697px. The calc-layout grid collapses to 1 column but individual calc-result-item elements are not constrained. Additionally, carousel images render at 283px width and overflow the parent container (right edge at 602-1168px).",
+          "fix": "Add `overflow-x: hidden` to `.calc-layout` and constrain the `.calc-result-item` children to 100% width. For the carousel, ensure overflow is intentional and hidden at the section level."
+        },
+        {
+          "severity": "high",
+          "issue": "Whitepaper mobile nav has NO links (empty <ul>)",
+          "cause": "The whitepaper page uses `<nav class=\"mobile-nav\" id=\"mobile-nav\"><ul class=\"mobile-nav-list\" id=\"mobile-nav-list\"></ul></nav>` but navigation.js does not populate this list. navigation.js only handles `.drawer-sheet` and `#drawer-list`. The `mobile-nav-list` ul remains empty.",
+          "fix": "Add mobile nav link generation to app.js or navigation.js for the whitepaper's different mobile nav structure. Or restructure the whitepaper mobile nav to match other pages."
+        },
+        {
+          "severity": "info",
+          "issue": "Floating nav hidden on all pages at 375px — correct",
+          "affectedPages": ["home", "presentation", "whitepaper", "strategy"]
+        },
+        {
+          "severity": "info",
+          "issue": "Mobile nav visible on all pages at 375px — correct (but empty on whitepaper)",
+          "affectedPages": ["home", "presentation", "whitepaper", "strategy"]
+        },
+        {
+          "severity": "info",
+          "issue": "Drawer toggle works on home page at 375px",
+          "affectedPages": ["home"]
+        }
+      ]
+    }
+  },
+
+  "navigationAudit": {
+    "header": {
+      "status": "functional",
+      "details": "Header with status bar visible on all pages, all breakpoints",
+      "issues": []
+    },
+    "burger": {
+      "expected": {
+        "1440": "hidden",
+        "1024": "visible",
+        "768": "hidden",
+        "375": "hidden"
+      },
+      "actual": {
+        "1440": "visible",
+        "1024": "visible",
+        "768": "hidden",
+        "375": "hidden"
+      },
+      "bugs": [
+        {
+          "severity": "critical",
+          "breakpoint": "1440",
+          "issue": "Burger menu visible at 1440px when it should be hidden",
+          "rootCause": "site.css line 297 declares `display: none` but line 304 overrides with `display: flex` in the same .header-hamburger block (cascade order). The media query `@media (max-width: 768px)` on line 327-330 hides it on mobile, but no query hides it above 1024px. The `@media (min-width: 769px) and (max-width: 1024px)` on line 321-325 only sets `display: flex` redundantly — outside this range, the default `display: flex` from line 304 remains active.",
+          "fix": "Remove `display: flex` from the .header-hamburger base block (line 304). Move it only into the `@media (min-width: 769px) and (max-width: 1024px)` block. Add `display: none` as the default (line 297 is correct but overridden). Add `@media (min-width: 1025px) { .header-hamburger { display: none; } }`"
+        }
+      ]
+    },
+    "mobileNav": {
+      "expected": {
+        "1440": "hidden",
+        "1024": "hidden",
+        "768": "visible",
+        "375": "visible"
+      },
+      "actual": {
+        "1440": "hidden",
+        "1024": "hidden",
+        "768": "visible",
+        "375": "visible"
+      },
+      "bugs": [
+        {
+          "severity": "critical",
+          "breakpoint": "375",
+          "page": "whitepaper",
+          "issue": "Mobile nav visible on whitepaper but has ZERO links — empty navigation",
+          "rootCause": "Whitepaper uses `<ul class=\"mobile-nav-list\" id=\"mobile-nav-list\"></ul>` which is NOT populated by navigation.js. The script only builds drawer items (.drawer-sheet), not mobile nav items for the whitepaper's non-standard structure.",
+          "fix": "Add mobile nav list population in navigation.js or convert whitepaper mobile nav to match other pages' structure (direct <a> tags in nav, not ul/li)."
+        }
+      ]
+    },
+    "floatingNav": {
+      "expected": {
+        "1440": "visible",
+        "1024": "visible",
+        "768": "hidden",
+        "375": "hidden"
+      },
+      "actual": {
+        "1440": "visible",
+        "1024": "visible",
+        "768": "hidden",
+        "375": "hidden"
+      },
+      "bugs": []
+    },
+    "drawer": {
+      "status": "functional with issues",
+      "details": {
+        "home": "Works correctly — toggle click opens overlay, sheet has 5 sections with links",
+        "presentation": "Missing app.js — drawer open/close handler not attached",
+        "whitepaper": "Different drawer structure (<nav class='drawer'> instead of .drawer-overlay > .drawer-sheet). navigation.js does not populate it.",
+        "strategy": "Works via app.js like home page"
+      },
+      "bugs": [
+        {
+          "severity": "high",
+          "page": "presentation",
+          "issue": "Drawer toggle may not work — app.js not included in presentation/index.html",
+          "rootCause": "presentation/index.html includes `js/navigation.js` but NOT `js/app.js`. The theme toggle and drawer open/close logic lives in app.js.",
+          "fix": "Add `<script src=\"../js/app.js\"></script>` to presentation/index.html"
+        },
+        {
+          "severity": "high",
+          "page": "whitepaper",
+          "issue": "Whitepaper uses non-standard drawer structure that navigation.js does not populate",
+          "rootCause": "navigation.js looks for `.drawer-sheet` but whitepaper has `<nav class=\"drawer\" id=\"drawer\">` with `<ul class=\"drawer-list\">`. The standard drawer menu HTML is not injected.",
+          "fix": "Adapt navigation.js to also handle the whitepaper's drawer structure, or unify drawer markup across pages."
+        }
+      ]
+    }
+  },
+
+  "horizontalScrollIssues": [
+    {
+      "page": "home",
+      "breakpoint": "375",
+      "element": "Calculator results section (.calc-layout, .calc-results, .calc-result-item)",
+      "scrollWidth": 723,
+      "viewportWidth": 375,
+      "overflowingElements": [
+        "calc result labels (crl-label) reaching 549-578px right edge",
+        "calc result values (crl-value) reaching 697px right edge",
+        "calc disclaimer text reaching 723px right edge",
+        "carousel images at 283px each extending past viewport"
+      ],
+      "fix": "Add `overflow-x: hidden` on `.calc-results` and ensure `.calc-result-item` children use `max-width: 100%`. For the carousel, wrap in a container with `overflow-x: auto` to keep it contained."
+    }
+  ],
+
+  "visualDefects": [
+    {
+      "page": "home",
+      "breakpoint": "375",
+      "issue": "Calculator results overflow horizontally (scrollWidth 723 > 375)",
+      "severity": "high",
+      "fix": "Constrain calc result items to 100% width, add overflow-x: hidden on container"
+    },
+    {
+      "page": "whitepaper",
+      "breakpoint": "all",
+      "issue": "Mobile nav list empty on whitepaper page — visible but useless at ≤768px",
+      "severity": "critical",
+      "fix": "Populate mobile-nav-list ul with navigation links matching other pages' mobile nav"
+    },
+    {
+      "page": "presentation",
+      "breakpoint": "all",
+      "issue": "app.js not included — theme toggle and drawer/drawer toggle broken",
+      "severity": "high",
+      "fix": "Add `<script src=\"../js/app.js\"></script>` before closing </body> tag"
+    },
+    {
+      "page": "home",
+      "breakpoint": "1440",
+      "issue": "Burger menu visible when it should be hidden above 1024px",
+      "severity": "critical",
+      "fix": "Remove duplicate display:flex from base .header-hamburger, add hiding media query for >1024px"
+    }
+  ],
+
+  "missingComponents": [
+    {
+      "page": "presentation",
+      "component": "app.js (theme toggle, drawer open/close, nav manager)",
+      "status": "missing",
+      "details": "Script js/app.js not included in presentation/index.html. Theme toggle JS handler, drawer open/close events, and nav manager are not loaded."
+    },
+    {
+      "page": "whitepaper",
+      "component": "mobile-nav-list items",
+      "status": "missing",
+      "details": "The `#mobile-nav-list` ul exists but has 0 children. navigation.js does not populate it. No navigation links appear on mobile."
+    },
+    {
+      "page": "whitepaper",
+      "component": "drawer items (standard structure)",
+      "status": "missing",
+      "details": "Whitepaper uses non-standard .drawer / #drawer / .drawer-list structure. navigation.js's standard drawer menu (targeting .drawer-sheet) is not injected."
+    }
+  ],
+
+  "interactionTests": {
+    "themeToggle": {
+      "home": "PASS — toggles data-theme on <html>, persists to localStorage key 'theme', respects prefers-color-scheme on first load",
+      "presentation": "FAIL — app.js not included, inline script sets data-theme on <body> inconsistently with other pages (uses body instead of html)",
+      "whitepaper": "PASS — app.js included, works via document.documentElement",
+      "strategy": "PASS — app.js included, works via document.documentElement"
+    },
+    "calculator": {
+      "status": "PASS",
+      "details": "1000 points → GMV: 1,728,000,000 ₽, Profit: 25,065,600 ₽, Valuation: 250,656,000 ₽ (~250.6M). Changes to 2000 update correctly. Works via input event listener in app.js."
+    },
+    "presentationSlides": {
+      "status": "PASS with caveats",
+      "details": "13 slide cards found with images. Modal exists with prev/next/close buttons. Keyboard navigation (ArrowLeft/ArrowRight) wired via inline script. Slides built from PDF image thumbnails. Modal open via onclick not automatically triggered in test (likely requires clicking img inside slide-card)."
+    },
+    "drawer": {
+      "status": "PASS on compatible pages",
+      "home": "PASS — toggle click opens overlay, link click closes, close button works",
+      "presentation": "FAIL — missing app.js",
+      "whitepaper": "FAIL — non-standard structure",
+      "strategy": "PASS"
+    },
+    "smoothScroll": {
+      "status": "PASS",
+      "details": "html { scroll-behavior: smooth } set globally. Anchor links present with section IDs."
+    },
+    "layoutShiftOnThemeToggle": {
+      "status": "PASS",
+      "details": "CSS variables change values but no layout shift — elements maintain same dimensions."
+    }
+  },
+
+  "visualConsistency": {
+    "bordersRadii": {
+      "status": "consistent",
+      "details": "Cards use border-radius: 16px, buttons use border-radius: 50px, drawer items use border-radius: 12px — all driven by CSS variables.",
+      "issues": []
+    },
+    "shadowsTokens": {
+      "status": "consistent",
+      "details": "--shadow and --shadow-hover variables used consistently. Light: 0 4px 20px rgba(0,0,0,0.08). Dark: 0 4px 20px rgba(0,0,0,0.3).",
+      "issues": []
+    },
+    "hardcodedColors": {
+      "status": "minor issues",
+      "details": "Most colors reference CSS variables. Some hardcoded gradients detected: .hero background uses `linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 100%)` in light mode — does not use CSS variable. Dark mode version has separate rule. [data-theme=\"dark\"] .hero has its own gradient.",
+      "issues": [
+        {
+          "severity": "low",
+          "location": "site.css .hero section",
+          "issue": "Hero background uses hardcoded light gradient, not var(--gradient-dark). Dark mode override exists so it works, but could be cleaner.",
+          "fix": "Use --gradient-primary or --gradient-dark variables"
+        }
+      ]
+    },
+    "typography": {
+      "status": "consistent",
+      "details": "Font family: Inter (Google Fonts). clamp() used for responsive font sizes: hero-title clamp(1.5rem, 6vw, 2rem) at mobile, 4rem at desktop. Section titles 2.5rem → 1.8rem responsive.",
+      "issues": []
+    },
+    "orphanedPrepositions": {
+      "status": "no real orphans detected",
+      "details": "Automated text scan flagged ~56 potential matches across all pages, but most are false positives (algorithm matched text ENDING with standalone letters like 'в', 'с', 'к' that are part of normal words). Actual visual orphan detection requires rendering inspection — no obvious orphaned prepositions spotted in screenshots.",
+      "note": "Russian text 'Оцените стоимость компании LOVII в зависимости от размера сети точек' at section-subtitle was flagged — the 'от' at end is a valid preposition that could orphan on narrow screens."
+    }
+  },
+
+  "recommendation": {
+    "priority": [
+      {
+        "rank": 1,
+        "severity": "critical",
+        "fix": "Fix burger menu visibility: remove duplicate display:flex from .header-hamburger base (site.css line 304), keep display:none as default, ensure display:flex only between 769-1024px",
+        "effort": "5 minutes"
+      },
+      {
+        "rank": 2,
+        "severity": "critical",
+        "fix": "Fix whitepaper mobile nav: populate #mobile-nav-list with navigation links matching other pages' mobile nav structure",
+        "effort": "15 minutes"
+      },
+      {
+        "rank": 3,
+        "severity": "high",
+        "fix": "Include app.js in presentation/index.html for theme toggle and drawer functionality",
+        "effort": "2 minutes"
+      },
+      {
+        "rank": 4,
+        "severity": "high",
+        "fix": "Fix horizontal scroll on home page at 375px: constrain calculator results and carousel container widths",
+        "effort": "10 minutes"
+      },
+      {
+        "rank": 5,
+        "severity": "high",
+        "fix": "Standardize whitepaper drawer structure or adapt navigation.js to handle it",
+        "effort": "20 minutes"
+      }
+    ],
+    "summary": "Site is functional but has critical navigation bugs at certain breakpoints. The main issues are: (1) burger menu visible at desktop widths, (2) whitepaper mobile nav completely empty, (3) presentation page missing key JS, (4) horizontal scroll on mobile home page. Recommend fixing all critical items before deployment."
+  },
+  
+  "screenshotEvidence": {
+    "fullPage": [
+      "lovii_home_1440.png (1.4MB)",
+      "lovii_home_1024.png (1.3MB)",
+      "lovii_home_768.png (1.2MB)",
+      "lovii_home_375.png (1.2MB)",
+      "lovii_presentation_1440.png (1.0MB)",
+      "lovii_presentation_1024.png (1.4MB)",
+      "lovii_presentation_768.png (2.6MB)",
+      "lovii_presentation_375.png (849KB)",
+      "lovii_whitepaper_1440.png (726KB)",
+      "lovii_whitepaper_1024.png (695KB)",
+      "lovii_whitepaper_768.png (679KB)",
+      "lovii_whitepaper_375.png (661KB)",
+      "lovii_strategy_1440.png (726KB)",
+      "lovii_strategy_1024.png (671KB)",
+      "lovii_strategy_768.png (624KB)",
+      "lovii_strategy_375.png (589KB)"
+    ],
+    "viewport": [
+      "vp_home_1440.png (120KB)",
+      "vp_home_1024.png (109KB)",
+      "vp_home_768.png (86KB)",
+      "vp_home_375.png (68KB)",
+      "vp_presentation_1440.png (460KB)",
+      "vp_presentation_1024.png (249KB)",
+      "vp_presentation_768.png (others)",
+      "vp_strategy_1440.png (etc)"
+    ]
+  }
+}

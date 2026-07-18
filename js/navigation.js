@@ -1,6 +1,6 @@
-// navigation.js — единое меню drawer для всех страниц LOVII
+// navigation.js — единое меню drawer + mobile nav для всех страниц LOVII
 // Автоматически подставляет правильные относительные пути
-// Отвечает ТОЛЬКО за: построение HTML drawer + close behavior (close btn, overlay click, link click)
+// Отвечает за: построение HTML drawer, mobile nav, close behavior
 // Открытие drawer теперь в app.js
 
 (function() {
@@ -44,7 +44,7 @@
         ]},
     ];
     
-    // Собираем HTML
+    // Собираем HTML для drawer
     let html = '<button class="drawer-close" id="drawerClose">✕</button>';
     drawerMenu.forEach(group => {
         html += `<div class="drawer-section"><div class="drawer-section-title">${group.section}</div><div class="drawer-items">`;
@@ -93,5 +93,28 @@
                 }
             });
         }
+    }
+
+    // === Mobile Nav ===
+    const mobileNavList = document.getElementById('mobile-nav-list');
+    if (mobileNavList) {
+        let mobileHtml = '';
+        drawerMenu.forEach(group => {
+            group.items.forEach(item => {
+                mobileHtml += `<a href="${item.href}" class="mobile-nav-item">${icons[item.icon]} ${item.label}</a>`;
+            });
+        });
+        mobileNavList.innerHTML = mobileHtml;
+        
+        // Active state
+        mobileNavList.querySelectorAll('.mobile-nav-item').forEach(link => {
+            const href = link.getAttribute('href');
+            if (href && href !== '#' && !href.startsWith('mailto:')) {
+                const clean = href.replace(/\.\.\//g, '').replace(/\.\//g, '');
+                if (clean && path.includes(clean)) {
+                    link.classList.add('active');
+                }
+            }
+        });
     }
 })();
