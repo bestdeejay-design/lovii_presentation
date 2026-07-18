@@ -1275,6 +1275,27 @@
         .calc-result-item .crl-value {
             font-size: 1.1rem;
         }
+
+        /* Carousel mobile fix */
+        .carousel {
+            border-radius: 12px;
+        }
+        .carousel-slide img {
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+        }
+        .carousel-track {
+            flex-wrap: nowrap;
+        }
+
+        /* Prevent horizontal scroll on all sections */
+        section {
+            overflow-x: hidden;
+        }
+        .container, .main {
+            overflow-x: hidden;
+        }
     }
 
     /* Ultra-wide screens — anchor floating nav to content area */
