@@ -98,15 +98,24 @@
     // === Mobile Nav ===
     const mobileNavList = document.getElementById('mobile-nav-list');
     if (mobileNavList) {
+        // Only show first 3 main items + "Ещё" button in mobile nav
+        // The rest are accessible via "Ещё" button -> drawer
+        const mainItems = [
+            { label: 'Главная', href: prefix + '', icon: 'home' },
+            { label: 'Стратегия', href: prefix + 'strategy/', icon: 'compass' },
+            { label: 'Презентация', href: prefix + 'presentation/', icon: 'monitor' },
+        ];
+        
         let mobileHtml = '';
-        drawerMenu.forEach(group => {
-            group.items.forEach(item => {
-                mobileHtml += `<a href="${item.href}" class="mobile-nav-item">${icons[item.icon]} ${item.label}</a>`;
-            });
+        mainItems.forEach(item => {
+            mobileHtml += `<a href="${item.href}" class="mobile-nav-item">${icons[item.icon]} ${item.label}</a>`;
         });
+        // "Ещё" button opens drawer
+        mobileHtml += `<a href="#" id="mobile-more-toggle" class="mobile-nav-item" aria-label="Ещё"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg><span>Ещё</span></a>`;
+        
         mobileNavList.innerHTML = mobileHtml;
         
-        // Active state
+        // Active state for main items
         mobileNavList.querySelectorAll('.mobile-nav-item').forEach(link => {
             const href = link.getAttribute('href');
             if (href && href !== '#' && !href.startsWith('mailto:')) {
