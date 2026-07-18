@@ -16,7 +16,7 @@
   const container = document.createElement('div')
   container.id = 'particle-cloud'
   container.style.cssText =
-    'position:fixed;inset:0;z-index:1;pointer-events:none;overflow:hidden'
+    'position:fixed;inset:0;z-index:1;pointer-events:none;overflow:visible'
 
   const ns = 'http://www.w3.org/2000/svg'
   const svg = document.createElementNS(ns, 'svg')
