@@ -42,6 +42,8 @@
         function openDrawer() {
             overlay.classList.add('open');
             document.body.style.overflow = 'hidden';
+            // Workaround for CSS cascade issue where display: block from .drawer-overlay.open is not applied
+            overlay.style.setProperty('display', 'block', 'important');
             document.querySelectorAll('#drawerToggle, #header-hamburger').forEach(btn => {
                 btn.setAttribute('aria-expanded', 'true');
             });
@@ -50,6 +52,8 @@
         function closeDrawer() {
             overlay.classList.remove('open');
             document.body.style.overflow = '';
+            // Workaround for CSS cascade issue
+            overlay.style.setProperty('display', 'none', 'important');
             document.querySelectorAll('#drawerToggle, #header-hamburger').forEach(btn => {
                 btn.setAttribute('aria-expanded', 'false');
             });
@@ -188,14 +192,20 @@
         calcValuation();
     }
     
-    // ============================================================
-    // INIT ALL
-    // ============================================================
-    document.addEventListener('DOMContentLoaded', function() {
-        initTheme();
-        initDrawer();
-        initNavManager();
-        initFloatingNavFromHeadings();
-        initCalculator();
-    });
+// ============================================================
+// INIT ALL
+// ============================================================
+function runInit() {
+    initTheme();
+    initDrawer();
+    initNavManager();
+    initFloatingNavFromHeadings();
+    initCalculator();
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', runInit);
+} else {
+    runInit();
+}
 })();

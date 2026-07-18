@@ -1069,16 +1069,6 @@
 
     /* При открытом drawer — скрываем мобильную навигацию под ним */
     
-
-    [data-theme="dark"] .drawer-sheet {
-        background: rgba(30,41,59,0.92);
-        border-color: rgba(255,255,255,0.08);
-    }
-
-    .drawer-overlay.open .drawer-sheet {
-        transform: translateY(0);
-    }
-
     /* Важно: при открытом drawer мобильная навигация остается видимой */
     
 

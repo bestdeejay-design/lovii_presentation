@@ -550,6 +550,7 @@ footer {
     z-index: 2000;
     opacity: 0;
     transition: opacity 0.3s;
+    height: 100vh; /* Ensure full height for child fixed positioning */
 }
 
 .drawer-overlay.open {
@@ -565,6 +566,7 @@ footer {
     bottom: 0;
     width: 85vw;
     max-width: 320px;
+    height: 100vh; /* Explicit height for fixed positioning */
     z-index: 2001;
     background: var(--drawer-bg);
     backdrop-filter: blur(24px);
@@ -1300,11 +1302,7 @@ html {
             }
         }
 
-@media (min-width: 769px) {
-    .drawer-overlay {
-        display: none !important;
-    }
-}
+
 
 @media print {
             .status-bar, .status-step, .step-line, .step-dot {
