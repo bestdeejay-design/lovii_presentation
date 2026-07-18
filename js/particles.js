@@ -4,19 +4,19 @@
   'use strict'
 
   // ── Config ───────────────────────────────────────────
-  const COUNT = 70
-  const MIN_R = 1
-  const MAX_R = 3.5
-  const AMBIENT = 0.12    // скорость фонового дрейфа
-  const DAMP = 0.97       // коэффициент затухания
-  const MOUSE_R = 150     // радиус влияния мыши
-  const MOUSE_FORCE = 0.7 // сила отталкивания
+  var COUNT = 80
+  var MIN_R = 2
+  var MAX_R = 5
+  var AMBIENT = 0.18     // скорость фонового дрейфа
+  var DAMP = 0.97        // коэффициент затухания
+  var MOUSE_R = 180      // радиус влияния мыши
+  var MOUSE_FORCE = 0.9  // сила отталкивания
 
   // ── Container / SVG ──────────────────────────────────
   const container = document.createElement('div')
   container.id = 'particle-cloud'
   container.style.cssText =
-    'position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden'
+    'position:fixed;inset:0;z-index:1;pointer-events:none;overflow:hidden'
 
   const ns = 'http://www.w3.org/2000/svg'
   const svg = document.createElementNS(ns, 'svg')
@@ -54,7 +54,7 @@
       this.vx = (Math.random() - 0.5) * AMBIENT
       this.vy = (Math.random() - 0.5) * AMBIENT
       this.r = MIN_R + Math.random() * (MAX_R - MIN_R)
-      this.op = 0.15 + Math.random() * 0.3
+      this.op = 0.3 + Math.random() * 0.4
       this.ci = Math.random() > 0.5 ? 0 : 1
 
       this.el = document.createElementNS(ns, 'circle')
