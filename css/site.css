@@ -675,6 +675,34 @@ footer {
             border-color: var(--accent-color);
         }
 
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .card-icon svg {
+            width: 30px;
+            height: 30px;
+            fill: white;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .card-text {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
         .btn {
             display: inline-flex;
             align-items: center;
