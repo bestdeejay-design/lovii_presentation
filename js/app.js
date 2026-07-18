@@ -29,7 +29,7 @@
     // DRAWER OPEN/CLOSE (ЕДИНСТВЕННОЕ МЕСТО ОТКРЫТИЯ)
     // ============================================================
     function initDrawer() {
-        const toggles = document.querySelectorAll('#drawerToggle, #header-hamburger');
+        const toggles = document.querySelectorAll('#drawerToggle, #header-hamburger, #mobile-more-toggle');
         const overlay = document.getElementById('drawerOverlay');
         if (!toggles.length || !overlay) return;
 
@@ -44,7 +44,7 @@
             document.body.style.overflow = 'hidden';
             // Workaround for CSS cascade issue where display: block from .drawer-overlay.open is not applied
             overlay.style.setProperty('display', 'block', 'important');
-            document.querySelectorAll('#drawerToggle, #header-hamburger').forEach(btn => {
+            document.querySelectorAll('#drawerToggle, #header-hamburger, #mobile-more-toggle').forEach(btn => {
                 btn.setAttribute('aria-expanded', 'true');
             });
         }
@@ -54,12 +54,12 @@
             document.body.style.overflow = '';
             // Workaround for CSS cascade issue
             overlay.style.setProperty('display', 'none', 'important');
-            document.querySelectorAll('#drawerToggle, #header-hamburger').forEach(btn => {
+            document.querySelectorAll('#drawerToggle, #header-hamburger, #mobile-more-toggle').forEach(btn => {
                 btn.setAttribute('aria-expanded', 'false');
             });
         }
 
-        document.querySelectorAll('#drawerToggle, #header-hamburger').forEach(btn => {
+        document.querySelectorAll('#drawerToggle, #header-hamburger, #mobile-more-toggle').forEach(btn => {
             btn.addEventListener('click', function(e) {
                 e.preventDefault();
                 openDrawer();
