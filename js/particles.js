@@ -4,19 +4,19 @@
   'use strict'
 
   // ── Config ───────────────────────────────────────────
-  var COUNT = 80
-  var MIN_R = 2
-  var MAX_R = 5
-  var AMBIENT = 0.18     // скорость фонового дрейфа
-  var DAMP = 0.97        // коэффициент затухания
-  var MOUSE_R = 180      // радиус влияния мыши
-  var MOUSE_FORCE = 0.9  // сила отталкивания
+  var COUNT = 120
+  var MIN_R = 4
+  var MAX_R = 10
+  var AMBIENT = 0.25
+  var DAMP = 0.96
+  var MOUSE_R = 220
+  var MOUSE_FORCE = 1.2
 
   // ── Container / SVG ──────────────────────────────────
   const container = document.createElement('div')
   container.id = 'particle-cloud'
   container.style.cssText =
-    'position:fixed;inset:0;z-index:1;pointer-events:none;overflow:visible'
+    'position:fixed;inset:0;z-index:9999;pointer-events:none;overflow:visible'
 
   const ns = 'http://www.w3.org/2000/svg'
   const svg = document.createElementNS(ns, 'svg')
@@ -26,25 +26,7 @@
   container.appendChild(svg)
   document.body.prepend(container)
 
-  // ── Цвета (подстраиваются под тему) ──────────────────
-  function getColors() {
-    const style = getComputedStyle(document.documentElement)
-    const c1 = style.getPropertyValue('--accent-color').trim() || '#0d9488'
-    const c2 = style.getPropertyValue('--accent-secondary').trim()
-    return [c1, c2 || c1]
-  }
-
-  let colors = getColors()
-
-  // Обновляем цвета при смене темы
-  const mo = new MutationObserver(function () {
-    colors = getColors()
-    for (const p of particles) p.updateColor()
-  })
-  mo.observe(document.documentElement, {
-    attributes: true,
-    attributeFilter: ['data-theme'],
-  })
+  var debugColors = ['#FF0000', '#FF4444', '#FF8800', '#FFAA00']
 
   // ── Particle ─────────────────────────────────────────
   class Particle {
@@ -54,18 +36,14 @@
       this.vx = (Math.random() - 0.5) * AMBIENT
       this.vy = (Math.random() - 0.5) * AMBIENT
       this.r = MIN_R + Math.random() * (MAX_R - MIN_R)
-      this.op = 0.3 + Math.random() * 0.4
-      this.ci = Math.random() > 0.5 ? 0 : 1
+      this.op = 0.7 + Math.random() * 0.3
+      this.ci = Math.floor(Math.random() * debugColors.length)
 
       this.el = document.createElementNS(ns, 'circle')
-      this.updateColor()
+      this.el.setAttribute('fill', debugColors[this.ci])
       this.el.setAttribute('r', this.r)
       this.el.setAttribute('opacity', this.op)
       svg.appendChild(this.el)
-    }
-
-    updateColor() {
-      this.el.setAttribute('fill', colors[this.ci])
     }
 
     tick(mx, my) {
