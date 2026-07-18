@@ -326,7 +326,29 @@ main, .main, .doc-wrapper {
             .header-hamburger {
                 display: none;
             }
+            .floating-nav {
+                display: none !important;
+            }
         }
+@media (min-width: 769px) {
+    .mobile-nav {
+        display: none !important;
+    }
+    .mobile-nav-list {
+        display: none !important;
+    }
+
+    .floating-nav {
+        display: flex !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-hamburger {
+        display: none;
+    }
+}
+
 
         /* ===== Floating Nav (global, loads on all pages) ===== */
         .floating-nav {
@@ -950,9 +972,7 @@ html {
 
 /* === responsive.css === */
 /* responsive.css — все адаптивные стили для основных страниц */
-/* @media (max-width: 768px), (max-width: 480px), (min-width: 769px), print */
-
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
             body {
                 overflow-x: hidden;
                 width: 100%;
@@ -967,7 +987,7 @@ html {
 
 @media (max-width: 768px) {
             .mobile-nav {
-                display: flex;
+                display: flex !important;
                 padding: 6px 0 10px;
                 width: 100%;
                 box-sizing: border-box;
@@ -977,6 +997,9 @@ html {
             .mobile-nav a {
                 min-width: 0;
                 padding: 4px 4px;
+            }
+            .floating-nav {
+                display: none !important;
             }
 
             .status-bar {
