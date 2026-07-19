@@ -5,10 +5,12 @@
   var COUNT = 90
   var MIN_R = 2
   var MAX_R = 7
-  var AMBIENT = 0.15
-  var DAMP = 0.97
-  var MOUSE_R = 160
-  var MOUSE_FORCE = 0.8
+  var AMBIENT = 0.08
+  var DAMP = 0.94
+  var ATTRACT_R = 300
+  var ATTRACT_FORCE = 0.012
+  var SCATTER_FORCE = 8
+  var SCATTER_DURATION = 600
 
   var container = document.createElement('div')
   container.id = 'particle-cloud'
@@ -23,7 +25,6 @@
   container.appendChild(svg)
   document.body.prepend(container)
 
-  // ── Цвета под обе темы ──────────────────────────────
   function getColors() {
     var style = getComputedStyle(document.documentElement)
     var c1 = style.getPropertyValue('--accent-color').trim() || '#0D9488'
@@ -45,7 +46,6 @@
     attributeFilter: ['data-theme'],
   })
 
-  // ── Particle ─────────────────────────────────────────
   function Particle() {
     this.x = Math.random() * innerWidth
     this.y = Math.random() * innerHeight
@@ -66,20 +66,35 @@
     this.el.setAttribute('fill', colors[this.ci])
   }
 
-  Particle.prototype.tick = function (mx, my) {
-    this.vx += (Math.random() - 0.5) * 0.05
-    this.vy += (Math.random() - 0.5) * 0.05
+  Particle.prototype.tick = function (mx, my, isScattering, sx, sy) {
+    this.vx += (Math.random() - 0.5) * 0.04
+    this.vy += (Math.random() - 0.5) * 0.04
+
+    if (isScattering) {
+      var sdx = this.x - sx
+      var sdy = this.y - sy
+      var sdist = Math.sqrt(sdx * sdx + sdy * sdy)
+      if (sdist < 1) sdist = 1
+      var sForce = SCATTER_FORCE / Math.max(sdist * 0.3, 1)
+      this.vx += (sdx / sdist) * sForce
+      this.vy += (sdy / sdist) * sForce
+    } else if (mx >= 0) {
+      var adx = mx - this.x
+      var ady = my - this.y
+      var adist = Math.sqrt(adx * adx + ady * ady)
+      if (adist < ATTRACT_R) {
+        this.vx += (adx / Math.max(adist, 1)) * ATTRACT_FORCE
+        this.vy += (ady / Math.max(adist, 1)) * ATTRACT_FORCE
+      }
+    }
+
     this.vx *= DAMP
     this.vy *= DAMP
 
-    var dx = this.x - mx
-    var dy = this.y - my
-    var dist = Math.sqrt(dx * dx + dy * dy)
-    if (dist < MOUSE_R) {
-      var force = ((MOUSE_R - dist) / MOUSE_R) * MOUSE_FORCE
-      var angle = Math.atan2(dy, dx)
-      this.vx += Math.cos(angle) * force
-      this.vy += Math.sin(angle) * force
+    var speed = Math.sqrt(this.vx * this.vx + this.vy * this.vy)
+    if (speed > 15) {
+      this.vx = (this.vx / speed) * 15
+      this.vy = (this.vy / speed) * 15
     }
 
     this.x += this.vx
@@ -87,10 +102,11 @@
 
     var w = innerWidth
     var h = innerHeight
-    if (this.x < -60) this.x = w + 60
-    else if (this.x > w + 60) this.x = -60
-    if (this.y < -60) this.y = h + 60
-    else if (this.y > h + 60) this.y = -60
+    var margin = 100
+    if (this.x < -margin) this.x = w + margin
+    else if (this.x > w + margin) this.x = -margin
+    if (this.y < -margin) this.y = h + margin
+    else if (this.y > h + margin) this.y = -margin
 
     this.el.setAttribute('cx', this.x)
     this.el.setAttribute('cy', this.y)
@@ -101,40 +117,54 @@
     particles.push(new Particle())
   }
 
-  // ── Mouse / Touch ────────────────────────────────────
   var mx = -1000
   var my = -1000
-  var idle = true
-  var idleTimer
-
-  function onMove(x, y) {
-    mx = x
-    my = y
-    idle = false
-    clearTimeout(idleTimer)
-    idleTimer = setTimeout(function () {
-      idle = true
-    }, 3000)
-  }
+  var isScattering = false
+  var scatterX = 0
+  var scatterY = 0
+  var scatterTimer = null
 
   document.addEventListener('mousemove', function (e) {
-    onMove(e.clientX, e.clientY)
-  })
-  document.addEventListener('touchmove', function (e) {
-    var t = e.touches[0]
-    if (t) onMove(t.clientX, t.clientY)
-  }, { passive: true })
-  document.addEventListener('touchstart', function (e) {
-    var t = e.touches[0]
-    if (t) onMove(t.clientX, t.clientY)
+    mx = e.clientX
+    my = e.clientY
   })
 
-  // ── RAF ──────────────────────────────────────────────
+  document.addEventListener('mousedown', function (e) {
+    isScattering = true
+    scatterX = e.clientX
+    scatterY = e.clientY
+    clearTimeout(scatterTimer)
+    scatterTimer = setTimeout(function () {
+      isScattering = false
+    }, SCATTER_DURATION)
+  })
+
+  document.addEventListener('touchmove', function (e) {
+    var t = e.touches[0]
+    if (t) {
+      mx = t.clientX
+      my = t.clientY
+    }
+  }, { passive: true })
+
+  document.addEventListener('touchstart', function (e) {
+    var t = e.touches[0]
+    if (t) {
+      mx = t.clientX
+      my = t.clientY
+      isScattering = true
+      scatterX = t.clientX
+      scatterY = t.clientY
+      clearTimeout(scatterTimer)
+      scatterTimer = setTimeout(function () {
+        isScattering = false
+      }, SCATTER_DURATION)
+    }
+  })
+
   function loop() {
-    var ix = idle ? -1000 : mx
-    var iy = idle ? -1000 : my
     for (var i = 0; i < particles.length; i++) {
-      particles[i].tick(ix, iy)
+      particles[i].tick(mx, my, isScattering, scatterX, scatterY)
     }
     requestAnimationFrame(loop)
   }
